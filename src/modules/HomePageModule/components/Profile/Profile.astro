@@ -1,0 +1,19 @@
+---
+import ProfilePicture from "./images/picture/profile.svg?raw";
+import ThemeSwitcher from "./components/ThemeSwitcher/ThemeSwitcher.astro";
+---
+
+<div class="flex h-full flex-col">
+  <div class="w-32 rounded-full border-4 border-amber-100">
+    <Fragment class="rounded-full" set:html={ProfilePicture} />
+  </div>
+  <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+    Ignacio Silva
+  </h2>
+  <p class="text-lg text-gray-700 dark:text-gray-300">Frontend developer</p>
+  <p class="text-lg text-gray-700 dark:text-gray-300">Viña del mar, Chile</p>
+  <div class="mt-auto">
+    <ThemeSwitcher />
+    <!--<Backup />-->
+  </div>
+</div>
