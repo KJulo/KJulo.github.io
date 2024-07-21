@@ -9,20 +9,69 @@ import MoonIcon from "./images/icons/moon.svg?raw";
   id="theme-selector"
 >
   <svg
-    class="h-10 w-10 rounded-full bg-yellow-400 p-2 text-white dark:bg-transparent dark:text-transparent"
+    id="sun-icon"
+    class:list={[
+      "h-10 w-10 rounded-full bg-yellow-400 p-2 text-white dark:bg-transparent dark:text-transparent",
+    ]}
     set:html={SunIcon}
   />
   <svg
-    class="h-10 w-10 rounded-full p-2 text-amber-200 text-transparent dark:bg-sky-400 dark:text-white"
+    id="moon-icon"
+    class:list={[
+      "h-10 w-10 rounded-full p-2 text-amber-200 text-transparent dark:bg-sky-400 dark:text-white",
+    ]}
     set:html={MoonIcon}
   />
 </button>
+<style>
+  #theme-selector {
+    transition: background-color 0.5s;
+  }
+  #theme-selector:focus-visible {
+    outline: none;
+  }
+
+  .moon-icon {
+    animation: spin 0.5s cubic-bezier(0, 0, 0.2, 1) forwards;
+    animation-name: moveLeft;
+  }
+  .sun-icon {
+    animation: spin 0.5s cubic-bezier(0, 0, 0.2, 1) forwards;
+    animation-name: moveRight;
+  }
+  @keyframes moveRight {
+    0% {
+      transform: translateX(180%) rotate(360deg);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0%);
+      opacity: 1;
+    }
+  }
+  @keyframes moveLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-180%) rotate(-360deg);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  }
+</style>
 <script>
+  const moonIcon = document.getElementById("moon-icon");
+  const sunIcon = document.getElementById("sun-icon");
   document.getElementById("theme-selector")?.addEventListener("click", () => {
     if (localStorage.theme === "dark") {
+      sunIcon.classList.add("sun-icon");
+      moonIcon.classList.remove("moon-icon");
       localStorage.theme = "light";
       document.documentElement.classList.remove("dark");
     } else {
+      moonIcon.classList.add("moon-icon");
+      sunIcon.classList.remove("sun-icon");
       localStorage.theme = "dark";
       document.documentElement.classList.add("dark");
     }
