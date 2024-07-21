@@ -1,5 +1,12 @@
 ---
-
+import Profile from "./components/Profile/Profile.astro";
 ---
 
-<div>hola</div>
+<div class="flex h-full w-full flex-row">
+  <div class="flex basis-1/3">
+    <Profile />
+  </div>
+  <div class="flex basis-2/3">
+    <h1>Bento box</h1>
+  </div>
+</div>
