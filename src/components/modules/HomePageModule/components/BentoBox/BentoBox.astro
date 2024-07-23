@@ -1,0 +1,60 @@
+---
+import Card from "./components/Card/Card.astro";
+import CarrouselIcons from "./components/CarrouselIcons/CarrouselIcons.astro";
+import Experience from "./components/Experience/Experience.astro";
+
+import LinkedIn from "@icons/LinkedIn.svg?raw";
+import Github from "@icons/Github.svg?raw";
+import Gitlab from "@icons/Gitlab.svg?raw";
+import Mail from "@icons/Mail.svg?raw";
+
+import { BACKEND_STACK, FRONTEND_STACK } from "./constants";
+---
+
+<div
+  class="grid h-full w-full grid-cols-3 grid-rows-9 gap-4 max-sm:grid-cols-2 max-sm:grid-rows-8 2xl:grid-cols-3 2xl:grid-rows-6"
+>
+  <Card
+    class="col-span-1 flex flex-grow flex-col flex-wrap content-center border-blue-400 border-opacity-70 bg-blue-600 bg-opacity-10"
+  >
+    <svg set:html={LinkedIn} class="h-12 w-12 fill-blue-500 text-center" />
+  </Card>
+  <Card
+    class="col-span-1 flex flex-grow flex-col flex-wrap content-center border-purple-400 border-opacity-70 bg-purple-600 bg-opacity-10"
+  >
+    <svg set:html={Github} class="h-12 w-12 text-center dark:fill-white" />
+  </Card>
+  <Card
+    class="col-span-1 flex flex-grow flex-col flex-wrap content-center border-red-400 border-opacity-70 bg-red-600 bg-opacity-10"
+  >
+    <svg
+      set:html={Mail}
+      class="h-12 w-14 fill-neutral-600 text-center dark:fill-white"
+    />
+  </Card>
+
+  <Card
+    class="col-span-2 flex flex-grow flex-col flex-wrap content-center border border-gray-300 bg-white py-6 max-sm:row-span-2 2xl:col-span-1 dark:border-neutral-700 dark:bg-neutral-900"
+  >
+    <CarrouselIcons items={FRONTEND_STACK} />
+  </Card>
+  <Card
+    class="col-span-1 flex flex-grow flex-col flex-wrap content-center border-orange-400 border-opacity-70 bg-orange-600 bg-opacity-10"
+  >
+    <svg
+      set:html={Gitlab}
+      class="h-12 w-14 fill-neutral-600 text-center dark:fill-white"
+    />
+  </Card>
+  <Card
+    class="col-span-2 flex flex-grow flex-col flex-wrap content-center border border-gray-300 bg-white py-6 max-sm:row-span-2 2xl:col-span-1 dark:border-neutral-700 dark:bg-neutral-900"
+  >
+    <CarrouselIcons items={BACKEND_STACK} />
+  </Card>
+
+  <Card
+    class="col-span-3 row-span-3 border border-gray-300 bg-white sm:row-span-2 2xl:col-span-1 2xl:row-span-2 dark:border-neutral-700 dark:bg-neutral-900"
+  >
+    <Experience />
+  </Card>
+</div>
