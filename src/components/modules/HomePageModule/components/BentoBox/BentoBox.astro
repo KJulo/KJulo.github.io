@@ -12,7 +12,7 @@ import { BACKEND_STACK, FRONTEND_STACK } from "./constants";
 ---
 
 <div
-  class="grid h-full w-full grid-cols-2 grid-rows-7 gap-4 sm:grid-cols-2 sm:grid-rows-9 lg:grid-cols-4 lg:grid-rows-5"
+  class="grid h-full w-full grid-cols-2 grid-rows-7 gap-4 sm:grid-cols-2 sm:grid-rows-9 md:grid-cols-4 md:grid-rows-5 lg:grid-cols-4 lg:grid-rows-5"
 >
   <Card
     class="flex flex-grow flex-col flex-wrap content-center border-blue-400 border-opacity-70 bg-blue-600 bg-opacity-10 max-sm:col-span-1 lg:order-1"
@@ -45,7 +45,7 @@ import { BACKEND_STACK, FRONTEND_STACK } from "./constants";
   </Card>
 
   <Card
-    class="row-span-2 flex flex-grow flex-col flex-wrap content-center border border-gray-300 bg-white py-6 sm:col-span-2 lg:order-3 dark:border-neutral-700 dark:bg-neutral-900"
+    class="row-span-2 flex flex-grow flex-col flex-wrap content-center border border-gray-300 bg-white py-6 sm:col-span-2 md:order-7 lg:order-3 dark:border-neutral-700 dark:bg-neutral-900"
   >
     <CarrouselIcons items={FRONTEND_STACK} />
   </Card>
@@ -57,7 +57,7 @@ import { BACKEND_STACK, FRONTEND_STACK } from "./constants";
   </Card>
 
   <Card
-    class="col-span-2 row-span-3 border border-gray-300 bg-white lg:order-6 lg:row-span-2 dark:border-neutral-700 dark:bg-neutral-900"
+    class="col-span-2 row-span-3 border border-gray-300 bg-white md:row-span-4 lg:order-6 lg:row-span-3 dark:border-neutral-700 dark:bg-neutral-900"
   >
     <Experience />
   </Card>

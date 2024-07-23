@@ -3,7 +3,9 @@ import Tag from "@components/commons/Tag/Tag.astro";
 import Button from "../../../../../../commons/Button/Button.astro";
 ---
 
-<div class="flex h-full flex-col content-start gap-4 p-4">
+<div
+  class="scrollbar flex h-full flex-col content-start gap-4 p-4 sm:overflow-auto"
+>
   <Tag color="blue" text="Experiencia" class="self-start" />
   <ul class="flex flex-col gap-4">
     <li class="flex flex-row justify-between gap-4 border-b pb-4">
@@ -36,3 +38,50 @@ import Button from "../../../../../../commons/Button/Button.astro";
   </ul>
   <Button class="mt-auto self-end"> Ver más </Button>
 </div>
+<style>
+  /* Customize website's scrollbar like Mac OS
+    Not supports in Firefox and IE */
+  .scrollbar {
+    overflow: auto;
+  }
+
+  /* total width */
+  .scrollbar::-webkit-scrollbar {
+    width: 12px;
+    height: 10px;
+    z-index: 999999;
+  }
+
+  /* background of the scrollbar except button or resizer */
+  .scrollbar::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  /* scrollbar itself */
+  .scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 16px;
+  }
+
+  /* set button(top and bottom of the scrollbar) */
+  .scrollbar::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  /* scrollbar when element is hovered */
+  .scrollbar:hover::-webkit-scrollbar-thumb {
+    background-color: #a0a0a5;
+    border: 4px solid #fff;
+  }
+
+  /* scrollbar when scrollbar is hovered */
+  .scrollbar::-webkit-scrollbar-track-piece:end {
+    background: transparent;
+    margin-bottom: 16px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track-piece:start {
+    background: transparent;
+    margin-top: 16px;
+  }
+</style>
