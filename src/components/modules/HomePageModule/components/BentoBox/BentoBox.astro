@@ -12,22 +12,22 @@ import { BACKEND_STACK, FRONTEND_STACK } from "./constants";
 ---
 
 <div
-  class="sm grid h-full w-full grid-cols-2 grid-rows-7 gap-4 sm:grid-cols-2 sm:grid-rows-9"
+  class="grid h-full w-full grid-cols-2 grid-rows-7 gap-4 sm:grid-cols-2 sm:grid-rows-9 lg:grid-cols-4 lg:grid-rows-5"
 >
   <Card
-    class="flex flex-grow flex-col flex-wrap content-center border-blue-400 border-opacity-70 bg-blue-600 bg-opacity-10 max-sm:col-span-1"
+    class="flex flex-grow flex-col flex-wrap content-center border-blue-400 border-opacity-70 bg-blue-600 bg-opacity-10 max-sm:col-span-1 lg:order-1"
   >
     <svg set:html={LinkedIn} class="h-12 w-12 fill-blue-500 text-center" />
   </Card>
 
   <Card
-    class="flex flex-grow flex-col flex-wrap content-center border-purple-400 border-opacity-70 bg-purple-600 bg-opacity-10 max-sm:col-span-1"
+    class="flex flex-grow flex-col flex-wrap content-center border-purple-400 border-opacity-70 bg-purple-600 bg-opacity-10 max-sm:col-span-1 lg:order-2"
   >
     <svg set:html={Github} class="h-12 w-12 text-center dark:fill-white" />
   </Card>
 
   <Card
-    class="flex flex-grow flex-col flex-wrap content-center border-red-400 border-opacity-70 bg-red-600 bg-opacity-10"
+    class="flex flex-grow flex-col flex-wrap content-center border-red-400 border-opacity-70 bg-red-600 bg-opacity-10 lg:order-4"
   >
     <svg
       set:html={Mail}
@@ -36,7 +36,7 @@ import { BACKEND_STACK, FRONTEND_STACK } from "./constants";
   </Card>
 
   <Card
-    class="flex flex-grow flex-col flex-wrap content-center border-orange-400 border-opacity-70 bg-orange-600 bg-opacity-10"
+    class="flex flex-grow flex-col flex-wrap content-center border-orange-400 border-opacity-70 bg-orange-600 bg-opacity-10 lg:order-5"
   >
     <svg
       set:html={Gitlab}
@@ -45,19 +45,19 @@ import { BACKEND_STACK, FRONTEND_STACK } from "./constants";
   </Card>
 
   <Card
-    class="row-span-2 flex flex-grow flex-col flex-wrap content-center border border-gray-300 bg-white py-6 sm:col-span-2 dark:border-neutral-700 dark:bg-neutral-900"
+    class="row-span-2 flex flex-grow flex-col flex-wrap content-center border border-gray-300 bg-white py-6 sm:col-span-2 lg:order-3 dark:border-neutral-700 dark:bg-neutral-900"
   >
     <CarrouselIcons items={FRONTEND_STACK} />
   </Card>
 
   <Card
-    class="row-span-2 flex flex-grow flex-col flex-wrap content-center border border-gray-300 bg-white py-6 sm:col-span-2 dark:border-neutral-700 dark:bg-neutral-900"
+    class="row-span-2 flex flex-grow flex-col flex-wrap content-center border border-gray-300 bg-white py-6 sm:col-span-2 lg:order-7 dark:border-neutral-700 dark:bg-neutral-900"
   >
     <CarrouselIcons items={BACKEND_STACK} />
   </Card>
 
   <Card
-    class="col-span-2 row-span-3 border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900"
+    class="col-span-2 row-span-3 border border-gray-300 bg-white lg:order-6 lg:row-span-2 dark:border-neutral-700 dark:bg-neutral-900"
   >
     <Experience />
   </Card>
