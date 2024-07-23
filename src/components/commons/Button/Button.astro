@@ -1,0 +1,15 @@
+---
+interface Props {
+  class: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<button
+  type="button"
+  class="dark:border-neutral-700 dark:bg-neutral-900"
+  class:list={["rounded-2xl border-2 border-gray-400 bg-white px-4", className]}
+>
+  <slot />
+</button>

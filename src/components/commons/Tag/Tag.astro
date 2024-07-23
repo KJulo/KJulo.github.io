@@ -1,0 +1,17 @@
+---
+interface Props {
+  color: string;
+  text: string;
+  class?: string;
+}
+
+import { TAGS_COLORS } from "./constants";
+const { color, text, class: className } = Astro.props;
+
+const colorClass = TAGS_COLORS[color as keyof typeof TAGS_COLORS];
+---
+
+<span
+  class:list={[colorClass, className]}
+  class="me-2 rounded-full px-2.5 py-0.5 font-medium">{text}</span
+>
