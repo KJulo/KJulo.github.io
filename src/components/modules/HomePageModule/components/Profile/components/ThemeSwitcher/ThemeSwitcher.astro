@@ -7,6 +7,7 @@ import MoonIcon from "./images/icons/moon.svg?raw";
   type="button"
   class="flex flex-row gap-8 rounded-full bg-amber-200 bg-opacity-70 p-1 dark:bg-sky-600 dark:bg-opacity-30"
   id="theme-selector"
+  aria-label="Cambiar tema"
 >
   <svg
     id="sun-icon"
@@ -64,16 +65,18 @@ import MoonIcon from "./images/icons/moon.svg?raw";
   const moonIcon = document.getElementById("moon-icon");
   const sunIcon = document.getElementById("sun-icon");
   document.getElementById("theme-selector")?.addEventListener("click", () => {
-    if (localStorage.theme === "dark") {
-      sunIcon.classList.add("sun-icon");
-      moonIcon.classList.remove("moon-icon");
-      localStorage.theme = "light";
-      document.documentElement.classList.remove("dark");
-    } else {
-      moonIcon.classList.add("moon-icon");
-      sunIcon.classList.remove("sun-icon");
-      localStorage.theme = "dark";
-      document.documentElement.classList.add("dark");
+    if (sunIcon && moonIcon) {
+      if (localStorage.theme === "dark") {
+        sunIcon.classList.add("sun-icon");
+        moonIcon.classList.remove("moon-icon");
+        localStorage.theme = "light";
+        document.documentElement.classList.remove("dark");
+      } else {
+        moonIcon.classList.add("moon-icon");
+        sunIcon.classList.remove("sun-icon");
+        localStorage.theme = "dark";
+        document.documentElement.classList.add("dark");
+      }
     }
   });
 </script>
