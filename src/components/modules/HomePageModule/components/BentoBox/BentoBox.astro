@@ -11,7 +11,9 @@ import Mail from "@icons/Mail.svg?raw";
 import { BACKEND_STACK, FRONTEND_STACK } from "./constants";
 ---
 
-<div class="grid h-full w-full gap-4 max-sm:grid-cols-2 max-sm:grid-rows-7">
+<div
+  class="sm grid h-full w-full grid-cols-2 grid-rows-7 gap-4 sm:grid-cols-2 sm:grid-rows-9"
+>
   <Card
     class="flex flex-grow flex-col flex-wrap content-center border-blue-400 border-opacity-70 bg-blue-600 bg-opacity-10 max-sm:col-span-1"
   >
@@ -43,19 +45,19 @@ import { BACKEND_STACK, FRONTEND_STACK } from "./constants";
   </Card>
 
   <Card
-    class="flex flex-grow flex-col flex-wrap content-center border border-gray-300 bg-white py-6 max-sm:row-span-2 dark:border-neutral-700 dark:bg-neutral-900"
+    class="row-span-2 flex flex-grow flex-col flex-wrap content-center border border-gray-300 bg-white py-6 sm:col-span-2 dark:border-neutral-700 dark:bg-neutral-900"
   >
     <CarrouselIcons items={FRONTEND_STACK} />
   </Card>
 
   <Card
-    class="flex flex-grow flex-col flex-wrap content-center border border-gray-300 bg-white py-6 max-sm:row-span-2 dark:border-neutral-700 dark:bg-neutral-900"
+    class="row-span-2 flex flex-grow flex-col flex-wrap content-center border border-gray-300 bg-white py-6 sm:col-span-2 dark:border-neutral-700 dark:bg-neutral-900"
   >
     <CarrouselIcons items={BACKEND_STACK} />
   </Card>
 
   <Card
-    class="border border-gray-300 bg-white max-sm:col-span-2 max-sm:row-span-3 dark:border-neutral-700 dark:bg-neutral-900"
+    class="col-span-2 row-span-3 border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900"
   >
     <Experience />
   </Card>
