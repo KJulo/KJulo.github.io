@@ -1,3 +1,6 @@
+## Release 1.2.0 (2024/07/23)
+- [✨] Add configuration astro/deploy.yml to deploy to github pages
+
 ## Release 1.1.0 (2024/07/22)
 - [✨] Add Bento box section
 
