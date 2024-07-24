@@ -9,10 +9,11 @@ import Gitlab from "@icons/Gitlab.svg?raw";
 import Mail from "@icons/Mail.svg?raw";
 
 import { BACKEND_STACK, FRONTEND_STACK } from "./constants";
+import Tag from "../../../../commons/Tag/Tag.astro";
 ---
 
 <div
-  class="md:grid-rows-6 lg:grid-cols-4 lg:grid-rows-5 grid h-full w-full grid-cols-2 grid-rows-7 gap-4 sm:grid-cols-4 sm:grid-rows-9"
+  class="md:grid-rows-6 md:grid-cols-4 grid h-full w-full grid-cols-2 grid-rows-7 gap-4 sm:grid-cols-4 sm:grid-rows-9"
 >
   <Card
     class="group flex flex-grow flex-col flex-wrap content-center border-blue-400 border-opacity-70 bg-blue-600 bg-opacity-10 transition-all hover:bg-blue-400 max-sm:col-span-1 dark:border-blue-600 dark:hover:bg-blue-600"
@@ -48,15 +49,21 @@ import { BACKEND_STACK, FRONTEND_STACK } from "./constants";
   </Card>
 
   <Card
-    class="lg:row-span-2 row-span-2 flex flex-grow flex-col flex-wrap content-center border border-gray-300 bg-white py-6 sm:col-span-2 sm:row-span-3 dark:border-neutral-700 dark:bg-neutral-900"
+    class="md:row-span-2 row-span-2 border border-gray-300 bg-white sm:col-span-2 sm:row-span-3 dark:border-neutral-700 dark:bg-neutral-900"
   >
-    <CarrouselIcons items={FRONTEND_STACK} />
+    <div class="flex h-full flex-col content-start p-4">
+      <Tag color="blue" text="Frontend" class="self-start" />
+      <CarrouselIcons items={FRONTEND_STACK} class="m-auto" />
+    </div>
   </Card>
 
   <Card
-    class="lg:row-span-2 row-span-2 flex flex-grow flex-col flex-wrap content-center border border-gray-300 bg-white py-6 sm:col-span-2 sm:row-span-3 dark:border-neutral-700 dark:bg-neutral-900"
+    class="md:row-span-2 row-span-2 border border-gray-300 bg-white sm:col-span-2 sm:row-span-3 dark:border-neutral-700 dark:bg-neutral-900"
   >
-    <CarrouselIcons items={BACKEND_STACK} />
+    <div class="flex h-full flex-col content-start p-4">
+      <Tag color="green" text="Backend" class="self-start" />
+      <CarrouselIcons items={BACKEND_STACK} class="m-auto" />
+    </div>
   </Card>
 
   <Card
