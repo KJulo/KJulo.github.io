@@ -1,13 +1,14 @@
 ---
-const { items } = Astro.props;
+const { items, class: className } = Astro.props;
 ---
 
 <div
+  class:list={[className]}
   class="group relative inline-flex w-full flex-nowrap overflow-hidden whitespace-nowrap [mask-image:_linear-gradient(to_right,_transparent_0,_white_128px,white_calc(100%-128px),_transparent_100%)]"
 >
   {
     [0, 1, 2].map((key) => (
-      <ul class="flex animate-slide-left items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:mx-2">
+      <ul class="md:justify-start flex animate-slide-left items-center justify-center [&_img]:max-w-none [&_li]:mx-2">
         {items.map((item: { icon: string; className: string }) => (
           <li
             set:html={item.icon}
