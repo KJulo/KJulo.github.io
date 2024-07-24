@@ -3,6 +3,9 @@ export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		extend: {
+			fontFamily: {
+				'sans': ['sans-serif', 'sans-serif'],
+			},
 			keyframes: {
 				'slide-left': {
 					from: { transform: 'translateX(0)' },
