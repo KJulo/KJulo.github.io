@@ -1,13 +1,15 @@
 ---
-import ProfilePicture from "./images/picture/profile.svg?raw";
+import ProfilePicture from "@images/profile.svg?raw";
 import ThemeSwitcher from "./components/ThemeSwitcher/ThemeSwitcher.astro";
 ---
 
 <div
   class="flex h-full w-full flex-col items-center justify-center gap-4 rounded-3xl border bg-white p-4 dark:border-neutral-700 dark:bg-neutral-900"
 >
-  <div class="w-32 rounded-full border-4 border-amber-100">
-    <Fragment class="rounded-full" set:html={ProfilePicture} />
+  <div
+    class="w-32 rounded-full border-4 border-neutral-200 dark:border-neutral-700"
+  >
+    <Fragment set:html={ProfilePicture} />
   </div>
   <div>
     <h2 class="text-2xl font-bold">Ignacio Silva</h2>
