@@ -1,3 +1,10 @@
+## Release 1.4.0 (2024/07/25)
+- [✨] Add Tag to social media card and added max height breakpoints
+- [✨] Add aria label for anchor tag and added transition for HyperLink component
+- [💄] Change favicon svg
+- [💄] Change color profile picture border
+- [♻️] Refactor path of import some components
+
 ## Release 1.3.0 (2024/07/24)
 - [💄] Adjust UX Homepage
 - [🐛] Fix github pages home

@@ -1,7 +1,5 @@
 ---
-import Card from "./components/Card/Card.astro";
-import CarrouselIcons from "./components/CarrouselIcons/CarrouselIcons.astro";
-import Experience from "./components/Experience/Experience.astro";
+import Tag from "@commons/Tag/Tag.astro";
 
 import LinkedIn from "@icons/LinkedIn.svg?raw";
 import Github from "@icons/Github.svg?raw";
@@ -9,49 +7,78 @@ import Gitlab from "@icons/Gitlab.svg?raw";
 import Mail from "@icons/Mail.svg?raw";
 
 import { BACKEND_STACK, FRONTEND_STACK } from "./constants";
-import Tag from "../../../../commons/Tag/Tag.astro";
+import Card from "./components/Card/Card.astro";
+import CarrouselIcons from "./components/CarrouselIcons/CarrouselIcons.astro";
+import Experience from "./components/Experience/Experience.astro";
 ---
 
 <div
   class="grid h-full w-full grid-cols-2 grid-rows-7 gap-4 sm:grid-cols-4 sm:grid-rows-9 md:grid-cols-4 md:grid-rows-6"
 >
-  <a href="https://www.linkedin.com/in/ignaciosilvae/" target="_blank">
+  <a
+    href="https://www.linkedin.com/in/ignaciosilvae/"
+    aria-label="LinkedIn"
+    target="_blank"
+  >
     <Card
-      class="group flex flex-grow flex-col flex-wrap content-center border-blue-400 border-opacity-70 bg-blue-600 bg-opacity-10 transition-all hover:bg-blue-400 max-sm:col-span-1 dark:border-blue-600 dark:hover:bg-blue-600"
+      class="group flex h-full flex-col items-center border-blue-400 border-opacity-70 bg-blue-600 bg-opacity-10 transition-all hover:bg-blue-400 max-sm:col-span-1 dark:border-blue-600 dark:hover:bg-blue-600"
     >
-      <svg
+      <div
+        class="flex h-16 w-16 items-center justify-center fill-blue-500 text-center align-middle transition-all group-hover:fill-white"
         set:html={LinkedIn}
-        class="h-12 w-12 fill-blue-500 text-center transition-all group-hover:fill-white"
+      />
+      <Tag
+        color="blue"
+        text="@ignaciosilvae"
+        class="md-h:hidden self-center text-wrap max-lg:hidden"
       />
     </Card>
   </a>
 
-  <a href="mailto:ignacio.silva.e@gmail.com" target="_blank">
+  <a href="mailto:ignacio.silva.e@gmail.com" aria-label="Mail" target="_blank">
     <Card
-      class="flex flex-grow flex-col flex-wrap content-center border-red-400 border-opacity-70 bg-red-600 bg-opacity-10 transition-all hover:bg-red-400 dark:border-red-600 dark:hover:bg-red-600"
+      class="flex flex-col flex-wrap content-center border-red-400 border-opacity-70 bg-red-600 bg-opacity-10 transition-all hover:bg-red-400 dark:border-red-600 dark:hover:bg-red-600"
     >
-      <svg
+      <div
+        class="flex h-16 w-16 items-center justify-center fill-neutral-700 p-3 text-center align-middle dark:fill-white"
         set:html={Mail}
-        class="h-12 w-14 fill-neutral-600 text-center dark:fill-white"
+      />
+      <Tag
+        color="red"
+        text="Mail"
+        class="md-h:hidden self-center text-wrap max-lg:hidden"
       />
     </Card>
   </a>
 
-  <a href="https://github.com/KJulo" target="_blank">
+  <a href="https://github.com/KJulo" aria-label="Github" target="_blank">
     <Card
-      class="flex flex-grow flex-col flex-wrap content-center border-purple-400 border-opacity-70 bg-purple-600 bg-opacity-10 transition-all hover:bg-purple-400 max-sm:col-span-1 dark:border-purple-600 dark:hover:bg-purple-600"
+      class="flex flex-col content-center items-center border-purple-400 border-opacity-70 bg-purple-600 bg-opacity-10 transition-all hover:bg-purple-400 max-sm:col-span-1 dark:border-purple-600 dark:hover:bg-purple-600"
     >
-      <svg set:html={Github} class="h-12 w-12 text-center dark:fill-white" />
+      <div
+        class="flex h-16 w-16 items-center justify-center fill-neutral-700 text-center align-middle dark:fill-white"
+        set:html={Github}
+      />
+      <Tag
+        color="purple"
+        text="@KJulo"
+        class="md-h:hidden self-center text-wrap max-lg:hidden"
+      />
     </Card>
   </a>
 
-  <a href="https://gitlab.com/isilva3" target="_blank">
+  <a href="https://gitlab.com/isilva3" aria-label="Gitlab" target="_blank">
     <Card
       class="flex flex-grow flex-col flex-wrap content-center border-orange-400 border-opacity-70 bg-orange-600 bg-opacity-10 transition-all hover:bg-orange-400 dark:border-orange-600 dark:hover:bg-orange-600"
     >
-      <svg
+      <div
+        class="flex h-16 w-16 items-center justify-center self-center fill-white text-center"
         set:html={Gitlab}
-        class="h-12 w-14 fill-neutral-600 text-center dark:fill-white"
+      />
+      <Tag
+        color="orange"
+        text="@isilva3"
+        class="md-h:hidden self-center text-wrap max-lg:hidden"
       />
     </Card>
   </a>
