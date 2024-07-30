@@ -9,6 +9,7 @@ export default {
 				'lg-h': { raw: '(max-height: 1024px)' },
 				'md-h': { raw: '(max-height: 768px)' },
 				'sm-h': { raw: '(max-height: 640px)' },
+				'xs-h': { raw: '(max-height: 480px)' },
 				'max-2xl': { raw: '(max-width: 1535px)' },
 				'max-xl': { raw: '(max-width: 1279px)' },
 				'max-lg': { raw: '(max-width: 1023px)' },
