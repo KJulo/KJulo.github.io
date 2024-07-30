@@ -1,3 +1,6 @@
+## Release 1.5.2 (2024/07/29)
+- [🐛] Fix rebase branch RC-1.5.1
+
 ## Release 1.5.1 (2024/07/29)
 - [🔥] Remove unused css file
 
