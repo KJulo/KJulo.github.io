@@ -1,3 +1,6 @@
+## Release 1.5.1 (2024/07/29)
+- [🔥] Remove unused css file
+
 ## Release 1.5.0 (2024/07/29)
 - [🐛] Fix icons for social media not showing in mobile devices (Gitlab and Mail)
 - [📱] Fix responsive for height when the devices are minor than 450px
