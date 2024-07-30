@@ -1,3 +1,8 @@
+## Release 1.5.0 (2024/07/29)
+- [🐛] Fix icons for social media not showing in mobile devices (Gitlab and Mail)
+- [📱] Fix responsive for height when the devices are minor than 450px
+- [🔧] Added more breakpoints for responsive design
+
 ## Release 1.4.0 (2024/07/25)
 - [✨] Add Tag to social media card and added max height breakpoints
 - [✨] Add aria label for anchor tag and added transition for HyperLink component
