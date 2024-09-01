@@ -1,15 +1,55 @@
 ---
 import { Image } from "astro:assets";
-import ProfilePicture from "@images/images/profile.webp";
+import ProfilePictureHi from "@images/images/profile.webp";
+import ProfilePicturePunch from "@images/images/profile2.webp";
 ---
 
 <div
-  class="flex w-48 flex-col items-center justify-center gap-4 rounded-3xl bg-white p-4 dark:border-neutral-700 dark:bg-neutral-900"
+  class="card flex w-full flex-col items-center justify-center gap-4 rounded-3xl bg-white p-4 dark:border-neutral-700 dark:bg-neutral-900"
 >
-  <Image
-    src={ProfilePicture}
-    alt="Profile picture"
-    decoding="async"
-    loading={"lazy"}
-  />
+  <div class="front__card">
+    <Image
+      src={ProfilePictureHi}
+      alt="Profile picture greeting face"
+      decoding="async"
+      class="w-48"
+      loading={"lazy"}
+    />
+  </div>
+  <div class="back__card">
+    <Image
+      src={ProfilePicturePunch}
+      alt="Profile picture punch face"
+      class="w-48"
+      decoding={"async"}
+      loading={"lazy"}
+    />
+  </div>
 </div>
+<style>
+  .card:hover {
+    transform: rotateY(180deg);
+  }
+
+  .card {
+    transition: transform 800ms;
+    transform-style: preserve-3d;
+  }
+
+  .front__card,
+  .back__card {
+    height: 100%;
+    width: 100%;
+    padding: 16px;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .back__card {
+    transform: rotateY(180deg);
+  }
+</style>

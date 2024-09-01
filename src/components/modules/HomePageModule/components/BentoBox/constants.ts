@@ -23,7 +23,7 @@ export const CONTENT: {
     key: "Profile",
     classList: [
       "flex border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "col-span-6 row-span-1 ",
+      "col-span-6 row-span-12 ",
       "md:col-span-4 md:row-start-1 md:col-start-1 md:row-span-3",
     ],
 
@@ -33,7 +33,7 @@ export const CONTENT: {
     key: "ThemeSwitcher",
     classList: [
       "flex border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "col-span-6 row-span-1",
+      "col-span-6 row-span-12",
       "md:col-span-4  md:row-start-1 md:col-start-5 md:row-span-3",
     ],
 
