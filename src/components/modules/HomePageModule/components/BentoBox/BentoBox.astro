@@ -1,134 +1,20 @@
 ---
 import Card from "@commons/Card/Card.astro";
-import CarrouselIcons from "@commons/CarrouselIcons/CarrouselIcons.astro";
-import Tag from "@commons/Tag/Tag.astro";
 
-import LinkedIn from "@icons/LinkedIn.svg?raw";
-import Github from "@icons/Github.svg?raw";
-import Gitlab from "@icons/Gitlab.svg?raw";
-import Mail from "@icons/Mail.svg?raw";
-
-import { BACKEND_STACK, FRONTEND_STACK } from "./constants";
-
-import Experience from "./components/Experience/Experience.astro";
-import ThemeSwitcher from "./components/ThemeSwitcher/ThemeSwitcher.astro";
-import Profile from "./components/Profile/Profile.astro";
-import AboutMe from "./components/AboutMe/AboutMe.astro";
-import Introduction from "./components/Introduction/Introduction.astro";
+import { CONTENT } from "./constants";
 ---
 
-<div class="grid grid-cols-3 grid-rows-4 gap-4">
-  <Card
-    class="flex border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900"
-  >
-    <Profile />
-  </Card>
-
-  <Card
-    class="border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900"
-  >
-    <Introduction />
-  </Card>
-
-  <Card
-    class="flex border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900"
-  >
-    <ThemeSwitcher />
-  </Card>
-  <a
-    href="https://www.linkedin.com/in/ignaciosilvae/"
-    aria-label="LinkedIn"
-    target="_blank"
-  >
-    <Card
-      class="group flex h-full flex-col items-center border-blue-400 border-opacity-70 bg-blue-600 bg-opacity-10 transition-all hover:bg-blue-400 dark:border-blue-600 dark:hover:bg-blue-600"
-    >
-      <div
-        class="flex h-16 w-16 items-center justify-center fill-blue-500 text-center align-middle transition-all group-hover:fill-white"
-        set:html={LinkedIn}
-      />
-      <Tag
-        color="blue"
-        text="@ignaciosilvae"
-        class="self-center text-wrap md-h:hidden max-lg:hidden"
-      />
-    </Card>
-  </a>
-
-  <a href="mailto:ignacio.silva.e@gmail.com" aria-label="Mail" target="_blank">
-    <Card
-      class="flex flex-col flex-wrap content-center border-red-400 border-opacity-70 bg-red-600 bg-opacity-10 transition-all hover:bg-red-400 dark:border-red-600 dark:hover:bg-red-600"
-    >
-      <div
-        class="flex h-16 w-16 items-center justify-center fill-neutral-700 p-3 text-center align-middle dark:fill-white"
-        set:html={Mail}
-      />
-      <Tag
-        color="red"
-        text="Mail"
-        class="self-center text-wrap md-h:hidden max-lg:hidden"
-      />
-    </Card>
-  </a>
-
-  <a href="https://github.com/KJulo" aria-label="Github" target="_blank">
-    <Card
-      class="flex flex-col content-center items-center border-purple-400 border-opacity-70 bg-purple-600 bg-opacity-10 transition-all hover:bg-purple-400 dark:border-purple-600 dark:hover:bg-purple-600"
-    >
-      <div
-        class="flex h-16 w-16 items-center justify-center fill-neutral-700 text-center align-middle dark:fill-white"
-        set:html={Github}
-      />
-      <Tag
-        color="purple"
-        text="@KJulo"
-        class="self-center text-wrap md-h:hidden max-lg:hidden"
-      />
-    </Card>
-  </a>
-
-  <a href="https://gitlab.com/isilva3" aria-label="Gitlab" target="_blank">
-    <Card
-      class="flex flex-grow flex-col flex-wrap content-center border-orange-400 border-opacity-70 bg-orange-600 bg-opacity-10 transition-all hover:bg-orange-400 dark:border-orange-600 dark:hover:bg-orange-600"
-    >
-      <div
-        class="flex h-16 w-16 items-center justify-center self-center fill-white text-center"
-        set:html={Gitlab}
-      />
-      <Tag
-        color="orange"
-        text="@isilva3"
-        class="self-center text-wrap md-h:hidden max-lg:hidden"
-      />
-    </Card>
-  </a>
-
-  <Card
-    class="border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900"
-  >
-    <div class="flex h-full flex-col content-start p-4">
-      <Tag color="blue" text="Frontend" class="self-start" />
-      <CarrouselIcons items={FRONTEND_STACK} class="m-auto" />
-    </div>
-  </Card>
-
-  <Card
-    class="border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900"
-  >
-    <div class="flex h-full flex-col content-start p-4">
-      <Tag color="green" text="Backend" class="self-start" />
-      <CarrouselIcons items={BACKEND_STACK} class="m-auto" />
-    </div>
-  </Card>
-
-  <Card
-    class="border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900"
-  >
-    <Experience />
-  </Card>
-  <Card
-    class="border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900"
-  >
-    <AboutMe />
-  </Card>
+<div class="grid grid-cols-6 grid-rows-5 gap-4">
+  {
+    CONTENT.map((content) => (
+      <Card
+        href={content.href}
+        ariaLabel={content.ariaLabel}
+        target={content.target}
+        class:list={[content.class]}
+      >
+        {<content.render />}
+      </Card>
+    ))
+  }
 </div>

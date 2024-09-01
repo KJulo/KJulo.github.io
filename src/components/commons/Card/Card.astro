@@ -1,10 +1,25 @@
 ---
-const { class: className } = Astro.props;
+const { class: className, href, ariaLabel, target } = Astro.props;
+
+const hasLink = href !== undefined;
 ---
 
-<div
-  class="h-full justify-center rounded-3xl border-2 border-solid text-center align-middle"
-  class:list={[className]}
->
-  <slot />
-</div>
+{
+  hasLink ? (
+    <a href={href} aria-label={ariaLabel} target={target}>
+      <div
+        class="h-full justify-center rounded-3xl border-2 border-solid text-center align-middle"
+        class:list={[className]}
+      >
+        <slot />
+      </div>
+    </a>
+  ) : (
+    <div
+      class="h-full justify-center rounded-3xl border-2 border-solid text-center align-middle"
+      class:list={[className]}
+    >
+      <slot />
+    </div>
+  )
+}
