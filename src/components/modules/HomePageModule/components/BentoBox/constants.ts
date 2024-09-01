@@ -1,110 +1,160 @@
-//Frontend stack
-import NextJs from "@icons/stack/frontend/Nextjs.svg?raw";
-import AntDesign from "@icons/stack/frontend/AntDesign.svg?raw";
-import Redux from "@icons/stack/frontend/Redux.svg?raw";
-import ReduxSaga from "@icons/stack/frontend/ReduxSaga.svg?raw";
-import Tailwind from "@icons/stack/frontend/Tailwind.svg?raw";
-import Axios from "@icons/stack/frontend/Axios.svg?raw";
-import GraphQL from "@icons/stack/frontend/GraphQL.svg?raw";
-import ApolloClient from "@icons/stack/frontend/ApolloClient.svg?raw";
+import type { JSX } from "astro/jsx-runtime";
 
-//Backend stack
-import NodeJs from "@icons/stack/backend/Nodejs.svg?raw";
-import ExpressJs from "@icons/stack/backend/Expressjs.svg?raw";
-import Mongodb from "@icons/stack/backend/Mongodb.svg?raw";
-import PostgreSQL from "@icons/stack/backend/PostgreSQL.svg?raw";
-import Docker from "@icons/stack/backend/Docker.svg?raw";
+import ThemeSwitcher from "@commons/ThemeSwitcher/ThemeSwitcher.astro";
+import IntroductionSection from "./components/IntroductionSection/IntroductionSection.astro";
+import ProfileSection from "./components/ProfileSection/ProfileSection.astro";
+import LinkedinSection from "./components/LinkedinSection/LinkedinSection.astro";
+import MailSection from "./components/MailSection/MailSection.astro";
+import GitlabSection from "./components/GitlabSection/GitlabSection.astro";
+import FrontendSection from "./components/FrontendSection/FrontendSection.astro";
+import ExperienceSection from "./components/ExperienceSection/ExperienceSection.astro";
+import AboutMeSection from "./components/AboutMeSection/AboutMeSection.astro";
+import GithubSection from "./components/GithubSection/GithubSection.astro";
+import BackendSection from "./components/BackendSection/BackendSection.astro";
+import LearningSection from "./components/LearningSection/LearningSection.astro";
 
-export const FRONTEND_STACK: {
-  title: string;
-  description: string;
-  icon: string;
-  className: string;
+export const CONTENT: {
+  key: string;
+  classList: string[];
+  render: JSX.Element;
+  href?: string;
+  ariaLabel?: string;
+  target?: string;
 }[] = [
   {
-    title: "Next.js",
-    description: "React framework for production",
-    icon: NextJs,
-    className: "dark:fill-white",
-  },
-  {
-    title: "Ant Design",
-    description: "React UI library",
-    icon: AntDesign,
-    className: "",
-  },
-  {
-    title: "Redux",
-    description: "State management",
-    icon: Redux,
-    className: "",
-  },
-  {
-    title: "Redux sagas",
-    description: "Side effect model for Redux",
-    icon: ReduxSaga,
-    className: "",
-  },
-  {
-    title: "Tailwind CSS",
-    description: "Utility-first CSS framework",
-    icon: Tailwind,
-    className: "",
-  },
-  {
-    title: "Axios",
-    description: "Promise based HTTP client",
-    icon: Axios,
-    className: "",
-  },
-  {
-    title: "GraphQL",
-    description: "Query language for APIs",
-    icon: GraphQL,
-    className: "",
-  },
-  {
-    title: "Apollo Client",
-    description: "GraphQL client",
-    icon: ApolloClient,
-    className: "",
-  },
-];
+    key: "Profile",
+    classList: [
+      "flex border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
+      "col-span-6 row-span-12 ",
+      "md:col-span-4 md:row-start-1 md:col-start-1 md:row-span-3",
+    ],
 
-export const BACKEND_STACK: {
-  title: string;
-  description: string;
-  icon: string;
-  className: string;
-}[] = [
-  {
-    title: "Node.js",
-    description: "JavaScript runtime",
-    icon: NodeJs,
-    className: "",
+    render: ProfileSection,
   },
   {
-    title: "Express",
-    description: "Node.js framework",
-    icon: ExpressJs,
-    className: "fill-white",
+    key: "ThemeSwitcher",
+    classList: [
+      "flex border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
+      "col-span-6 row-span-12",
+      "md:col-span-4  md:row-start-1 md:col-start-5 md:row-span-3",
+    ],
+
+    render: ThemeSwitcher,
   },
   {
-    title: "MongoDB",
-    description: "NoSQL database",
-    icon: Mongodb,
-    className: "",
+    key: "Introduction",
+    classList: [
+      "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
+      "col-span-12 row-span-2 ",
+      "md:col-span-6",
+      "lg:col-span-4 lg:row-span-3",
+    ],
+
+    render: IntroductionSection,
   },
   {
-    title: "PostgreSQL",
-    description: "Relational database",
-    icon: PostgreSQL,
-    className: "",
+    key: "About me",
+    classList: [
+      "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
+      "col-span-12 row-span-2",
+      "md:col-span-6",
+      "lg:col-span-4 lg:row-span-3",
+    ],
+
+    render: AboutMeSection,
   },
   {
-    title: "Docker",
-    description: "Containerization platform",
-    icon: Docker,
-    className: "",
+    href: "https://www.linkedin.com/in/ignaciosilvae/",
+    ariaLabel: "LinkedIn",
+    target: "_blank",
+    key: "LinkedInSection",
+    classList: [
+      "group flex h-full flex-col items-center border-blue-400 border-opacity-70 bg-blue-600 bg-opacity-10 transition-all hover:bg-blue-400 dark:border-blue-600 dark:hover:bg-blue-600",
+      "col-span-3 row-span-1 ",
+      "md:col-span-2  md:row-start-1 md:col-start-9",
+    ],
+
+    render: LinkedinSection,
+  },
+  {
+    key: "Mail",
+    href: "mailto:ignacio.silva.e@gmail.com",
+    ariaLabel: "Mail",
+    target: "_blank",
+    classList: [
+      "flex flex-col flex-wrap content-center border-red-400 border-opacity-70 bg-red-600 bg-opacity-10 transition-all hover:bg-red-400 dark:border-red-600 dark:hover:bg-red-600",
+      "col-span-3 row-span-1 ",
+      "md:col-span-2 md:row-start-1 md:col-start-11",
+    ],
+
+    render: MailSection,
+  },
+  {
+    key: "Github",
+    href: "https://github.com/KJulo",
+    ariaLabel: "Github",
+    target: "_blank",
+    classList: [
+      "flex flex-col content-center items-center border-purple-400 border-opacity-70 bg-purple-600 bg-opacity-10 transition-all hover:bg-purple-400 dark:border-purple-600 dark:hover:bg-purple-600",
+      "col-span-3 row-span-1 ",
+      "md:col-span-2 md:row-span-2 md:row-start-2 md:col-start-9",
+    ],
+
+    render: GithubSection,
+  },
+  {
+    key: "Gitlab",
+    href: "https://gitlab.com/isilva3",
+    ariaLabel: "Gitlab",
+    target: "_blank",
+    classList: [
+      "flex flex-grow flex-col flex-wrap content-center border-orange-400 border-opacity-70 bg-orange-600 bg-opacity-10 transition-all hover:bg-orange-400 dark:border-orange-600 dark:hover:bg-orange-600",
+      "col-span-3 row-span-1 ",
+      "md:col-span-2 md:row-span-2 md:row-start-2 md:col-start-11",
+    ],
+
+    render: GitlabSection,
+  },
+  {
+    key: "FrontendSection",
+    classList: [
+      "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
+      "col-span-12 row-span-2",
+      "md:col-span-6",
+      "lg:col-span-4 lg:row-span-3",
+    ],
+
+    render: FrontendSection,
+  },
+  {
+    key: "BackendSection",
+    classList: [
+      "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
+      "col-span-12 row-span-2 ",
+      "md:col-span-6",
+      "lg:col-span-4 lg:row-span-1 lg:row-start-7 lg:col-start-9",
+    ],
+
+    render: BackendSection,
+  },
+  {
+    key: "Experience",
+    classList: [
+      "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
+      "col-span-12 row-span-3",
+      "lg:col-span-8 lg:row-span-6 ",
+    ],
+
+    render: ExperienceSection,
+  },
+  {
+    key: "Learning",
+    classList: [
+      "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
+      "col-span-6",
+      "md:col-span-4 md:row-span-5",
+    ],
+
+    render: LearningSection,
   },
 ];
