@@ -4,14 +4,14 @@ import Card from "@commons/Card/Card.astro";
 import { CONTENT } from "./constants";
 ---
 
-<div class="grid grid-cols-6 grid-rows-5 gap-4">
+<div class="grid auto-rows-min grid-cols-12 gap-4">
   {
     CONTENT.map((content) => (
       <Card
         href={content.href}
         ariaLabel={content.ariaLabel}
         target={content.target}
-        class:list={[content.class]}
+        class:list={[...content.classList]}
       >
         {<content.render />}
       </Card>
