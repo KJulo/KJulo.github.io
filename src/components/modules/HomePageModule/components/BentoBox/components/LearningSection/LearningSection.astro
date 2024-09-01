@@ -1,0 +1,13 @@
+---
+import Tag from "astro/components/commons/Tag/Tag.astro";
+
+import Golang from "@images/icons/stack/backend/Golang.svg?raw";
+---
+
+<div class="flex w-full flex-col gap-4 p-4">
+  <Tag text="Aprendiendo" class="self-start text-start" color="cyan" />
+  <span
+    class="h-16 w-16 content-center place-self-center rounded-2xl bg-neutral-300 bg-opacity-25 text-center align-middle dark:bg-neutral-800"
+    set:html={Golang}
+  />
+</div>

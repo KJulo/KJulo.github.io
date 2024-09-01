@@ -8,12 +8,12 @@ const { items, class: className } = Astro.props;
 >
   {
     [0, 1, 2].map((key) => (
-      <ul class="md:justify-start flex animate-slide-left items-center justify-center [&_img]:max-w-none [&_li]:mx-2">
+      <ul class="flex animate-slide-left items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:mx-2">
         {items.map((item: { icon: string; className: string }) => (
           <li
             set:html={item.icon}
             class:list={[
-              "flex h-16 w-16 items-center justify-center rounded-2xl bg-neutral-300 bg-opacity-25 text-center align-middle dark:bg-neutral-800",
+              "flex h-16 w-16 items-center justify-center self-center rounded-2xl bg-neutral-300 bg-opacity-25 text-center align-middle dark:bg-neutral-800",
               item.className,
             ]}
             aria-hidden={key !== 0}
