@@ -5,7 +5,7 @@ import Tag from "@components/commons/Tag/Tag.astro";
 
 <div class="flex h-full flex-col content-start gap-4 p-4">
   <Tag color="yellow" text="Experiencia" class="self-start" />
-  <ul class="scrollbar flex flex-col gap-4 sm:overflow-auto">
+  <ul class="flex flex-col gap-4">
     <li class="flex flex-row justify-between gap-4 border-b pb-4">
       <div class="flex flex-col items-start text-left">
         <span>Desarrollador Frontend</span>
@@ -36,40 +36,3 @@ import Tag from "@components/commons/Tag/Tag.astro";
   </ul>
   <Hyperlink class="mt-auto self-end"> Ver más </Hyperlink>
 </div>
-<style>
-  .scrollbar {
-    overflow-y: auto;
-  }
-
-  /* total width */
-  .scrollbar::-webkit-scrollbar {
-    width: 6px;
-    height: 10px;
-    border-radius: 34px;
-  }
-  /* set button(top and bottom of the scrollbar) */
-  .scrollbar::-webkit-scrollbar-button {
-    display: none;
-  }
-
-  /* background of the scrollbar except button or resizer */
-  .scrollbar::-webkit-scrollbar-track {
-    background-color: rgba(0, 0, 0, 0);
-  }
-
-  /* scrollbar itself */
-  .scrollbar::-webkit-scrollbar-thumb {
-    background-color: #777;
-    border-radius: 20px;
-    background-clip: padding-box;
-  }
-
-  /* scrollbar when scrollbar is hovered */
-  .scrollbar::-webkit-scrollbar-track-piece:end {
-    background: transparent;
-  }
-
-  .scrollbar::-webkit-scrollbar-track-piece:start {
-    background: transparent;
-  }
-</style>

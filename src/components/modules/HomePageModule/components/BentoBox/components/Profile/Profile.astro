@@ -1,0 +1,15 @@
+---
+import { Image } from "astro:assets";
+import ProfilePicture from "@images/images/profile.webp";
+---
+
+<div
+  class="flex w-48 flex-col items-center justify-center gap-4 rounded-3xl bg-white p-4 dark:border-neutral-700 dark:bg-neutral-900"
+>
+  <Image
+    src={ProfilePicture}
+    alt="Profile picture"
+    decoding="async"
+    loading={"lazy"}
+  />
+</div>
