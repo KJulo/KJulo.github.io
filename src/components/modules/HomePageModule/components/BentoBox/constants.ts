@@ -1,4 +1,6 @@
-import ThemeSwitcher from "astro/components/commons/ThemeSwitcher/ThemeSwitcher.astro";
+import type { JSX } from "astro/jsx-runtime";
+
+import ThemeSwitcher from "@commons/ThemeSwitcher/ThemeSwitcher.astro";
 import IntroductionSection from "./components/IntroductionSection/IntroductionSection.astro";
 import ProfileSection from "./components/ProfileSection/ProfileSection.astro";
 import LinkedinSection from "./components/LinkedinSection/LinkedinSection.astro";
@@ -9,7 +11,7 @@ import ExperienceSection from "./components/ExperienceSection/ExperienceSection.
 import AboutMeSection from "./components/AboutMeSection/AboutMeSection.astro";
 import GithubSection from "./components/GithubSection/GithubSection.astro";
 import BackendSection from "./components/BackendSection/BackendSection.astro";
-import type { JSX } from "astro/jsx-runtime";
+import LearningSection from "./components/LearningSection/LearningSection.astro";
 
 export const CONTENT: {
   key: string;
@@ -130,7 +132,7 @@ export const CONTENT: {
       "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
       "col-span-12 row-span-2 ",
       "md:col-span-6",
-      "lg:col-span-4 lg:row-span-4 lg:row-start-7 lg:col-start-9",
+      "lg:col-span-4 lg:row-span-1 lg:row-start-7 lg:col-start-9",
     ],
 
     render: BackendSection,
@@ -144,5 +146,15 @@ export const CONTENT: {
     ],
 
     render: ExperienceSection,
+  },
+  {
+    key: "Learning",
+    classList: [
+      "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
+      "col-span-6",
+      "md:col-span-4 md:row-span-5",
+    ],
+
+    render: LearningSection,
   },
 ];
