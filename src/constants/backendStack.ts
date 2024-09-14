@@ -24,7 +24,7 @@ export const EXPRESSJS = {
   title: "ExpressJs",
   url: "https://expressjs.com/",
   icon: ExpressJs,
-  className: "",
+  className: "dark:fill-white",
 };
 
 export const MONGODB = {
