@@ -1,5 +1,3 @@
-import type { JSX } from "astro/jsx-runtime";
-
 import ThemeSwitcher from "@commons/ThemeSwitcher/ThemeSwitcher.astro";
 import IntroductionSection from "./components/IntroductionSection/IntroductionSection.astro";
 import ProfileSection from "./components/ProfileSection/ProfileSection.astro";
@@ -16,7 +14,7 @@ import LearningSection from "./components/LearningSection/LearningSection.astro"
 export const CONTENT: {
   key: string;
   classList: string[];
-  render: JSX.Element;
+  render: any;
   href?: string;
   ariaLabel?: string;
   target?: string;
