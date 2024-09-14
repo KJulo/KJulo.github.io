@@ -7,68 +7,86 @@ import Tailwind from "@icons/stack/frontend/Tailwind.svg?raw";
 import Axios from "@icons/stack/frontend/Axios.svg?raw";
 import GraphQL from "@icons/stack/frontend/GraphQL.svg?raw";
 import ApolloClient from "@icons/stack/frontend/ApolloClient.svg?raw";
+import React from "@icons/stack/frontend/React.svg?raw";
+import Webpack from "@icons/stack/frontend/Webpack.svg?raw";
 
 export const NEXTJS = {
-  Title: "Next.js",
-  website: "https://nextjs.org/",
+  title: "Next.js",
+  url: "https://nextjs.org/",
   icon: NextJs,
   className: "dark:fill-white",
 };
 
+export const WEBPACK = {
+  title: "Webpack",
+  url: "https://webpack.js.org/",
+  icon: Webpack,
+  className: "",
+};
+
+export const REACT = {
+  title: "React",
+  url: "https://reactjs.org/",
+  icon: React,
+  className: "",
+};
+
 export const ANT_DESIGN = {
-  Title: "Ant Design",
-  website: "https://ant.design/",
+  title: "Ant Design",
+  url: "https://ant.design/",
   icon: AntDesign,
   className: "",
 };
 
 export const REDUX = {
-  Title: "Redux",
-  website: "https://redux.js.org/",
+  title: "Redux",
+  url: "https://redux.js.org/",
   icon: Redux,
   className: "",
 };
 
 export const REDUX_SAGA = {
-  Title: "Redux Saga",
-  website: "https://redux-saga.js.org/",
+  title: "Redux Saga",
+  url: "https://redux-saga.js.org/",
   icon: ReduxSaga,
   className: "",
 };
 
 export const TAILWIND = {
-  Title: "Tailwind CSS",
-  website: "https://tailwindcss.com/",
+  title: "Tailwind CSS",
+  url: "https://tailwindcss.com/",
   icon: Tailwind,
   className: "",
 };
 
 export const AXIOS = {
-  Title: "Axios",
-  website: "https://axios-http.com/",
+  title: "Axios",
+  url: "https://axios-http.com/",
   icon: Axios,
   className: "",
 };
 
 export const GRAPHQL = {
-  Title: "GraphQL",
-  website: "https://graphql.org/",
+  title: "GraphQL",
+  url: "https://graphql.org/",
   icon: GraphQL,
   className: "",
 };
 
 export const APOLLO_CLIENT = {
-  Title: "Apollo Client",
-  website: "https://www.apollographql.com/docs/react/",
+  title: "Apollo Client",
+  url: "https://www.apollographql.com/",
   icon: ApolloClient,
   className: "",
 };
 
 export const FRONTEND_STACK = [
   NEXTJS,
+  REACT,
   ANT_DESIGN,
   REDUX,
   REDUX_SAGA,
+  WEBPACK,
   TAILWIND,
   AXIOS,
   GRAPHQL,

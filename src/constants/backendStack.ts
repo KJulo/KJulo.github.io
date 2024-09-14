@@ -7,52 +7,45 @@ import Docker from "@icons/stack/backend/Docker.svg?raw";
 import Golang from "@images/icons/stack/backend/Golang.svg?raw";
 
 export const GOLANG = {
-  Title: "Golang",
-  website: "https://go.dev/",
+  title: "Golang",
+  url: "https://go.dev/",
   icon: Golang,
   className: "",
 };
 
 export const NODEJS = {
-  Title: "NodeJs",
-  website: "https://nodejs.org/",
+  title: "NodeJs",
+  url: "https://nodejs.org/",
   icon: NodeJs,
   className: "",
 };
 
 export const EXPRESSJS = {
-  Title: "ExpressJs",
-  website: "https://expressjs.com/",
+  title: "ExpressJs",
+  url: "https://expressjs.com/",
   icon: ExpressJs,
   className: "",
 };
 
 export const MONGODB = {
-  Title: "MongoDB",
-  website: "https://www.mongodb.com/",
+  title: "MongoDB",
+  url: "https://www.mongodb.com/",
   icon: Mongodb,
   className: "",
 };
 
 export const POSTGRESQL = {
-  Title: "PostgreSQL",
-  website: "https://www.postgresql.org/",
+  title: "PostgreSQL",
+  url: "https://www.postgresql.org/",
   icon: PostgreSQL,
   className: "",
 };
 
 export const DOCKER = {
-  Title: "Docker",
-  website: "https://www.docker.com/",
+  title: "Docker",
+  url: "https://www.docker.com/",
   icon: Docker,
   className: "",
 };
 
-export const BACKEND_STACK = [
-  GOLANG,
-  NODEJS,
-  EXPRESSJS,
-  MONGODB,
-  POSTGRESQL,
-  DOCKER,
-];
+export const BACKEND_STACK = [NODEJS, EXPRESSJS, MONGODB, POSTGRESQL, DOCKER];

@@ -1,5 +1,5 @@
 ---
-
+const { text } = Astro.props;
 ---
 
 <div
@@ -14,7 +14,7 @@
       <div
         class="cursor-default rounded-lg px-3 py-1 text-base text-neutral-800 shadow-md dark:bg-neutral-700 dark:text-white"
       >
-        Golang
+        {text}
       </div>
       <div
         class="-mb-[1px] h-0 w-0 border-b-[8px] border-l-[12px] border-r-[12px] border-b-white border-l-transparent border-r-transparent dark:border-b-neutral-700"
