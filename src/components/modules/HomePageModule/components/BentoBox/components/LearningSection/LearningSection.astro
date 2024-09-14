@@ -5,7 +5,7 @@ import Tooltip from "@components/commons/Tooltip/Tooltip.astro";
 import { GOLANG } from "@constants/backendStack";
 ---
 
-<a href={GOLANG.url} target="_blank">
+<a href={GOLANG.url} target="_blank" aria-label={`${GOLANG.title} icon`}>
   <div class="flex w-full flex-col gap-4 p-4">
     <Tag text="Aprendiendo" class="self-start text-start" color="cyan" />
 
