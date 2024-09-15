@@ -3,6 +3,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@/*": [
+        "./src/*"
+      ],
       "@constants/*": [
         "./src/constants/*"
       ],
@@ -32,6 +35,9 @@
       ],
       "@icons/*": [
         "./public/images/icons/*"
+      ],
+      "@i18n/*": [
+        "./src/i18n/*"
       ],
     }
   }

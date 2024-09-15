@@ -3,11 +3,19 @@ import Tag from "@components/commons/Tag/Tag.astro";
 
 import Tooltip from "@components/commons/Tooltip/Tooltip.astro";
 import { GOLANG } from "@constants/backendStack";
+
+import { getI18N } from "@i18n/index";
+const { currentLocale } = Astro;
+const literals = getI18N(currentLocale);
 ---
 
 <a href={GOLANG.url} target="_blank" aria-label={`${GOLANG.title} icon`}>
   <div class="flex w-full flex-col gap-4 p-4">
-    <Tag text="Aprendiendo" class="self-start text-start" color="cyan" />
+    <Tag
+      text={literals.LEARNING.TAG}
+      class="self-start text-start"
+      color="cyan"
+    />
 
     <Tooltip text={GOLANG.title}>
       <span class="h-full w-full text-lg" set:html={GOLANG.icon} />
