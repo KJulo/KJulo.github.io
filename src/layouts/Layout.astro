@@ -17,6 +17,7 @@ import { languageTag } from "../paraglide/runtime";
           window.matchMedia("(prefers-color-scheme: dark)").matches)
       ) {
         localStorage.theme = "dark";
+        document.documentElement.classList.add();
         document.documentElement.classList.add("dark");
       } else {
         localStorage.theme = "light";
@@ -36,3 +37,8 @@ import { languageTag } from "../paraglide/runtime";
     </main>
   </body>
 </html>
+<style>
+  .dark {
+    color-scheme: dark;
+  }
+</style>
