@@ -1,0 +1,18 @@
+---
+import HyperLink from "@components/commons/HyperLink/HyperLink.astro";
+import notFoundImage from "@images/images/404.svg?raw";
+---
+
+<div
+  class="flex h-screen flex-col items-center justify-center gap-8 p-4 text-center 2xl:mx-[20%]"
+>
+  <h1 class="text-4xl font-bold">Página no encontrada</h1>
+  <span class="ml-8" set:html={notFoundImage} />
+  <p>
+    Parece que la página que buscas no existe o ha sido movida. Por favor
+    verifica la URL e intenta nuevamente.
+  </p>
+  <HyperLink class="p-4" target="" href="/">
+    <span class="text-4xl">Volver al inicio</span>
+  </HyperLink>
+</div>
