@@ -5,8 +5,7 @@ interface Props {
 const { title } = Astro.props;
 
 import { languageTag } from "../paraglide/runtime";
-import { ViewTransitions } from "astro:transitions";
-import { fade } from "astro:transitions";
+import { fade, ViewTransitions } from "astro:transitions";
 ---
 
 <!doctype html>
@@ -38,14 +37,32 @@ import { fade } from "astro:transitions";
     <title>{title}</title>
     <ViewTransitions />
   </head>
-  <body class="bg-gray-200 text-zinc-900 dark:bg-neutral-950 dark:text-zinc-50">
-    <main class="font-sans" transition:animate={fade({ duration: "0.4s" })}>
+  <body
+    transition:animate={fade({ duration: "0.5s" })}
+    class="bg-gray-200 text-zinc-900 dark:bg-neutral-950 dark:text-zinc-50"
+  >
+    <main class="font-sans">
       <slot />
     </main>
   </body>
 </html>
+<style is:global>
+  @keyframes fade-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
 <style>
-  .dark {
+  main {
+    animation: fade-up 0.5s;
+  }
+  1 .dark {
     color-scheme: dark;
   }
 </style>
