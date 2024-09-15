@@ -29,5 +29,10 @@
   },
   "LEARNING": {
     "TAG": "Aprendiendo"
+  },
+  "NOT_FOUND": {
+    "TITLE": "Página no encontrada",
+    "DESCRIPTION": "La página que buscas no existe",
+    "BACK": "Volver al inicio"
   }
 }

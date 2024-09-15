@@ -1,18 +1,21 @@
 ---
 import HyperLink from "@components/commons/Hyperlink/Hyperlink.astro";
 import notFoundImage from "@images/images/404.svg?raw";
+
+import { getI18N } from "@i18n/index";
+const { currentLocale } = Astro;
+const literals = getI18N(currentLocale);
 ---
 
 <div
   class="flex h-screen flex-col items-center justify-center gap-8 p-4 text-center 2xl:mx-[20%]"
 >
-  <h1 class="text-4xl font-bold">Página no encontrada</h1>
+  <h1 class="text-4xl font-bold">{literals.NOT_FOUND.TITLE}</h1>
   <span class="ml-8" set:html={notFoundImage} />
   <p>
-    Parece que la página que buscas no existe o ha sido movida. Por favor
-    verifica la URL e intenta nuevamente.
+    {literals.NOT_FOUND.DESCRIPTION}
   </p>
   <HyperLink class="p-4" target="" href="/">
-    <span>Volver al inicio</span>
+    <span>{literals.NOT_FOUND.BACK}</span>
   </HyperLink>
 </div>
