@@ -4,11 +4,11 @@ interface Props {
 }
 const { title } = Astro.props;
 
-const { currentLocale } = Astro;
+import { languageTag } from "../paraglide/runtime";
 ---
 
 <!doctype html>
-<html lang={currentLocale}>
+<html lang={languageTag()} dir={Astro.locals.paraglide?.dir}>
   <head>
     <script>
       if (

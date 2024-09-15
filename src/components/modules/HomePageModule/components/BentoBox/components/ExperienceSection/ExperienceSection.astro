@@ -1,21 +1,22 @@
 ---
 import Hyperlink from "@commons/Hyperlink/Hyperlink.astro";
 import Tag from "@components/commons/Tag/Tag.astro";
+import { createExperienceList } from "./utils";
 
-import { getI18N } from "@i18n/index";
-const { currentLocale } = Astro;
-const literals = getI18N(currentLocale);
+import * as message from "@paraglide/messages";
+
+const EXPERIENCES = createExperienceList(message);
 ---
 
 <div class="flex h-full flex-col content-start gap-4 p-4">
-  <Tag color="yellow" text={literals.EXPERIENCE.TAG} class="self-start" />
+  <Tag color="yellow" text={message.experience_tag()} class="self-start" />
   <ul class="flex flex-col gap-4">
     {
-      literals.EXPERIENCE.EXPERIENCES.map((experience, index) => (
+      EXPERIENCES.map((experience, index) => (
         <li
           class:list={[
             "flex flex-row justify-between gap-4",
-            `${index + 1 !== literals.EXPERIENCE.EXPERIENCES.length ? "border-b pb-4" : ""}`,
+            `${index + 1 !== EXPERIENCES.length ? "border-b pb-4" : ""}`,
           ]}
         >
           <div class="flex flex-col items-start text-left">

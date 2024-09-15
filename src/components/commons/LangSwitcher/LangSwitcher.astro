@@ -1,23 +1,44 @@
 ---
-import Tooltip from "../Tooltip/Tooltip.astro";
+import { LANG } from "@constants/language";
+
+import { languageTag, type AvailableLanguageTag } from "@paraglide/runtime";
+import { switchLanguage } from "@utils/language";
+
+const currentPath = `${Astro.url.pathname}`;
+const lang = languageTag();
+const switchLang =
+  lang === LANG.ENGLISH ? `${LANG.SPANISH}` : `${LANG.ENGLISH}`;
+const switchPathname = switchLanguage(
+  currentPath,
+  switchLang as AvailableLanguageTag,
+);
 ---
 
-<div class="">
-  <button id="lang-switcher">
+<div class="flex">
+  <button id="lang-switcher" class="m-auto">
     <div class="m-4 flex flex-row gap-2 rounded-xl p-4 text-center">
-      <Tooltip text="English">
-        <p class="-translate-y-2">En</p>
-      </Tooltip>
+      <p
+        class:list={[
+          "-translate-y-2",
+          `${lang === LANG.SPANISH && "font-thin text-neutral-400"} `,
+        ]}
+      >
+        En
+      </p>
       <p>/</p>
-      <Tooltip text="Español">
-        <p class="translate-y-2">Es</p>
-      </Tooltip>
+      <p
+        class:list={[
+          "translate-y-2",
+          `${lang === LANG.ENGLISH && "font-thin text-neutral-400"}`,
+        ]}
+      >
+        Es
+      </p>
     </div>
   </button>
 </div>
-<script>
+<script define:vars={{ switchPathname }}>
   document.getElementById("lang-switcher")?.addEventListener("click", () => {
-    const lang = document.documentElement.lang;
-    document.documentElement.lang = lang === "en" ? "es" : "en";
+    window.location.href = switchPathname;
   });
 </script>

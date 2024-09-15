@@ -1,0 +1,28 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "hello": "Hola",
+
+  "introduction_title": "Hola 👋, soy Ignacio",
+  "introduction_description": "Soy de Chile 🇨🇱, Desarrollador Frontend y actualmente trabajo en",
+
+  "aboutMe_tag": "Sobre mí",
+  "aboutMe_description": "Me apasiona las nuevas tecnologias y aprender cosas nuevas, siempre buscando la forma de mejorar encontrando nuevos retos y aprendizajes.",
+
+  "experience_tag": "Experiencia",
+
+  "experience_1_role": "Desarrollador Frontend",
+  "experience_1_company": "iCar",
+  "experience_1_date": "2021 - Actualidad",
+  "experience_2_role": "Desarrollador Frontend",
+  "experience_2_company": "Jumpitt",
+  "experience_2_date": "2022 - 2023",
+  "experience_3_role": "Practica Desarrollador Fullstack",
+  "experience_3_company": "Jumpitt",
+  "experience_3_date": "2021 - 2022",
+
+  "learning_tag": "Aprendiendo",
+
+  "notFound_title": "Página no encontrada",
+  "notFound_description": "La página que buscas no existe",
+  "notFound_back": "Volver al inicio"
+}

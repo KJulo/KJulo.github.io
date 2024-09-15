@@ -1,14 +1,12 @@
 ---
 import Tag from "@commons/Tag/Tag.astro";
 
-import { getI18N } from "@i18n/index";
-const { currentLocale } = Astro;
-const literals = getI18N(currentLocale);
+import * as message from "@paraglide/messages";
 ---
 
 <div class="flex h-full flex-col gap-4 p-4">
-  <Tag color="red" text={literals.ABOUT_ME.TAG} class="self-start" />
+  <Tag color="red" text={message.aboutMe_tag()} class="self-start" />
   <p class="text-start">
-    {literals.ABOUT_ME.DESCRIPTION}
+    {message.aboutMe_description()}
   </p>
 </div>

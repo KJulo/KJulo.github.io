@@ -3,6 +3,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "astro/*": [
+        "./src/*"
+      ],
       "@/*": [
         "./src/*"
       ],
@@ -38,6 +41,12 @@
       ],
       "@i18n/*": [
         "./src/i18n/*"
+      ],
+      "@paraglide/*": [
+        "./src/paraglide/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
       ],
     }
   }
