@@ -1,0 +1,23 @@
+---
+import Tooltip from "../Tooltip/Tooltip.astro";
+---
+
+<div class="">
+  <button id="lang-switcher">
+    <div class="m-4 flex flex-row gap-2 rounded-xl p-4 text-center">
+      <Tooltip text="English">
+        <p class="-translate-y-2">En</p>
+      </Tooltip>
+      <p>/</p>
+      <Tooltip text="Español">
+        <p class="translate-y-2">Es</p>
+      </Tooltip>
+    </div>
+  </button>
+</div>
+<script>
+  document.getElementById("lang-switcher")?.addEventListener("click", () => {
+    const lang = document.documentElement.lang;
+    document.documentElement.lang = lang === "en" ? "es" : "en";
+  });
+</script>

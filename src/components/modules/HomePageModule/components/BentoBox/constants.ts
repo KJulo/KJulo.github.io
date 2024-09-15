@@ -10,6 +10,7 @@ import AboutMeSection from "./components/AboutMeSection/AboutMeSection.astro";
 import GithubSection from "./components/GithubSection/GithubSection.astro";
 import BackendSection from "./components/BackendSection/BackendSection.astro";
 import LearningSection from "./components/LearningSection/LearningSection.astro";
+import LangSwitcher from "@/components/commons/LangSwitcher/LangSwitcher.astro";
 
 export const CONTENT: {
   key: string;
@@ -23,8 +24,8 @@ export const CONTENT: {
     key: "Profile",
     classList: [
       "flex border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "col-span-6 row-span-12 ",
-      "md:col-span-4 md:row-start-1 md:col-start-1 md:row-span-3",
+      "col-span-4 row-span-12 ",
+      "md:col-span-3 md:row-start-1 md:col-start-1 md:row-span-3",
     ],
 
     render: ProfileSection,
@@ -33,11 +34,20 @@ export const CONTENT: {
     key: "ThemeSwitcher",
     classList: [
       "flex border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "col-span-6 row-span-12",
-      "md:col-span-4  md:row-start-1 md:col-start-5 md:row-span-3",
+      "col-span-4 row-span-12",
+      "md:col-span-3  md:row-start-1 md:col-start-4 md:row-span-3",
     ],
 
     render: ThemeSwitcher,
+  },
+  {
+    key: "Language Switcher",
+    classList: [
+      "flex border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
+      "col-span-4 row-span-12 ",
+      "md:col-span-2  md:row-start-1 md:col-start-7 md:row-span-3",
+    ],
+    render: LangSwitcher,
   },
   {
     key: "Introduction",
