@@ -25,5 +25,7 @@
 
   "notFound_title": "Página no encontrada",
   "notFound_description": "La página que buscas no existe",
-  "notFound_back": "Volver al inicio"
+  "notFound_back": "Volver al inicio",
+
+  "resume_title": "Currículum"
 }

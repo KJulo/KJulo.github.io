@@ -5,24 +5,30 @@ interface Props {
 const { title } = Astro.props;
 
 import { languageTag } from "../paraglide/runtime";
+import { ViewTransitions } from "astro:transitions";
+import { fade } from "astro:transitions";
 ---
 
 <!doctype html>
 <html lang={languageTag()}>
   <head>
     <script>
-      if (
-        localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        localStorage.theme = "dark";
-        document.documentElement.classList.add();
-        document.documentElement.classList.add("dark");
-      } else {
-        localStorage.theme = "light";
-        document.documentElement.classList.remove("dark");
+      function themeSwitcher() {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          localStorage.theme = "dark";
+          document.documentElement.classList.add();
+          document.documentElement.classList.add("dark");
+        } else {
+          localStorage.theme = "light";
+          document.documentElement.classList.remove("dark");
+        }
       }
+      themeSwitcher();
+      document.addEventListener("astro:after-swap", themeSwitcher);
     </script>
     <meta charset="UTF-8" />
     <meta name="description" content="Ignacio Silva portfolio" />
@@ -30,9 +36,10 @@ import { languageTag } from "../paraglide/runtime";
     <link rel="icon" type="image/png" href="./images/profile.png" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions />
   </head>
   <body class="bg-gray-200 text-zinc-900 dark:bg-neutral-950 dark:text-zinc-50">
-    <main class="font-sans">
+    <main class="font-sans" transition:animate={fade({ duration: "0.4s" })}>
       <slot />
     </main>
   </body>

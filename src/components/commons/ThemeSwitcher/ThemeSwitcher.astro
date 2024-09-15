@@ -4,6 +4,7 @@ import MoonIcon from "./icons/moon.svg?raw";
 ---
 
 <button
+  transition:persist
   type="button"
   class="m-auto flex flex-row gap-8 rounded-full bg-amber-200 bg-opacity-70 p-1 dark:bg-sky-600 dark:bg-opacity-30"
   id="theme-selector"
@@ -62,21 +63,42 @@ import MoonIcon from "./icons/moon.svg?raw";
   }
 </style>
 <script>
-  const moonIcon = document.getElementById("moon-icon");
-  const sunIcon = document.getElementById("sun-icon");
-  document.getElementById("theme-selector")?.addEventListener("click", () => {
+  function getIconsTheme() {
+    const moonIcon = document.getElementById("moon-icon");
+    const sunIcon = document.getElementById("sun-icon");
+    return { sunIcon, moonIcon };
+  }
+
+  function themeLight() {
+    localStorage.theme = "light";
+    const { sunIcon, moonIcon } = getIconsTheme();
     if (sunIcon && moonIcon) {
-      if (localStorage.theme === "dark") {
-        sunIcon.classList.add("sun-icon");
-        moonIcon.classList.remove("moon-icon");
-        localStorage.theme = "light";
-        document.documentElement.classList.remove("dark");
-      } else {
-        moonIcon.classList.add("moon-icon");
-        sunIcon.classList.remove("sun-icon");
-        localStorage.theme = "dark";
-        document.documentElement.classList.add("dark");
-      }
+      sunIcon.classList.add("sun-icon");
+      moonIcon.classList.remove("moon-icon");
     }
-  });
+    document.documentElement.classList.remove("dark");
+  }
+
+  function themeDark() {
+    localStorage.theme = "dark";
+    const { sunIcon, moonIcon } = getIconsTheme();
+    if (sunIcon && moonIcon) {
+      moonIcon.classList.add("moon-icon");
+      sunIcon.classList.remove("sun-icon");
+    }
+    document.documentElement.classList.add("dark");
+  }
+
+  function init() {
+    document.getElementById("theme-selector")!.addEventListener("click", () => {
+      if (localStorage.theme === "dark") {
+        themeLight();
+      } else {
+        themeDark();
+      }
+    });
+  }
+
+  init();
+  document.addEventListener("astro:after-swap", init);
 </script>

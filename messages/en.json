@@ -27,5 +27,7 @@
 
   "notFound_title": "PAGE NOT FOUND",
   "notFound_description": "The page you are looking for does not exist",
-  "notFound_back": "Back to home"
+  "notFound_back": "Back to home",
+
+  "resume_title": "Resume"
 }
