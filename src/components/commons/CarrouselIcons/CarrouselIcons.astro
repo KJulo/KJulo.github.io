@@ -18,23 +18,23 @@ const { items, class: className } = Astro.props;
             icon: string;
             className: string;
           }) => (
-            <Tooltip text={item.title}>
-              <li
-                class:list={[
-                  "flex h-16 items-center justify-center self-center rounded-2xl bg-neutral-300 bg-opacity-25 text-center align-middle dark:bg-neutral-800",
-                  item.className,
-                ]}
+            <li
+              class:list={[
+                "flex h-16 items-center justify-center self-center rounded-2xl bg-neutral-300 bg-opacity-25 text-center align-middle dark:bg-neutral-800",
+                item.className,
+              ]}
+            >
+              <a
+                href={item.url}
+                class="group/item z-20 m-auto flex h-full w-full flex-row items-center justify-center"
+                target="_blank"
+                aria-label={`${item.title}`}
               >
-                <a
-                  href={item.url}
-                  class="group/item z-20 m-auto flex h-full w-full flex-row items-center justify-center"
-                  target="_blank"
-                  aria-label={`${item.title}`}
-                >
-                  <span set:html={item.icon} />
-                </a>
-              </li>
-            </Tooltip>
+                <Tooltip text={item.title}>
+                  <span class="flex justify-center" set:html={item.icon} />
+                </Tooltip>
+              </a>
+            </li>
           ),
         )}
       </ul>

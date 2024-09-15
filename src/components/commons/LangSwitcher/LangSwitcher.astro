@@ -17,12 +17,12 @@ const switchPathname = switchLanguage(
 <div class="flex">
   <button id="lang-switcher" class="m-auto">
     <div
-      class="m-4 flex flex-row gap-2 rounded-xl p-4 text-center font-mono text-4xl"
+      class="m-4 flex flex-row gap-2 rounded-xl p-4 text-center font-mono text-4xl font-bold"
     >
       <p
         class:list={[
           "-translate-y-2",
-          `${lang === LANG.SPANISH && "font-thin text-neutral-400"} `,
+          `${lang === LANG.SPANISH && "font-thin text-neutral-500"} `,
         ]}
       >
         En
@@ -31,7 +31,7 @@ const switchPathname = switchLanguage(
       <p
         class:list={[
           "translate-y-2",
-          `${lang === LANG.ENGLISH && "font-thin text-neutral-400"}`,
+          `${lang === LANG.ENGLISH && "font-thin text-neutral-500"}`,
         ]}
       >
         Es
