@@ -18,42 +18,55 @@ const switchPathname = switchLanguage(
 ---
 
 <div class="flex">
-  <button id="lang-switcher" class="m-auto">
-    <div
-      class="m-4 flex flex-row gap-2 rounded-xl p-4 text-center font-mono text-4xl font-bold"
+  <div
+    class="m-auto flex flex-row gap-2 rounded-xl p-4 text-center font-mono text-4xl font-bold"
+  >
+    <Tooltip
+      class="-translate-y-2"
+      text={LANGUAGE_LABEL[LANGUAGE_CODE.ENGLISH]}
     >
-      <Tooltip
-        class="-translate-y-2"
-        text={LANGUAGE_LABEL[LANGUAGE_CODE.ENGLISH]}
+      <p
+        class:list={[
+          "-translate-y-2",
+          `${lang === LANGUAGE_CODE.SPANISH ? "cursor-pointer font-thin text-neutral-500" : "cursor-default"} `,
+        ]}
+        id={LANGUAGE_CODE.ENGLISH}
       >
-        <p
-          class:list={[
-            "-translate-y-2",
-            `${lang === LANGUAGE_CODE.SPANISH && "font-thin text-neutral-500"} `,
-          ]}
-        >
-          En
-        </p>
-      </Tooltip>
-      <p>/</p>
-      <Tooltip
-        class="translate-y-2"
-        text={LANGUAGE_LABEL[LANGUAGE_CODE.SPANISH]}
+        En
+      </p>
+    </Tooltip>
+    <p>/</p>
+    <Tooltip class="translate-y-2" text={LANGUAGE_LABEL[LANGUAGE_CODE.SPANISH]}>
+      <p
+        class:list={[
+          "translate-y-2",
+          `${lang === LANGUAGE_CODE.ENGLISH ? "cursor-pointer font-thin text-neutral-500" : "cursor-default"} `,
+        ]}
+        id={LANGUAGE_CODE.SPANISH}
       >
-        <p
-          class:list={[
-            "translate-y-2",
-            `${lang === LANGUAGE_CODE.ENGLISH && "font-thin text-neutral-500"}`,
-          ]}
-        >
-          Es
-        </p>
-      </Tooltip>
-    </div>
-  </button>
+        Es
+      </p>
+    </Tooltip>
+  </div>
 </div>
-<script define:vars={{ switchPathname }}>
-  document.getElementById("lang-switcher")?.addEventListener("click", () => {
-    window.location.href = switchPathname;
-  });
+<script define:vars={{ switchPathname, LANGUAGE_CODE, lang }}>
+  function switchLanguage() {
+    window.location = switchPathname;
+  }
+
+  document
+    .getElementById(LANGUAGE_CODE.ENGLISH)
+    .addEventListener("click", () => {
+      if (lang !== LANGUAGE_CODE.ENGLISH) {
+        switchLanguage();
+      }
+    });
+
+  document
+    .getElementById(LANGUAGE_CODE.SPANISH)
+    .addEventListener("click", () => {
+      if (lang !== LANGUAGE_CODE.SPANISH) {
+        switchLanguage();
+      }
+    });
 </script>
