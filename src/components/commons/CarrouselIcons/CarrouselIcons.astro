@@ -31,7 +31,9 @@ const { items, class: className } = Astro.props;
                 aria-label={`${item.title}`}
               >
                 <Tooltip text={item.title}>
-                  <span class="flex justify-center" set:html={item.icon} />
+                  <div class="inline-block h-16 w-16 cursor-pointer content-center place-self-center rounded-2xl bg-neutral-300 bg-opacity-25 text-start align-middle dark:bg-neutral-800">
+                    <span class="flex justify-center" set:html={item.icon} />
+                  </div>
                 </Tooltip>
               </a>
             </li>

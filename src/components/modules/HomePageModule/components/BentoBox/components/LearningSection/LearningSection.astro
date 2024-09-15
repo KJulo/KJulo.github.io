@@ -16,7 +16,11 @@ import * as message from "@paraglide/messages";
     />
 
     <Tooltip text={GOLANG.title}>
-      <span class="h-full w-full text-lg" set:html={GOLANG.icon} />
+      <div
+        class="group relative inline-block h-16 w-16 cursor-pointer content-center place-self-center rounded-2xl bg-neutral-300 bg-opacity-25 p-4 text-start align-middle dark:bg-neutral-800"
+      >
+        <span class="h-full w-full text-lg" set:html={GOLANG.icon} />
+      </div>
     </Tooltip>
   </div>
 </a>
