@@ -24,8 +24,8 @@ export const CONTENT: {
     key: "Profile",
     classList: [
       "flex border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "col-span-4 row-span-12 ",
-      "md:col-span-3 md:row-start-1 md:col-start-1 md:row-span-3",
+      "col-span-12 row-span-12 ",
+      "md:col-span-4 md:row-start-1 md:col-start-1 md:row-span-4",
     ],
 
     render: ProfileSection,
@@ -34,8 +34,8 @@ export const CONTENT: {
     key: "ThemeSwitcher",
     classList: [
       "flex border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "col-span-4 row-span-12",
-      "md:col-span-3  md:row-start-1 md:col-start-4 md:row-span-3",
+      "col-span-6 row-span-12",
+      "md:col-span-4  md:row-start-1 md:col-start-5 md:row-span-2",
     ],
 
     render: ThemeSwitcher,
@@ -44,8 +44,8 @@ export const CONTENT: {
     key: "Language Switcher",
     classList: [
       "flex border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "col-span-4 row-span-12 ",
-      "md:col-span-2  md:row-start-1 md:col-start-7 md:row-span-3",
+      "col-span-6 row-span-12 ",
+      "md:col-span-4 md:row-start-3 md:col-start-5 md:row-span-2",
     ],
     render: LangSwitcher,
   },
@@ -78,7 +78,7 @@ export const CONTENT: {
     key: "LinkedInSection",
     classList: [
       "group flex h-full flex-col items-center border-blue-400 border-opacity-70 bg-blue-600 bg-opacity-10 transition-all hover:bg-blue-400 dark:border-blue-600 dark:hover:bg-blue-600",
-      "col-span-3 row-span-1 ",
+      "col-span-3 row-span-2 ",
       "md:col-span-2  md:row-start-1 md:col-start-9",
     ],
 
@@ -91,7 +91,7 @@ export const CONTENT: {
     target: "_blank",
     classList: [
       "flex flex-col flex-wrap content-center border-red-400 border-opacity-70 bg-red-600 bg-opacity-10 transition-all hover:bg-red-400 dark:border-red-600 dark:hover:bg-red-600",
-      "col-span-3 row-span-1 ",
+      "col-span-3 row-span-2 ",
       "md:col-span-2 md:row-start-1 md:col-start-11",
     ],
 
@@ -104,8 +104,8 @@ export const CONTENT: {
     target: "_blank",
     classList: [
       "flex flex-col content-center items-center border-purple-400 border-opacity-70 bg-purple-600 bg-opacity-10 transition-all hover:bg-purple-400 dark:border-purple-600 dark:hover:bg-purple-600",
-      "col-span-3 row-span-1 ",
-      "md:col-span-2 md:row-span-2 md:row-start-2 md:col-start-9",
+      "col-span-3 row-span-2 ",
+      "md:col-span-2 md:row-span-2 md:row-start-3 md:col-start-9",
     ],
 
     render: GithubSection,
@@ -117,8 +117,8 @@ export const CONTENT: {
     target: "_blank",
     classList: [
       "flex flex-grow flex-col flex-wrap content-center border-orange-400 border-opacity-70 bg-orange-600 bg-opacity-10 transition-all hover:bg-orange-400 dark:border-orange-600 dark:hover:bg-orange-600",
-      "col-span-3 row-span-1 ",
-      "md:col-span-2 md:row-span-2 md:row-start-2 md:col-start-11",
+      "col-span-3 row-span-2 ",
+      "md:col-span-2 md:row-span-2 md:row-start-3 md:col-start-11",
     ],
 
     render: GitlabSection,
@@ -128,7 +128,7 @@ export const CONTENT: {
     classList: [
       "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
       "col-span-12 row-span-2",
-      "md:col-span-6",
+      "md:col-span-6 ",
       "lg:col-span-4 lg:row-span-3",
     ],
 
@@ -140,7 +140,7 @@ export const CONTENT: {
       "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
       "col-span-12 row-span-2 ",
       "md:col-span-6",
-      "lg:col-span-4 lg:row-span-1 lg:row-start-7 lg:col-start-9",
+      "lg:col-span-4 lg:row-span-1 lg:row-start-8 lg:col-start-9",
     ],
 
     render: BackendSection,
