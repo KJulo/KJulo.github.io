@@ -1,0 +1,22 @@
+---
+import * as message from "@paraglide/messages";
+import { createExperienceList } from "astro/components/modules/HomePageModule/components/BentoBox/components/ExperienceSection/utils";
+
+const EXPERIENCES = createExperienceList(message);
+---
+
+<div class="flex flex-col gap-4">
+  <h4>{message.resume_workExperience_title()}</h4>
+  <div class="flex flex-col gap-4">
+    {
+      EXPERIENCES.map((experience) => (
+        <div>
+          <h5>{experience.ROLE}</h5>
+          <p>
+            {experience.COMPANY} ({experience.DATE})
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</div>
