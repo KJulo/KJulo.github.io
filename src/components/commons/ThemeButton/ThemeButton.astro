@@ -6,44 +6,44 @@ import MoonIcon from "@icons/moon.svg?raw";
 <button
   transition:persist
   type="button"
-  class="m-auto flex flex-row gap-8 rounded-full bg-amber-200 bg-opacity-70 p-1 dark:bg-sky-600 dark:bg-opacity-30"
-  id="theme-selector-switch"
+  class="flex h-10 w-10 flex-row gap-8 rounded-full bg-amber-200 bg-opacity-70 dark:bg-sky-600 dark:bg-opacity-30"
+  id="theme-selector-button"
   aria-label="Cambiar tema"
 >
   <svg
-    id="sun-icon-switch"
+    id="sun-icon-button"
     class:list={[
-      "h-10 w-10 rounded-full bg-yellow-400 p-2 text-white dark:bg-transparent dark:text-transparent",
+      "absolute h-10 w-10 rounded-full bg-yellow-400 p-2 text-white dark:bg-transparent dark:text-transparent",
     ]}
     set:html={SunIcon}
   />
   <svg
-    id="moon-icon-switch"
+    id="moon-icon-button"
     class:list={[
-      "h-10 w-10 rounded-full p-2 text-amber-200 text-transparent dark:bg-sky-400 dark:text-white",
+      "absolute h-10 w-10 rounded-full p-2 text-amber-200 text-transparent dark:bg-sky-400 dark:text-white",
     ]}
     set:html={MoonIcon}
   />
 </button>
 <style>
-  #theme-selector-switch {
+  #theme-selector-button {
     transition: background-color 0.5s;
   }
-  #theme-selector-switch:focus-visible {
+  #theme-selector-button:focus-visible {
     outline: none;
   }
 
-  .moon-icon-switch {
+  .moon-icon-button {
     animation: spin 0.5s cubic-bezier(0, 0, 0.2, 1) forwards;
     animation-name: moveLeft;
   }
-  .sun-icon-switch {
+  .sun-icon-button {
     animation: spin 0.5s cubic-bezier(0, 0, 0.2, 1) forwards;
     animation-name: moveRight;
   }
   @keyframes moveRight {
     0% {
-      transform: translateX(180%) rotate(360deg);
+      transform: translateX(0%) rotate(360deg);
       opacity: 0;
     }
     100% {
@@ -54,7 +54,7 @@ import MoonIcon from "@icons/moon.svg?raw";
   @keyframes moveLeft {
     0% {
       opacity: 0;
-      transform: translateX(-180%) rotate(-360deg);
+      transform: translateX(0%) rotate(-360deg);
     }
     100% {
       opacity: 1;
@@ -64,16 +64,16 @@ import MoonIcon from "@icons/moon.svg?raw";
 </style>
 <script>
   function getIconsTheme() {
-    const moonIcon = document.getElementById("moon-icon-switch");
-    const sunIcon = document.getElementById("sun-icon-switch");
+    const moonIcon = document.getElementById("moon-icon-button");
+    const sunIcon = document.getElementById("sun-icon-button");
     return { sunIcon, moonIcon };
   }
   function themeLight() {
     localStorage.theme = "light";
     const { sunIcon, moonIcon } = getIconsTheme();
     if (sunIcon && moonIcon) {
-      sunIcon.classList.add("sun-icon-switch");
-      moonIcon.classList.remove("moon-icon-switch");
+      sunIcon.classList.add("sun-icon-button");
+      moonIcon.classList.remove("moon-icon-button");
     }
     document.documentElement.classList.remove("dark");
   }
@@ -82,15 +82,15 @@ import MoonIcon from "@icons/moon.svg?raw";
     localStorage.theme = "dark";
     const { sunIcon, moonIcon } = getIconsTheme();
     if (sunIcon && moonIcon) {
-      moonIcon.classList.add("moon-icon-switch");
-      sunIcon.classList.remove("sun-icon-switch");
+      moonIcon.classList.add("moon-icon-button");
+      sunIcon.classList.remove("sun-icon-button");
     }
     document.documentElement.classList.add("dark");
   }
 
   function init() {
     document
-      .getElementById("theme-selector-switch")!
+      .getElementById("theme-selector-button")!
       .addEventListener("click", () => {
         if (localStorage.theme === "dark") {
           themeLight();

@@ -28,6 +28,11 @@ export default {
       animation: {
         "slide-left": "slide-left 10s linear infinite",
       },
+      colors: {
+        neutral: {
+          250: "#DCDCDC",
+        },
+      },
     },
   },
   darkMode: "selector",

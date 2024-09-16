@@ -1,16 +1,11 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "hello": "Hola",
-
   "introduction_title": "Hola 👋, soy Ignacio",
   "introduction_description": "Soy de Chile 🇨🇱, Desarrollador Frontend y actualmente trabajo en",
-
   "aboutMe_tag": "Sobre mí",
   "aboutMe_description": "Me apasiona las nuevas tecnologias y aprender cosas nuevas, siempre buscando la forma de mejorar encontrando nuevos retos y aprendizajes.",
-
   "experience_tag": "Experiencia",
-  "experience_action": "Ver más",
-
   "experience_1_role": "Desarrollador Frontend",
   "experience_1_company": "iCar",
   "experience_1_date": "2021 - Actualidad",
@@ -20,12 +15,21 @@
   "experience_3_role": "Practica Desarrollador Fullstack",
   "experience_3_company": "Jumpitt",
   "experience_3_date": "2021 - 2022",
-
   "learning_tag": "Aprendiendo",
-
   "notFound_title": "Página no encontrada",
   "notFound_description": "La página que buscas no existe",
   "notFound_back": "Volver al inicio",
-
-  "resume_title": "Currículum"
+  "experience_action": "Ver más",
+  "resume_title": "Currículum",
+  "resume_personalInformation_title": "Información Personal",
+  "resume_workExperience_title": "Experiencia Laboral",
+  "resume_education_title": "Educación",
+  "resume_certifications_title": "Certificaciones",
+  "resume_languages_title": "Idiomas",
+  "resume_education_grade": "Ingeniería de Ejecución en Informática",
+  "resume_education_date": "Marzo 2019 - Diciembe 2022",
+  "resume_language_es": "Español",
+  "resume_language_en": "Inglés",
+  "resume_language_en_level": "Intermedio",
+  "resume_language_es_level": "Nativo"
 }

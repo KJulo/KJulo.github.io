@@ -5,6 +5,8 @@ import { languageTag, type AvailableLanguageTag } from "@paraglide/runtime";
 import { switchLanguage } from "@utils/language";
 import Tooltip from "../Tooltip/Tooltip.astro";
 
+const { textSize } = Astro.props;
+
 const currentPath = `${Astro.url.pathname}`;
 const lang = languageTag();
 const switchLang =
@@ -19,7 +21,10 @@ const switchPathname = switchLanguage(
 
 <div class="flex">
   <div
-    class="m-auto flex flex-row gap-2 rounded-xl p-4 text-center font-mono text-4xl font-bold"
+    class:list={[
+      "m-auto flex flex-row gap-2 rounded-xl p-4 text-center font-mono font-bold",
+      `${textSize ? textSize : "text-4xl"}`,
+    ]}
   >
     <Tooltip
       class="-translate-y-2"
