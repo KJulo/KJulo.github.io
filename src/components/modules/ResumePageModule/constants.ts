@@ -35,7 +35,7 @@ export const getSections = (message) => [
     id: "certifications",
     render: Certification,
     icon: CertificationIcon,
-    iconClassname: "fill-black dark:fill-white",
+    iconClassname: "stroke-black fill-black dark:fill-white dark:stroke-white",
   },
   {
     title: message.resume_languages_title(),
