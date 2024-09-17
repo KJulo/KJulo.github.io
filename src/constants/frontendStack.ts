@@ -9,6 +9,7 @@ import GraphQL from "@icons/stack/frontend/GraphQL.svg?raw";
 import ApolloClient from "@icons/stack/frontend/ApolloClient.svg?raw";
 import React from "@icons/stack/frontend/React.svg?raw";
 import Webpack from "@icons/stack/frontend/Webpack.svg?raw";
+import Astro from "@icons/stack/frontend/Astro.svg?raw";
 
 export const NEXTJS = {
   title: "Next.js",
@@ -17,10 +18,10 @@ export const NEXTJS = {
   className: "dark:fill-white",
 };
 
-export const WEBPACK = {
-  title: "Webpack",
-  url: "https://webpack.js.org/",
-  icon: Webpack,
+export const ASTRO = {
+  title: "Astro",
+  url: "https://astro.build/",
+  icon: Astro,
   className: "",
 };
 
@@ -59,6 +60,13 @@ export const TAILWIND = {
   className: "",
 };
 
+export const WEBPACK = {
+  title: "Webpack",
+  url: "https://webpack.js.org/",
+  icon: Webpack,
+  className: "",
+};
+
 export const AXIOS = {
   title: "Axios",
   url: "https://axios-http.com/",
@@ -83,6 +91,7 @@ export const APOLLO_CLIENT = {
 export const FRONTEND_STACK = [
   NEXTJS,
   REACT,
+  ASTRO,
   ANT_DESIGN,
   REDUX,
   REDUX_SAGA,
