@@ -9,36 +9,37 @@ import ContactIcon from "@icons/resume/Contact.svg?raw";
 import EducationIcon from "@icons/resume/Education.svg?raw";
 import CertificationIcon from "@icons/resume/Certification.svg?raw";
 import LanguageIcon from "@icons/resume/Language.svg?raw";
+import type { MessagesInterface } from "astro/types/MessagesInterface";
 
-export const getSections = (message) => [
+export const getSections = (messages: MessagesInterface) => [
   {
-    title: message.resume_personalInformation_title(),
+    title: messages.resume_personalInformation_title(),
     id: "personal-information",
     render: PersonalInformation,
     icon: ContactIcon,
   },
   {
-    title: message.resume_workExperience_title(),
+    title: messages.resume_workExperience_title(),
     id: "work-experience",
     render: WorkExperience,
     icon: WorkIcon,
   },
   {
-    title: message.resume_education_title(),
+    title: messages.resume_education_title(),
     id: "education",
     render: Education,
     icon: EducationIcon,
     iconClassname: "fill-black dark:fill-white",
   },
   {
-    title: message.resume_certifications_title(),
+    title: messages.resume_certifications_title(),
     id: "certifications",
     render: Certification,
     icon: CertificationIcon,
     iconClassname: "stroke-black fill-black dark:fill-white dark:stroke-white",
   },
   {
-    title: message.resume_languages_title(),
+    title: messages.resume_languages_title(),
     id: "languages",
     render: Languages,
     icon: LanguageIcon,

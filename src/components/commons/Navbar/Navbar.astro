@@ -2,6 +2,8 @@
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher.astro";
 import ThemeButton from "@commons/ThemeButton/ThemeButton.astro";
 
+import type { NavbarInterface } from "astro/types/NavbarInterface";
+
 const { elements } = Astro.props;
 ---
 
@@ -13,7 +15,7 @@ const { elements } = Astro.props;
     >
       <div class="flex items-center gap-4 px-4 py-4 lg:py-2">
         {
-          elements.map((element) => (
+          elements.map((element: NavbarInterface) => (
             <a
               href={`#${element.id}`}
               aria-label={element.title}
