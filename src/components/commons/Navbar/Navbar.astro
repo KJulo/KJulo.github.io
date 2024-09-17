@@ -14,7 +14,11 @@ const { elements } = Astro.props;
       <div class="flex items-center gap-4 px-4 py-4 lg:py-2">
         {
           elements.map((element) => (
-            <a class="block cursor-pointer rounded-full px-2 py-2 text-base font-medium text-black transition-all hover:bg-white dark:text-white dark:hover:bg-neutral-800">
+            <a
+              href={`#${element.id}`}
+              aria-label={element.title}
+              class="block cursor-pointer rounded-full px-2 py-2 text-base font-medium text-black transition-all hover:bg-white dark:text-white dark:hover:bg-neutral-800"
+            >
               <p class="hidden lg:block">{element.title}</p>
               <span
                 class:list={[
