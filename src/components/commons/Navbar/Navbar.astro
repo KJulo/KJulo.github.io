@@ -9,7 +9,6 @@ const { elements } = Astro.props;
 ---
 
 <nav class="m-auto w-max">
-  <!-- desktop -->
   <div class="flex w-max flex-col items-center gap-4">
     <div
       class="mx-auto max-w-7xl rounded-full bg-neutral-300 bg-opacity-45 py-0.5 dark:border-2 dark:border-neutral-600 dark:bg-neutral-950"
@@ -23,7 +22,7 @@ const { elements } = Astro.props;
               class="block cursor-pointer rounded-full px-2 py-2 text-base font-medium text-black transition-all hover:bg-white dark:text-white dark:hover:bg-neutral-800"
             >
               <p class="hidden lg:block">{element.title}</p>
-              <Tooltip text={element.title} class="translate-y-4">
+              <Tooltip text={element.title} class="translate-y">
                 <span
                   class:list={[
                     "flex h-6 w-6 flex-col place-items-center justify-center lg:hidden",
