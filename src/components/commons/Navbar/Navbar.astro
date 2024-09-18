@@ -22,7 +22,7 @@ const { elements } = Astro.props;
               class="block cursor-pointer rounded-full px-2 py-2 text-base font-medium text-black transition-all hover:bg-white dark:text-white dark:hover:bg-neutral-800"
             >
               <p class="hidden lg:block">{element.title}</p>
-              <Tooltip text={element.title} class="translate-y">
+              <Tooltip text={element.title} class="translate-y-4">
                 <span
                   class:list={[
                     "flex h-6 w-6 flex-col place-items-center justify-center lg:hidden",
