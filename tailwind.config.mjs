@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
@@ -24,9 +25,14 @@ export default {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-100%)" },
         },
+        "fade-up": {
+          from: { opacity: 0, transform: "translateY(10px)" },
+          to: { opacity: 1, transform: "translateY(0)" },
+        },
       },
       animation: {
         "slide-left": "slide-left 10s linear infinite",
+        "fade-up": "fade-up 0.5 ease-in-out",
       },
       colors: {
         neutral: {
@@ -36,5 +42,5 @@ export default {
     },
   },
   darkMode: "selector",
-  plugins: [],
+  plugins: [require("tailwindcss-animated")],
 };

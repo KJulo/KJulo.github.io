@@ -9,6 +9,7 @@
   "experience_1_role": "Frontend Developer",
   "experience_1_company": "iCar",
   "experience_1_date": "2023 - Present",
+  "experience_1_achievements_1": "",
   "experience_2_role": "Frontend Developer",
   "experience_2_company": "Jumpitt",
   "experience_2_date": "2022 - 2023",
@@ -19,7 +20,7 @@
   "notFound_title": "PAGE NOT FOUND",
   "notFound_description": "The page you are looking for does not exist",
   "notFound_back": "Back to home",
-  "experience_action": "See more",
+  "experience_action": "View more",
   "resume_title": "Resume",
   "resume_personalInformation_title": "Personal Information",
   "resume_workExperience_title": "Work Experience",
@@ -31,5 +32,6 @@
   "resume_language_es": "Spanish",
   "resume_language_en": "English",
   "resume_language_en_level": "Intermediate",
-  "resume_language_es_level": "Native"
+  "resume_language_es_level": "Native",
+  "experience_action_aria_label": "See more about my experience"
 }

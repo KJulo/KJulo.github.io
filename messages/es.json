@@ -9,6 +9,8 @@
   "experience_1_role": "Desarrollador Frontend",
   "experience_1_company": "iCar",
   "experience_1_date": "2023 - Actualidad",
+  "experience_1_achievements_1": "Desarrollé la integración por de APIs de Meta para el envio de mensajes con APIs de terceros",
+  "experience_1_achievements_2": "Desarrollé el levantamiento de Frontend con arquite",
   "experience_2_role": "Desarrollador Frontend",
   "experience_2_company": "Jumpitt",
   "experience_2_date": "2022 - 2023",
@@ -31,5 +33,6 @@
   "resume_language_es": "Español",
   "resume_language_en": "Inglés",
   "resume_language_en_level": "Intermedio",
-  "resume_language_es_level": "Nativo"
+  "resume_language_es_level": "Nativo",
+  "experience_action_aria_label": "Ver más sobre mi experiencia"
 }

@@ -17,12 +17,14 @@ export const getSections = (messages: MessagesInterface) => [
     id: "personal-information",
     render: PersonalInformation,
     icon: ContactIcon,
+    iconClassname: "stroke-black fill-red dark:fill-white dark:stroke-white",
   },
   {
     title: messages.resume_workExperience_title(),
     id: "work-experience",
     render: WorkExperience,
     icon: WorkIcon,
+    iconClassname: "fill-black dark:fill-white",
   },
   {
     title: messages.resume_education_title(),
