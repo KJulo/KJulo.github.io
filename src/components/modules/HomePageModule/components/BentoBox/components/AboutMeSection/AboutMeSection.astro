@@ -4,9 +4,9 @@ import Tag from "@commons/Tag/Tag.astro";
 import * as message from "@paraglide/messages";
 ---
 
-<div class="flex h-full flex-col gap-4 p-4">
+<div class="flex h-full flex-col p-4">
   <Tag color="red" text={message.aboutMe_tag()} class="self-start" />
-  <p class="text-start">
+  <p class="m-auto text-start">
     {message.aboutMe_description()}
   </p>
 </div>
