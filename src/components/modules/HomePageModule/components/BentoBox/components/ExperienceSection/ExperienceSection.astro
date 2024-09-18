@@ -38,6 +38,7 @@ const EXPERIENCES = createExperienceList(message);
     href={localizePathname("/resume", languageTag())}
     target=""
     class="mt-auto self-end px-4"
+    ariaLabel={message.experience_action_aria_label()}
   >
     {message.experience_action()}
   </Hyperlink>

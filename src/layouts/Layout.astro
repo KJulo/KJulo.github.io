@@ -42,27 +42,17 @@ import { fade, ViewTransitions } from "astro:transitions";
     class="bg-gray-200 text-zinc-900 dark:bg-neutral-950 dark:text-zinc-50"
   >
     <main class="font-sans">
-      <slot />
+      <div
+        class="animate-fade-down animate-once animate-duration-500 animate-ease-in-out"
+      >
+        <slot />
+      </div>
     </main>
   </body>
 </html>
-<style is:global>
-  @keyframes fade-up {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-</style>
+
 <style>
-  main {
-    animation: fade-up 0.5s;
-  }
-  1 .dark {
+  .dark {
     color-scheme: dark;
   }
 </style>
