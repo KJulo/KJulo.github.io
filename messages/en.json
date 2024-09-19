@@ -1,31 +1,55 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "hello": "Hello",
-
   "introduction_title": "Hi 👋, I'm Ignacio",
   "introduction_description": "I'm from Chile 🇨🇱, Frontend Developer and currently working in",
-
   "aboutMe_tag": "About me",
   "aboutMe_description": "I am passionate about new technologies and learning new things, always looking for ways to improve. Finding new challenges and learning.",
-
   "experience_tag": "Experience",
-  "experience_action": "See more",
-
   "experience_1_role": "Frontend Developer",
   "experience_1_company": "iCar",
-  "experience_1_date": "2021 - Present",
-
+  "experience_1_date": "2023 - Present",
+  "experience_1_achievements_1": "I was actively present in the refactoring of the files on the frontend side.",
   "experience_2_role": "Frontend Developer",
   "experience_2_company": "Jumpitt",
   "experience_2_date": "2022 - 2023",
-
   "experience_3_role": "Fullstack Developer Intern",
   "experience_3_company": "Jumpitt",
   "experience_3_date": "2021 - 2022",
-
   "learning_tag": "Learning",
-
   "notFound_title": "PAGE NOT FOUND",
-  "notFound_description": "The page you are looking for does not exist",
-  "notFound_back": "Back to home"
+  "notFound_description": "The page you are looking for does not exist.",
+  "notFound_back": "Back to home",
+  "experience_action": "View more",
+  "resume_title": "Resume",
+  "resume_personalInformation_title": "Personal Information",
+  "resume_workExperience_title": "Work Experience",
+  "resume_education_title": "Education",
+  "resume_certifications_title": "Certifications",
+  "resume_languages_title": "Languages",
+  "resume_education_grade": "Computer Science",
+  "resume_education_date": "March 2019 - December 2022",
+  "resume_language_es": "Spanish",
+  "resume_language_en": "English",
+  "resume_language_en_level": "Intermediate",
+  "resume_language_es_level": "Native",
+  "experience_action_aria_label": "See more about my experience",
+  "experience_1_achievements_2": "Actively present in the refactoring of the application, taking best practices and making the code cleaner/readable.",
+  "experience_2_achievements_1": "I developed the integration of Websockets for sending messages/files in real time.",
+  "experience_2_achievements_2": "I developed the Frontend lift on Amazon EC2.",
+  "experience_1_achievements_3": "Actively present in frontend decision making for new application features and how to best address them.",
+  "experience_1_achievements_4": "I supported the stability of the application, always with the vision of having the least possible error in production.",
+  "experience_2_achievements_3": "I developed the oAuth integration for the application login.",
+  "experience_2_achievements_4": "I developed a service for the connection of a chat in real time.",
+  "experience_2_achievements_5": "Actively present in frontend decision making.",
+  "experience_2_achievements_6": "I was present and also in contact with customers, giving demos of the application and explaining its operation.",
+  "experience_3_achievements_1": "I developed the Frontend lifting with Clean architecture.",
+  "experience_3_achievements_2": "I was actively involved in the decision making process of the backend and its microservices architecture.",
+  "experience_3_achievements_3": "Actively in the definition of the product and its scope in time.",
+  "technologies": "Technologies",
+  "experience_1_achievements_5": "I was actively involved in several of the company's projects.",
+  "experience_1_achievements_6": "I easily adapted to the work methodologies of the company, also addressing the best practices.",
+  "experience_1_achievements_7": "I was actively involved in the decision making process to better address the problems that arose in order to have a better solution.",
+  "experience_1_achievements_8": "NextJs project development.",
+  "experience_3_achievements_4": "Actively in the definition of the product and its scope in time."
 }

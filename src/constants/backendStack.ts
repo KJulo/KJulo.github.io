@@ -5,12 +5,20 @@ import Mongodb from "@icons/stack/backend/Mongodb.svg?raw";
 import PostgreSQL from "@icons/stack/backend/PostgreSQL.svg?raw";
 import Docker from "@icons/stack/backend/Docker.svg?raw";
 import Golang from "@images/icons/stack/backend/Golang.svg?raw";
+import Prisma from "@images/icons/stack/backend/Prisma.svg?raw";
 
 export const GOLANG = {
   title: "Golang",
   url: "https://go.dev/",
   icon: Golang,
   className: "",
+};
+
+export const PRISMA = {
+  title: "Prisma",
+  url: "https://www.prisma.io/",
+  icon: Prisma,
+  className: "dark:fill",
 };
 
 export const NODEJS = {
@@ -48,4 +56,11 @@ export const DOCKER = {
   className: "",
 };
 
-export const BACKEND_STACK = [NODEJS, EXPRESSJS, MONGODB, POSTGRESQL, DOCKER];
+export const BACKEND_STACK = [
+  NODEJS,
+  EXPRESSJS,
+  PRISMA,
+  MONGODB,
+  POSTGRESQL,
+  DOCKER,
+];

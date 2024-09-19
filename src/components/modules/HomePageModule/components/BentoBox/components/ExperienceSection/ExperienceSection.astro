@@ -1,9 +1,13 @@
 ---
+import { languageTag } from "@paraglide/runtime";
+import * as message from "@paraglide/messages";
+
 import Hyperlink from "@commons/Hyperlink/Hyperlink.astro";
 import Tag from "@components/commons/Tag/Tag.astro";
-import { createExperienceList } from "./utils";
 
-import * as message from "@paraglide/messages";
+import { localizePathname } from "@utils/language";
+
+import { createExperienceList } from "./utils";
 
 const EXPERIENCES = createExperienceList(message);
 ---
@@ -31,9 +35,10 @@ const EXPERIENCES = createExperienceList(message);
     }
   </ul>
   <Hyperlink
-    href="https://drive.google.com/file/d/1telAD0Y_XDWI_PbVo7OuO-jCZytGlJ5F/view?usp=sharing"
-    target="_blank"
-    class="mt-auto self-end"
+    href={localizePathname("/resume", languageTag())}
+    target=""
+    class="mt-auto self-end px-4"
+    ariaLabel={message.experience_action_aria_label()}
   >
     {message.experience_action()}
   </Hyperlink>

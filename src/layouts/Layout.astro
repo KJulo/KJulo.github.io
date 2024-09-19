@@ -5,35 +5,48 @@ interface Props {
 const { title } = Astro.props;
 
 import { languageTag } from "../paraglide/runtime";
+import { fade, ViewTransitions } from "astro:transitions";
 ---
 
 <!doctype html>
-<html lang={languageTag()}>
+<html lang={languageTag()} class="scroll-smooth">
   <head>
     <script>
-      if (
-        localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        localStorage.theme = "dark";
-        document.documentElement.classList.add();
-        document.documentElement.classList.add("dark");
-      } else {
-        localStorage.theme = "light";
-        document.documentElement.classList.remove("dark");
+      function themeSwitcher() {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          localStorage.theme = "dark";
+          document.documentElement.classList.add();
+          document.documentElement.classList.add("dark");
+        } else {
+          localStorage.theme = "light";
+          document.documentElement.classList.remove("dark");
+        }
       }
+      themeSwitcher();
+      document.addEventListener("astro:after-swap", themeSwitcher);
     </script>
     <meta charset="UTF-8" />
     <meta name="description" content="Ignacio Silva portfolio" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/png" href="./images/profile.png" />
+    <link rel="icon" type="image/webp" href="/profile.webp" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions />
   </head>
-  <body class="bg-gray-200 text-zinc-900 dark:bg-neutral-950 dark:text-zinc-50">
+  <body
+    transition:animate={fade({ duration: "0.5s" })}
+    class="bg-gray-200 text-zinc-900 dark:bg-neutral-950 dark:text-zinc-50"
+  >
     <main class="font-sans">
-      <slot />
+      <div
+        class="animate-fade-down animate-duration-500 animate-once animate-ease-in-out"
+      >
+        <slot />
+      </div>
     </main>
   </body>
 </html>
