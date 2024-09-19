@@ -1,9 +1,20 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
+import paraglide from "@inlang/paraglide-astro";
 import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()],
-  site: 'https://KJulo.github.io',
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "es"],
+  },
+  integrations: [
+    tailwind(),
+    paraglide({
+      project: "./project.inlang",
+      outdir: "./src/paraglide",
+    }),
+  ],
+  site: "https://KJulo.github.io",
 });

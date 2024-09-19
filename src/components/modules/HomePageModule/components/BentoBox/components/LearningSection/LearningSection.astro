@@ -1,13 +1,26 @@
 ---
-import Tag from "astro/components/commons/Tag/Tag.astro";
+import Tag from "@components/commons/Tag/Tag.astro";
 
-import Golang from "@images/icons/stack/backend/Golang.svg?raw";
+import Tooltip from "@components/commons/Tooltip/Tooltip.astro";
+import { GOLANG } from "@constants/backendStack";
+
+import * as message from "@paraglide/messages";
 ---
 
 <div class="flex w-full flex-col gap-4 p-4">
-  <Tag text="Aprendiendo" class="self-start text-start" color="cyan" />
-  <span
-    class="h-16 w-16 content-center place-self-center rounded-2xl bg-neutral-300 bg-opacity-25 text-center align-middle dark:bg-neutral-800"
-    set:html={Golang}
+  <Tag
+    text={message.learning_tag()}
+    class="self-start text-start"
+    color="cyan"
   />
+
+  <a href={GOLANG.url} target="_blank" aria-label={`${GOLANG.title} icon`}>
+    <Tooltip text={GOLANG.title}>
+      <div
+        class="inline-block h-16 w-16 cursor-pointer content-center place-self-center rounded-2xl bg-neutral-300 bg-opacity-25 p-4 text-start align-middle transition-all hover:-translate-y-1 dark:bg-neutral-800"
+      >
+        <span set:html={GOLANG.icon} />
+      </div>
+    </Tooltip>
+  </a>
 </div>

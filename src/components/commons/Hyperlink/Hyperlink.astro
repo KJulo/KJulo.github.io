@@ -1,16 +1,20 @@
 ---
 interface Props {
-  class: string;
+  class?: string;
+  target: string;
+  href: string;
+  ariaLabel?: string;
 }
 
-const { class: className } = Astro.props;
+const { class: className, target, href, ariaLabel } = Astro.props;
 ---
 
 <a
-  href="https://drive.google.com/file/d/1telAD0Y_XDWI_PbVo7OuO-jCZytGlJ5F/view?usp=sharing"
-  target="_blank"
+  href={href}
+  target={target}
   class="transition hover:bg-gray-100 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800"
-  class:list={["rounded-2xl border-2 border-gray-200 bg-white px-4", className]}
+  class:list={["rounded-2xl border-2 border-gray-200 bg-white", className]}
+  aria-label={ariaLabel}
 >
   <slot />
 </a>

@@ -1,11 +1,10 @@
 ---
 import CarrouselIcons from "@commons/CarrouselIcons/CarrouselIcons.astro";
 import Tag from "@commons/Tag/Tag.astro";
-
-import { BACKEND_STACK } from "./constants";
+import { BACKEND_STACK } from "@constants/backendStack";
 ---
 
-<div class="flex h-full flex-col content-start gap-4 p-4">
+<div class="flex h-full flex-col content-start p-4">
   <Tag color="green" text="Backend" class="self-start" />
   <CarrouselIcons items={BACKEND_STACK} class="m-auto" />
 </div>
