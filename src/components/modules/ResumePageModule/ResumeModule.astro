@@ -3,6 +3,8 @@ import Hyperlink from "astro/components/commons/Hyperlink/Hyperlink.astro";
 import Navbar from "@commons/Navbar/Navbar.astro";
 import * as message from "@paraglide/messages";
 import { getSections } from "./constants";
+import { localizePathname } from "@utils/language";
+import { languageTag } from "@paraglide/runtime";
 
 const SECTIONS = getSections(message);
 ---
@@ -13,7 +15,7 @@ const SECTIONS = getSections(message);
   </header>
   <div class="m-4 flex flex-col gap-4 p-4">
     <Hyperlink
-      href="/"
+      href={localizePathname("/", languageTag())}
       target="_self"
       class="self-center border-2 border-neutral-300 px-3 py-1">X</Hyperlink
     >
