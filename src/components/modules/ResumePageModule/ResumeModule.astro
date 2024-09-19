@@ -9,11 +9,11 @@ import { languageTag } from "@paraglide/runtime";
 const SECTIONS = getSections(message);
 ---
 
-<div class="m-8 flex flex-col">
+<div class="m-4 flex flex-col 2xl:mx-[20%]">
   <header>
     <Navbar elements={SECTIONS} />
   </header>
-  <div class="m-4 flex flex-col gap-4 p-4">
+  <div class="m-4 flex flex-col gap-4">
     <Hyperlink
       href={localizePathname("/", languageTag())}
       target="_self"

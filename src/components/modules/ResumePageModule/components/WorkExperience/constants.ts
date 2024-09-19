@@ -3,6 +3,7 @@ import {
   MONGODB,
   NODEJS,
   POSTGRESQL,
+  PRISMA,
 } from "@constants/backendStack";
 
 import {
@@ -10,6 +11,7 @@ import {
   APOLLO_CLIENT,
   AXIOS,
   GRAPHQL,
+  JWT,
   NEXTJS,
   REACT,
   REDUX,
@@ -20,7 +22,7 @@ import {
 import { AMAZON_WEB_SERVICES_EC2, VERCEL } from "@constants/othersStack";
 
 export const TECHNOLOGIES = [
-  [NEXTJS, REACT, ANT_DESIGN, AXIOS, APOLLO_CLIENT, GRAPHQL, VERCEL],
+  [NEXTJS, ANT_DESIGN, AXIOS, APOLLO_CLIENT, GRAPHQL, VERCEL, JWT],
   [
     REACT,
     REDUX,
@@ -30,9 +32,11 @@ export const TECHNOLOGIES = [
     ANT_DESIGN,
     NODEJS,
     EXPRESSJS,
+    PRISMA,
     MONGODB,
     POSTGRESQL,
     AMAZON_WEB_SERVICES_EC2,
+    JWT,
   ],
   [
     REACT,
@@ -41,8 +45,10 @@ export const TECHNOLOGIES = [
     AXIOS,
     NODEJS,
     EXPRESSJS,
+    PRISMA,
     MONGODB,
     POSTGRESQL,
     AMAZON_WEB_SERVICES_EC2,
+    JWT,
   ],
 ];

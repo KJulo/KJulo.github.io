@@ -9,7 +9,6 @@ const { textSize } = Astro.props;
 
 const currentPath = `${Astro.url.pathname}`;
 const lang = languageTag();
-console.log("🚀 ~ lang:", lang)
 const switchLang =
   lang === LANGUAGE_CODE.ENGLISH
     ? `${LANGUAGE_CODE.SPANISH}`
@@ -23,6 +22,7 @@ const switchPathname = switchLanguage(
 
 
 const isSpanishSelected = lang === LANGUAGE_CODE.SPANISH;
+console.log("🚀 ~ isSpanishSelected:", isSpanishSelected)
 const isEnglishSelected = lang === LANGUAGE_CODE.ENGLISH;
 ---
 

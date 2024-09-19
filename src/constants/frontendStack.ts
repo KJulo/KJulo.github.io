@@ -10,6 +10,7 @@ import ApolloClient from "@icons/stack/frontend/ApolloClient.svg?raw";
 import React from "@icons/stack/frontend/React.svg?raw";
 import Webpack from "@icons/stack/frontend/Webpack.svg?raw";
 import Astro from "@icons/stack/frontend/Astro.svg?raw";
+import JWTIcon from "@icons/stack/frontend/JWT.svg?raw";
 
 export const NEXTJS = {
   title: "Next.js",
@@ -88,6 +89,13 @@ export const APOLLO_CLIENT = {
   className: "",
 };
 
+export const JWT = {
+  title: "JWT",
+  url: "https://jwt.io/",
+  icon: JWTIcon,
+  className: "",
+};
+
 export const FRONTEND_STACK = [
   NEXTJS,
   REACT,
@@ -95,6 +103,7 @@ export const FRONTEND_STACK = [
   ANT_DESIGN,
   REDUX,
   REDUX_SAGA,
+  JWT,
   WEBPACK,
   TAILWIND,
   AXIOS,
