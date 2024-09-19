@@ -23,17 +23,17 @@ const isEnglishSelected = lang === LANGUAGE_CODE.ENGLISH;
     class:list={[
       "m-auto flex flex-row gap-2 rounded-xl p-4 text-center font-mono font-bold",
       `${textSize ? textSize : "text-4xl"}`,
-      "menu",
+      "",
     ]}
     data-animation="bonus"
   >
     <Tooltip
-      class={`${isSpanishSelected ?  "-translate-y-0.5" : "-translate-y-2"}`}
+      class={`${isSpanishSelected ?  "-translate-y-0.5" : " -translate-y-2"}`}
       text={LANGUAGE_LABEL[LANGUAGE_CODE.ENGLISH]}
     >
       <p
         class:list={[
-          "-translate-y-2",
+          "-translate-y-2 group/english",
           `${isSpanishSelected ? "cursor-pointer text-neutral-500" : "cursor-default"} `,
         ]}
         id={LANGUAGE_CODE.ENGLISH}
@@ -42,10 +42,10 @@ const isEnglishSelected = lang === LANGUAGE_CODE.ENGLISH;
         {
           isSpanishSelected &&
         <span
-          class="absolute -bottom-1 left-1/2 mb-1 h-1 w-0 rounded-r-full bg-black dark:bg-white group-hover:w-1/2 group-hover:transition-all"
+          class="absolute -bottom-1 left-1/2 mb-1 h-1 w-0 rounded-r-full bg-black dark:bg-white group-hover/english:w-1/2 group-hover/english:transition-all"
         />
         <span
-          class="absolute -bottom-1 right-1/2 mb-1 h-1 w-0 rounded-l-full bg-black dark:bg-white  group-hover:w-1/2 group-hover:transition-all"
+          class="absolute -bottom-1 right-1/2 mb-1 h-1 w-0 rounded-l-full bg-black dark:bg-white  group-hover/english:w-1/2 group-hover/english:transition-all"
         />
         }
       </p>
@@ -54,7 +54,7 @@ const isEnglishSelected = lang === LANGUAGE_CODE.ENGLISH;
     <Tooltip class=`${isEnglishSelected ? "translate-y-4" : "translate-y-2"}` text={LANGUAGE_LABEL[LANGUAGE_CODE.SPANISH]}>
       <p
         class:list={[
-          "translate-y-2",
+          "translate-y-2 group/spanish",
           `${isEnglishSelected ? "cursor-pointer text-neutral-500" : "cursor-default"} `,
         ]}
         id={LANGUAGE_CODE.SPANISH}
@@ -63,17 +63,17 @@ const isEnglishSelected = lang === LANGUAGE_CODE.ENGLISH;
         {
           isEnglishSelected &&
         <span
-          class="absolute -bottom-1 left-1/2 mb-1 h-1 w-0 rounded-r-full bg-black dark:bg-white group-hover:w-1/2 group-hover:transition-all"
+          class="absolute -bottom-1 left-1/2 mb-1 h-1 w-0 rounded-r-full bg-black dark:bg-white group-hover/spanish:w-1/2 group-hover/spanish:transition-all"
         />
         <span
-          class="absolute -bottom-1 right-1/2 mb-1 h-1 w-0 rounded-l-full bg-black dark:bg-white group-hover:w-1/2 group-hover:transition-all"
+          class="absolute -bottom-1 right-1/2 mb-1 h-1 w-0 rounded-l-full bg-black dark:bg-white group-hover/spanish:w-1/2 group-hover/spanish:transition-all"
         />
         }
       </p>
     </Tooltip>
   </div>
 </div>
-<script define:vars={{ switchPathname, LANGUAGE_CODE, lang }}>
+<script is:inline define:vars={{ switchPathname, LANGUAGE_CODE, lang }}>
   function switchLanguage() {
     window.location = switchPathname;
   }
