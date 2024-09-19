@@ -1,0 +1,30 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "hello": "Hello",
+
+  "introduction_title": "Hi 👋, I'm Ignacio",
+  "introduction_description": "I'm from Chile 🇨🇱, Frontend Developer and currently working in",
+
+  "aboutMe_tag": "About me",
+  "aboutMe_description": "I am passionate about new technologies and learning new things, always looking for ways to improve. Finding new challenges and learning.",
+
+  "experience_tag": "Experience",
+
+  "experience_1_role": "Frontend Developer",
+  "experience_1_company": "iCar",
+  "experience_1_date": "2021 - Present",
+
+  "experience_2_role": "Frontend Developer",
+  "experience_2_company": "Jumpitt",
+  "experience_2_date": "2022 - 2023",
+
+  "experience_3_role": "Fullstack Developer Intern",
+  "experience_3_company": "Jumpitt",
+  "experience_3_date": "2021 - 2022",
+
+  "learning_tag": "Learning",
+
+  "notFound_title": "PAGE NOT FOUND",
+  "notFound_description": "The page you are looking for does not exist",
+  "notFound_back": "Back to home"
+}

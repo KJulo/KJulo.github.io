@@ -3,6 +3,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "astro/*": [
+        "./src/*"
+      ],
+      "@/*": [
+        "./src/*"
+      ],
       "@constants/*": [
         "./src/constants/*"
       ],
@@ -32,6 +38,15 @@
       ],
       "@icons/*": [
         "./public/images/icons/*"
+      ],
+      "@i18n/*": [
+        "./src/i18n/*"
+      ],
+      "@paraglide/*": [
+        "./src/paraglide/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
       ],
     }
   }
