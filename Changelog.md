@@ -1,3 +1,24 @@
+## Release 2.0.0 (2024/09/19)
+
+- [🔧] Update Astro
+- [💄] Update loading image and alt not redundant in image profile
+- [💄] Create tooltip component
+- [♻️] Refactor constants front/back section, move constants files at the source of the project
+- [💄] Adjust icons and backend stack
+- [💄] Add 404 page
+- [♿️] Add aria label in learning section and Add eslint config to no console log
+- [🌐] Add English and Spanish support
+- [✨] Add language switcher support
+- [💄] Add color scheme at layout level
+- [💄] Adjust tooltip behavior
+- [🌐] Add experience action button translate and delete extra comments in
+- [✨] Add resume page.
+- [✨] Add view transitions
+- [💄] Adjust UX on clickable items
+- [🐛] Fix 404 page with lang
+- [✨] Add navbar component
+- [💬] Update literals for resume page (English/Spanish)
+
 ## Release 1.6.0 (2024/08/01)
 
 - [💬] Update text in profile section
