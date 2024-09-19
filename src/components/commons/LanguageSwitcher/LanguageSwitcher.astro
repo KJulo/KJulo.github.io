@@ -9,14 +9,18 @@ const { textSize } = Astro.props;
 
 const currentPath = `${Astro.url.pathname}`;
 const lang = languageTag();
+console.log("🚀 ~ lang:", lang)
 const switchLang =
   lang === LANGUAGE_CODE.ENGLISH
     ? `${LANGUAGE_CODE.SPANISH}`
     : `${LANGUAGE_CODE.ENGLISH}`;
+
+    
 const switchPathname = switchLanguage(
   currentPath,
   switchLang as AvailableLanguageTag,
 );
+
 
 const isSpanishSelected = lang === LANGUAGE_CODE.SPANISH;
 const isEnglishSelected = lang === LANGUAGE_CODE.ENGLISH;
@@ -77,11 +81,13 @@ const isEnglishSelected = lang === LANGUAGE_CODE.ENGLISH;
     </Tooltip>
   </div>
 </div>
-<script is:inline define:vars={{ switchPathname, LANGUAGE_CODE, lang }}>
+<script define:vars={{ switchPathname, LANGUAGE_CODE, lang }}>
   function switchLanguage() {
     window.location = switchPathname;
   }
 
+  
+  const init = () => {
   document
     .getElementById(LANGUAGE_CODE.ENGLISH)
     .addEventListener("click", () => {
@@ -97,4 +103,9 @@ const isEnglishSelected = lang === LANGUAGE_CODE.ENGLISH;
         switchLanguage();
       }
     });
+  }
+  init();
+  document.addEventListener("astro:after-swap",init)
+
+    
 </script>
