@@ -1,12 +1,13 @@
 ---
-const { text } = Astro.props;
+const { text, class: className } = Astro.props;
 ---
 
-<div
-  class="group relative inline-block h-16 w-16 cursor-pointer content-center place-self-center rounded-2xl bg-neutral-300 bg-opacity-25 text-start align-middle dark:bg-neutral-800"
->
+<div class="group relative">
   <div
-    class="absolute bottom-1 hidden w-full whitespace-nowrap pr-0.5 group-hover:block"
+    class:list={[
+      "absolute bottom-1 hidden w-full whitespace-nowrap pr-0.5 group-hover:block",
+      className,
+    ]}
   >
     <div
       class="flex translate-y-full flex-col-reverse items-center justify-start"

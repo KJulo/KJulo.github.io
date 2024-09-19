@@ -7,16 +7,20 @@ import { GOLANG } from "@constants/backendStack";
 import * as message from "@paraglide/messages";
 ---
 
-<a href={GOLANG.url} target="_blank" aria-label={`${GOLANG.title} icon`}>
-  <div class="flex w-full flex-col gap-4 p-4">
-    <Tag
-      text={message.learning_tag()}
-      class="self-start text-start"
-      color="cyan"
-    />
+<div class="flex w-full flex-col gap-4 p-4">
+  <Tag
+    text={message.learning_tag()}
+    class="self-start text-start"
+    color="cyan"
+  />
 
+  <a href={GOLANG.url} target="_blank" aria-label={`${GOLANG.title} icon`}>
     <Tooltip text={GOLANG.title}>
-      <span class="h-full w-full text-lg" set:html={GOLANG.icon} />
+      <div
+        class="inline-block h-16 w-16 cursor-pointer content-center place-self-center rounded-2xl bg-neutral-300 bg-opacity-25 p-4 text-start align-middle dark:bg-neutral-800"
+      >
+        <span set:html={GOLANG.icon} />
+      </div>
     </Tooltip>
-  </div>
-</a>
+  </a>
+</div>

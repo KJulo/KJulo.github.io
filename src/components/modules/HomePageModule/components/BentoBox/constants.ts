@@ -10,7 +10,7 @@ import AboutMeSection from "./components/AboutMeSection/AboutMeSection.astro";
 import GithubSection from "./components/GithubSection/GithubSection.astro";
 import BackendSection from "./components/BackendSection/BackendSection.astro";
 import LearningSection from "./components/LearningSection/LearningSection.astro";
-import LangSwitcher from "@/components/commons/LangSwitcher/LangSwitcher.astro";
+import LanguageSwitcher from "@/components/commons/LanguageSwitcher/LanguageSwitcher.astro";
 
 export const CONTENT: {
   key: string;
@@ -47,7 +47,7 @@ export const CONTENT: {
       "col-span-6 row-span-12 ",
       "md:col-span-4 md:row-start-3 md:col-start-5 md:row-span-2",
     ],
-    render: LangSwitcher,
+    render: LanguageSwitcher,
   },
   {
     key: "Introduction",
