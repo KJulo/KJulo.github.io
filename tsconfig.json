@@ -1,18 +1,59 @@
 {
   "extends": "astro/tsconfigs/strict",
+  "exclude": [
+    "./src/paraglide/*",
+  ],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "astro/*": ["./src/*"],
-      "@components/*": ["./src/components/*"],
-      "@commons/*": ["./src/components/commons/*"],
-      "@modules/*": ["./src/components/modules/*"],
-      "@styles/*": ["./src/styles/*"],
-      "@utils/*": ["./src/utils/*"],
-      "@pages/*": ["./src/pages/*"],
-      "@layouts/*": ["./src/layouts/*"],
-      "@images/*": ["./public/images/*"],
-      "@icons/*": ["./public/images/icons/*"],
-    }
+      "astro/*": [
+        "./src/*"
+      ],
+      "@/*": [
+        "./src/*"
+      ],
+      "@constants/*": [
+        "./src/constants/*"
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@commons/*": [
+        "./src/components/commons/*"
+      ],
+      "@modules/*": [
+        "./src/components/modules/*"
+      ],
+      "@styles/*": [
+        "./src/styles/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ],
+      "@pages/*": [
+        "./src/pages/*"
+      ],
+      "@layouts/*": [
+        "./src/layouts/*"
+      ],
+      "@images/*": [
+        "./public/images/*"
+      ],
+      "@icons/*": [
+        "./public/images/icons/*"
+      ],
+      "@i18n/*": [
+        "./src/i18n/*"
+      ],
+      "@paraglide/*": [
+        "./src/paraglide/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ],
+      "@types/*": [
+        "./src/types/*"
+      ]
+    },
   }
 }

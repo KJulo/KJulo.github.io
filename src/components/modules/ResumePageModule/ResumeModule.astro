@@ -1,0 +1,36 @@
+---
+import Hyperlink from "astro/components/commons/Hyperlink/Hyperlink.astro";
+import Navbar from "@commons/Navbar/Navbar.astro";
+import * as message from "@paraglide/messages";
+import { getSections } from "./constants";
+import { localizePathname } from "@utils/language";
+import { languageTag } from "@paraglide/runtime";
+
+const SECTIONS = getSections(message);
+---
+
+<div class="m-4 flex flex-col 2xl:mx-[20%]">
+  <header>
+    <Navbar elements={SECTIONS} />
+  </header>
+  <div class="m-4 flex flex-col gap-4">
+    <Hyperlink
+      href={localizePathname("/", languageTag())}
+      target="_self"
+      class="self-center border-2 border-neutral-300 px-3 py-1">X</Hyperlink
+    >
+
+    <div
+      class="flex min-h-[86vh] flex-col gap-8 rounded-2xl border-2 border-neutral-300 bg-white p-8 dark:border-neutral-600 dark:bg-neutral-900"
+    >
+      <h1 class="text-bold text-4xl">{message.resume_title()}</h1>
+      {
+        SECTIONS.map((section) => (
+          <div id={`${section.id}`}>
+            <section.render />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>

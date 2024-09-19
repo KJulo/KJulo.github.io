@@ -1,0 +1,37 @@
+---
+import LocationIcon from "@icons/resume/Location.svg?raw";
+import PhoneIcon from "@icons/resume/Phone.svg?raw";
+import EmailIcon from "@icons/Mail.svg?raw";
+
+import * as message from "@paraglide/messages";
+---
+
+<div>
+  <h2 class="text-2xl">🪪 {message.resume_personalInformation_title()}</h2>
+  <div class="mx-auto my-4 h-px w-full bg-neutral-300 dark:bg-neutral-600">
+  </div>
+  <ul>
+    <li class="flex flex-row items-center gap-2 text-center">
+      <span
+        class="w-4 fill-neutral-800 dark:fill-neutral-200"
+        set:html={LocationIcon}
+      />Viña del Mar, Chile 🇨🇱
+    </li>
+    <li class="flex flex-row items-center gap-2 text-center">
+      <span
+        class="w-4 fill-neutral-800 dark:fill-neutral-200"
+        set:html={PhoneIcon}
+      />+569 41205886
+    </li>
+    <li class="flex flex-row items-center gap-2 text-center">
+      <span
+        class="w-4 fill-neutral-800 dark:fill-neutral-200"
+        set:html={EmailIcon}
+      /><a
+        href="mailto:ignacio.silva.e@gmail.com"
+        class="text-blue-600 visited:text-purple-600 hover:text-blue-600 hover:underline hover:underline-offset-4 dark:text-blue-400 dark:visited:text-purple-400 dark:hover:text-blue-400"
+        aria-label="Send email">ignacio.silva.e@gmail.com</a
+      >
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,50 @@
+---
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher.astro";
+import ThemeButton from "@commons/ThemeButton/ThemeButton.astro";
+
+import type { NavbarInterface } from "astro/types/NavbarInterface";
+import Tooltip from "../Tooltip/Tooltip.astro";
+
+const { elements } = Astro.props;
+---
+
+<nav class="m-auto w-max">
+  <div class="flex w-max flex-col items-center gap-4">
+    <div
+      class="mx-auto max-w-7xl rounded-full bg-neutral-300 bg-opacity-45 py-0.5 dark:border-2 dark:border-neutral-600 dark:bg-neutral-950"
+    >
+      <div class="flex items-center gap-4 px-4 py-4 lg:py-2">
+        {
+          elements.map((element: NavbarInterface) => (
+            <a
+              href={`#${element.id}`}
+              aria-label={element.title}
+              class="block cursor-pointer rounded-full px-2 py-2 text-base font-medium text-black transition-all hover:bg-white dark:text-white dark:hover:bg-neutral-800"
+            >
+              <p class="hidden lg:block">{element.title}</p>
+              <Tooltip text={element.title} class="translate-y-4">
+                <span
+                  class:list={[
+                    "flex h-6 w-6 flex-col place-items-center justify-center lg:hidden",
+                    element.iconClassname,
+                  ]}
+                  set:html={element.icon}
+                />
+              </Tooltip>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+    <div
+      class="dark:hover:bg-neutral-80 flex flex-row rounded-full bg-neutral-300 bg-opacity-45 px-4 py-0.5 dark:border-2 dark:border-neutral-600 dark:bg-neutral-950"
+    >
+      <div class="flex flex-col self-center rounded-full">
+        <ThemeButton />
+      </div>
+      <div class="flex flex-col rounded-full">
+        <LanguageSwitcher textSize="text-xl" />
+      </div>
+    </div>
+  </div>
+</nav>

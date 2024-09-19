@@ -1,23 +1,24 @@
 ---
-import SunIcon from "./icons/sun.svg?raw";
-import MoonIcon from "./icons/moon.svg?raw";
+import SunIcon from "@icons/sun.svg?raw";
+import MoonIcon from "@icons/moon.svg?raw";
 ---
 
 <button
+  transition:persist
   type="button"
   class="m-auto flex flex-row gap-8 rounded-full bg-amber-200 bg-opacity-70 p-1 dark:bg-sky-600 dark:bg-opacity-30"
-  id="theme-selector"
+  id="theme-selector-switch"
   aria-label="Cambiar tema"
 >
   <svg
-    id="sun-icon"
+    id="sun-icon-switch"
     class:list={[
       "h-10 w-10 rounded-full bg-yellow-400 p-2 text-white dark:bg-transparent dark:text-transparent",
     ]}
     set:html={SunIcon}
   />
   <svg
-    id="moon-icon"
+    id="moon-icon-switch"
     class:list={[
       "h-10 w-10 rounded-full p-2 text-amber-200 text-transparent dark:bg-sky-400 dark:text-white",
     ]}
@@ -25,18 +26,18 @@ import MoonIcon from "./icons/moon.svg?raw";
   />
 </button>
 <style>
-  #theme-selector {
+  #theme-selector-switch {
     transition: background-color 0.5s;
   }
-  #theme-selector:focus-visible {
+  #theme-selector-switch:focus-visible {
     outline: none;
   }
 
-  .moon-icon {
+  .moon-icon-switch {
     animation: spin 0.5s cubic-bezier(0, 0, 0.2, 1) forwards;
     animation-name: moveLeft;
   }
-  .sun-icon {
+  .sun-icon-switch {
     animation: spin 0.5s cubic-bezier(0, 0, 0.2, 1) forwards;
     animation-name: moveRight;
   }
@@ -62,21 +63,43 @@ import MoonIcon from "./icons/moon.svg?raw";
   }
 </style>
 <script>
-  const moonIcon = document.getElementById("moon-icon");
-  const sunIcon = document.getElementById("sun-icon");
-  document.getElementById("theme-selector")?.addEventListener("click", () => {
+  function getIconsTheme() {
+    const moonIcon = document.getElementById("moon-icon-switch");
+    const sunIcon = document.getElementById("sun-icon-switch");
+    return { sunIcon, moonIcon };
+  }
+  function themeLight() {
+    localStorage.theme = "light";
+    const { sunIcon, moonIcon } = getIconsTheme();
     if (sunIcon && moonIcon) {
-      if (localStorage.theme === "dark") {
-        sunIcon.classList.add("sun-icon");
-        moonIcon.classList.remove("moon-icon");
-        localStorage.theme = "light";
-        document.documentElement.classList.remove("dark");
-      } else {
-        moonIcon.classList.add("moon-icon");
-        sunIcon.classList.remove("sun-icon");
-        localStorage.theme = "dark";
-        document.documentElement.classList.add("dark");
-      }
+      sunIcon.classList.add("sun-icon-switch");
+      moonIcon.classList.remove("moon-icon-switch");
     }
-  });
+    document.documentElement.classList.remove("dark");
+  }
+
+  function themeDark() {
+    localStorage.theme = "dark";
+    const { sunIcon, moonIcon } = getIconsTheme();
+    if (sunIcon && moonIcon) {
+      moonIcon.classList.add("moon-icon-switch");
+      sunIcon.classList.remove("sun-icon-switch");
+    }
+    document.documentElement.classList.add("dark");
+  }
+
+  function init() {
+    document
+      .getElementById("theme-selector-switch")
+      ?.addEventListener("click", () => {
+        if (localStorage.theme === "dark") {
+          themeLight();
+        } else {
+          themeDark();
+        }
+      });
+  }
+
+  init();
+  document.addEventListener("astro:after-swap", init);
 </script>

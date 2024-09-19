@@ -1,0 +1,10 @@
+---
+import Layout from "@layouts/Layout.astro";
+import ResumeModule from "@modules/ResumePageModule/ResumeModule.astro";
+
+import * as message from "@paraglide/messages";
+---
+
+<Layout title={message.resume_title()}>
+  <ResumeModule />
+</Layout>
