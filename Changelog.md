@@ -1,3 +1,7 @@
+## Release 2.0.1 (2024/09/19)
+
+- [🐛] Fix import icon hyperlink
+
 ## Release 2.0.0 (2024/09/19)
 
 - [🔧] Update Astro
@@ -18,7 +22,6 @@
 - [🐛] Fix 404 page with lang
 - [✨] Add navbar component
 - [💬] Update literals for resume page (English/Spanish)
-
 
 ## Release 1.6.0 (2024/08/01)
 
