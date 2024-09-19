@@ -1,6 +1,6 @@
 import type { AvailableLanguageTag } from "astro/paraglide/runtime";
 
-type AbsolutePathname = `/${string}`;
+type AbsolutePathname = `${string}`;
 
 const pathnames: Record<
   AbsolutePathname,
@@ -12,7 +12,7 @@ const pathnames: Record<
   },
   "/": {
     en: "/",
-    es: "/es",
+    es: "/es/",
   },
 };
 
@@ -27,8 +27,10 @@ export function localizePathname(
 }
 
 export function switchLanguage(pathname: string, locale: AvailableLanguageTag) {
-  if (locale === "en") {
-    return pathname.replace("es/", "");
+  if (locale === "es") {
+    return pathname.replace("/es", "");
   }
-  return `/es${pathname}`;
+  if (locale === "en") {
+    return `/es${pathname}`;
+  }
 }

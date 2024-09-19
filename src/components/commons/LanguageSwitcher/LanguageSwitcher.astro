@@ -2,31 +2,23 @@
 import { LANGUAGE_CODE, LANGUAGE_LABEL } from "@constants/language";
 
 import { languageTag, type AvailableLanguageTag } from "@paraglide/runtime";
-import { switchLanguage } from "@utils/language";
+import { switchLanguage, localizePathname } from "@utils/language";
 import Tooltip from "../Tooltip/Tooltip.astro";
 
 const { textSize } = Astro.props;
 
 const currentPath = `${Astro.url.pathname}`;
 const lang = languageTag();
-const switchLang =
-  lang === LANGUAGE_CODE.ENGLISH
-    ? `${LANGUAGE_CODE.SPANISH}`
-    : `${LANGUAGE_CODE.ENGLISH}`;
-
-    
 const switchPathname = switchLanguage(
   currentPath,
-  switchLang as AvailableLanguageTag,
+  lang as AvailableLanguageTag,
 );
 
-
 const isSpanishSelected = lang === LANGUAGE_CODE.SPANISH;
-console.log("🚀 ~ isSpanishSelected:", isSpanishSelected)
 const isEnglishSelected = lang === LANGUAGE_CODE.ENGLISH;
 ---
 
-<div class="flex">
+<div class="flex" >
   <div
     class:list={[
       "m-auto flex flex-row gap-2 rounded-xl p-4 text-center font-mono font-bold",
@@ -85,12 +77,10 @@ const isEnglishSelected = lang === LANGUAGE_CODE.ENGLISH;
   function switchLanguage() {
     window.location = switchPathname;
   }
-
-  
   const init = () => {
   document
     .getElementById(LANGUAGE_CODE.ENGLISH)
-    .addEventListener("click", () => {
+    ?.addEventListener("click", () => {
       if (lang !== LANGUAGE_CODE.ENGLISH) {
         switchLanguage();
       }
@@ -98,7 +88,7 @@ const isEnglishSelected = lang === LANGUAGE_CODE.ENGLISH;
 
   document
     .getElementById(LANGUAGE_CODE.SPANISH)
-    .addEventListener("click", () => {
+    ?.addEventListener("click", () => {
       if (lang !== LANGUAGE_CODE.SPANISH) {
         switchLanguage();
       }
@@ -106,6 +96,4 @@ const isEnglishSelected = lang === LANGUAGE_CODE.ENGLISH;
   }
   init();
   document.addEventListener("astro:after-swap",init)
-
-    
 </script>
