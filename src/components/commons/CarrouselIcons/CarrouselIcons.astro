@@ -1,25 +1,54 @@
 ---
+import Tooltip from "../Tooltip/Tooltip.astro";
+
 const { items, class: className } = Astro.props;
 ---
 
 <div
   class:list={[className]}
-  class="group relative inline-flex w-full flex-nowrap overflow-hidden whitespace-nowrap [mask-image:_linear-gradient(to_right,_transparent_0,_white_128px,white_calc(100%-128px),_transparent_100%)]"
+  class="group/list relative flex w-full gap-4 overflow-hidden whitespace-nowrap pb-10 pt-4 [mask-image:_linear-gradient(to_right,_transparent_0,_white_128px,white_calc(100%-128px),_transparent_100%)]"
 >
   {
     [0, 1, 2].map((key) => (
-      <ul class="flex animate-slide-left items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:mx-2">
-        {items.map((item: { icon: string; className: string }) => (
-          <li
-            set:html={item.icon}
-            class:list={[
-              "flex h-16 w-16 items-center justify-center self-center rounded-2xl bg-neutral-300 bg-opacity-25 text-center align-middle dark:bg-neutral-800",
-              item.className,
-            ]}
-            aria-hidden={key !== 0}
-          />
-        ))}
+      <ul class="group-hover/list:animation-pause flex w-max animate-slide-left gap-4">
+        {items.map(
+          (item: {
+            url: string;
+            title: string;
+            icon: string;
+            className: string;
+          }) => (
+            <a
+              href={item.url}
+              class="group/item text-center"
+              target="_blank"
+              aria-label={`${item.title} icon`}
+            >
+              <Tooltip text={item.title}>
+                <li
+                  set:html={item.icon}
+                  class:list={[
+                    "flex h-16 items-center justify-center self-center rounded-2xl bg-neutral-300 bg-opacity-25 text-center align-middle dark:bg-neutral-800",
+                    item.className,
+                  ]}
+                  aria-hidden={key !== 0}
+                />
+              </Tooltip>
+            </a>
+          ),
+        )}
       </ul>
     ))
   }
 </div>
+<style>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  @layer utilities {
+    .animation-pause {
+      animation-play-state: paused;
+    }
+  }
+</style>

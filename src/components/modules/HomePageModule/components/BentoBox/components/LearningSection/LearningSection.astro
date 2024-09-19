@@ -1,13 +1,16 @@
 ---
-import Tag from "astro/components/commons/Tag/Tag.astro";
+import Tag from "@components/commons/Tag/Tag.astro";
 
-import Golang from "@images/icons/stack/backend/Golang.svg?raw";
+import Tooltip from "@components/commons/Tooltip/Tooltip.astro";
+import { GOLANG } from "@constants/backendStack";
 ---
 
-<div class="flex w-full flex-col gap-4 p-4">
-  <Tag text="Aprendiendo" class="self-start text-start" color="cyan" />
-  <span
-    class="h-16 w-16 content-center place-self-center rounded-2xl bg-neutral-300 bg-opacity-25 text-center align-middle dark:bg-neutral-800"
-    set:html={Golang}
-  />
-</div>
+<a href={GOLANG.url} target="_blank" aria-label={`${GOLANG.title} icon`}>
+  <div class="flex w-full flex-col gap-4 p-4">
+    <Tag text="Aprendiendo" class="self-start text-start" color="cyan" />
+
+    <Tooltip text={GOLANG.title}>
+      <span class="h-full w-full text-lg" set:html={GOLANG.icon} />
+    </Tooltip>
+  </div>
+</a>
