@@ -19,6 +19,7 @@
 - [✨] Add navbar component
 - [💬] Update literals for resume page (English/Spanish)
 
+
 ## Release 1.6.0 (2024/08/01)
 
 - [💬] Update text in profile section
