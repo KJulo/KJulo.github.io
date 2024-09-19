@@ -34,3 +34,10 @@ export function switchLanguage(pathname: string, locale: AvailableLanguageTag) {
     return `/es${pathname}`;
   }
 }
+
+export const searchLocale = (pathname: string): AvailableLanguageTag => {
+  if (pathname.startsWith("/es")) {
+    return "es";
+  }
+  return "en";
+};

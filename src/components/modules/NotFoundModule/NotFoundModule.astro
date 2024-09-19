@@ -3,6 +3,8 @@ import HyperLink from "@components/commons/Hyperlink/Hyperlink.astro";
 import notFoundImage from "@images/images/404.svg?raw";
 
 import * as message from "@paraglide/messages";
+import { languageTag } from "@paraglide/runtime";
+import { localizePathname } from "@utils/language";
 ---
 
 <div
@@ -13,7 +15,7 @@ import * as message from "@paraglide/messages";
   <p>
     {message.notFound_description()}
   </p>
-  <HyperLink class="p-4" target="" href="/">
+  <HyperLink class="p-4" target="" href={localizePathname("/", languageTag())}>
     <span>{message.notFound_back}</span>
   </HyperLink>
 </div>

@@ -1,6 +1,9 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import NotFoundModule from "@modules/NotFoundModule/NotFoundModule.astro";
+import { setLanguageTag } from "@paraglide/runtime";
+import { searchLocale } from "@utils/language";
+setLanguageTag(searchLocale(Astro.url.pathname));
 ---
 
 <Layout title="Página no encontrada">
