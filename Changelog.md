@@ -1,3 +1,7 @@
+## Release 2.0.2 (2024/09/19)
+
+-[🐛] Fix import sun and moon icons (imported in UpperCase)
+
 ## Release 2.0.1 (2024/09/19)
 
 - [🐛] Fix import icon hyperlink
