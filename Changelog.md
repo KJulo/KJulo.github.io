@@ -1,3 +1,7 @@
+## Release 2.0.1 (2024/09/19)
+
+- [🐛] Fix import icon hyperlink
+
 ## Release 2.0.0 (2024/09/19)
 
 - [🔧] Update Astro
