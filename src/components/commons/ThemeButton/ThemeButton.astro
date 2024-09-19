@@ -90,8 +90,8 @@ import MoonIcon from "@icons/moon.svg?raw";
 
   function init() {
     document
-      .getElementById("theme-selector-button")!
-      .addEventListener("click", () => {
+      .getElementById("theme-selector-button")
+      ?.addEventListener("click", () => {
         if (localStorage.theme === "dark") {
           themeLight();
         } else {

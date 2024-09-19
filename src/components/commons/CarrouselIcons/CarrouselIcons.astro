@@ -18,7 +18,7 @@ const { items, class: className } = Astro.props;
             icon: string;
             className: string;
           }) => (
-            <li class="flex h-16 items-center justify-center self-center rounded-2xl bg-neutral-300 bg-opacity-25 text-center align-middle dark:bg-neutral-800">
+            <li class="flex h-16 items-center justify-center self-center rounded-2xl bg-neutral-300 bg-opacity-25 text-center align-middle transition-all hover:-translate-y-1 dark:bg-neutral-800">
               <a
                 href={item.url}
                 class="group/item z-20 m-auto flex h-full w-full flex-row items-center justify-center"

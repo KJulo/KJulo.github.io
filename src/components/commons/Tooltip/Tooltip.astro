@@ -2,10 +2,10 @@
 const { text, class: className } = Astro.props;
 ---
 
-<div class="group relative">
+<div class="group/tooltip relative">
   <div
     class:list={[
-      "absolute bottom-1 hidden w-full whitespace-nowrap pr-0.5 group-hover:block",
+      "absolute bottom-1 hidden w-full whitespace-nowrap pr-0.5 group-hover/tooltip:block",
       className,
     ]}
   >
