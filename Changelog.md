@@ -1,6 +1,23 @@
+## Release 2.1.0 (2024/09/21)
+
+- [🐛] Fix golang hover in learning section
+- [💄] Update style of Prisma icon for dark theme
+- [💬] Update cloned literals with the correct literal
+- [💄] Update redirect icon from experience section
+- [🔥] Remove prisma for experience in developer fullstack internship
+- [🔥] Remove unused style in experience section
+- [🔧] Add prefetch in hyperlink component
+- [🔥] Remove viewTransitions for now
+- [✨] Add astro data prefetch on hyperlink component
+- [💬] Adjust literals for experience dates
+- [💬] Adjust date for experience in messages json
+- [📝] Update readme
+- [💬] Add html,css,js for experience resume
+- [💄] Update style for experience button with hover
+
 ## Release 2.0.2 (2024/09/19)
 
--[🐛] Fix import sun and moon icons (imported in UpperCase)
+- [🐛] Fix import sun and moon icons (imported in UpperCase)
 
 ## Release 2.0.1 (2024/09/19)
 
