@@ -11,12 +11,36 @@ import React from "@icons/stack/frontend/React.svg?raw";
 import Webpack from "@icons/stack/frontend/Webpack.svg?raw";
 import Astro from "@icons/stack/frontend/Astro.svg?raw";
 import JWTIcon from "@icons/stack/frontend/JWT.svg?raw";
+import JavascriptIcon from "@icons/stack/frontend/Javascript.svg?raw";
+import CSS3Icon from "@icons/stack/frontend/CSS3.svg?raw";
+import HTML5Icon from "@icons/stack/frontend/HTML5.svg?raw";
 
 export const NEXTJS = {
   title: "Next.js",
   url: "https://nextjs.org/",
   icon: NextJs,
   className: "dark:fill-white",
+};
+
+export const HTML5 = {
+  title: "HTML5",
+  url: "https://www.w3.org/TR/html5/",
+  icon: HTML5Icon,
+  className: "",
+};
+
+export const CSS3 = {
+  title: "CSS3",
+  url: "https://www.w3.org/TR/css/",
+  icon: CSS3Icon,
+  className: "",
+};
+
+export const JAVASCRIPT = {
+  title: "Javascript",
+  url: "https://ecma-international.org/publications-and-standards/standards/ecma-262/",
+  icon: JavascriptIcon,
+  className: "",
 };
 
 export const ASTRO = {

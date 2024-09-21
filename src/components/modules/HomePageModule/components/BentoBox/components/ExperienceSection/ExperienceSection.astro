@@ -8,11 +8,15 @@ import Tag from "@components/commons/Tag/Tag.astro";
 import { localizePathname } from "@utils/language";
 
 import { createExperienceList } from "./utils";
+import RedirectIcon from "@icons/Redirect.svg?raw";
+import { LANGUAGE_CODE } from "@constants/language";
 
 const EXPERIENCES = createExperienceList(message);
+const lang = languageTag();
+const width = lang === LANGUAGE_CODE.ENGLISH ? "w-28" : "w-24";
 ---
 
-<div class="flex h-full flex-col content-start gap-4 p-4">
+<div class="group flex h-full flex-col content-start gap-4 p-4">
   <Tag color="yellow" text={message.experience_tag()} class="self-start" />
   <ul class="flex flex-col gap-4">
     {
@@ -27,8 +31,14 @@ const EXPERIENCES = createExperienceList(message);
             <span>{experience.ROLE}</span>
             <span>{experience.COMPANY}</span>
           </div>
-          <div class="text-right">
-            <span>{experience.DATE}</span>
+          <div class="flex flex-row text-right">
+            <time datetime={experience.DATE_START_RAW}>
+              {experience.DATE_START}
+            </time>
+            <span class="mx-2">&ndash;</span>
+            <time datetime={experience.DATE_END_RAW}>
+              {experience.DATE_END}
+            </time>
           </div>
         </li>
       ))
@@ -37,9 +47,44 @@ const EXPERIENCES = createExperienceList(message);
   <Hyperlink
     href={localizePathname("/resume", languageTag())}
     target=""
-    class="mt-auto self-end px-4"
+    class="mt-auto w-fit self-end"
     ariaLabel={message.experience_action_aria_label()}
   >
-    {message.experience_action()}
+    <div
+      class:list={[
+        "flex h-6 w-6 flex-row justify-end gap-1 overflow-hidden transition-width duration-300",
+        `group-hover:${width}`,
+      ]}
+    >
+      <p
+        class="hidden animate-fade-left overflow-hidden animate-delay-150 animate-once animate-ease-out group-hover:block"
+      >
+        {message.experience_action()}
+      </p>
+      <span
+        set:html={RedirectIcon}
+        class="relative self-end stroke-black dark:stroke-white"
+      />
+    </div>
   </Hyperlink>
+  <style>
+    /* hide and show the text */
+    .group-hover .hidden {
+      opacity: 0;
+      transform: translateX(100%);
+      transition: all 0.3s ease-in-out;
+      transition-property: opacity, transform;
+      transition-delay: 0.2s;
+      transition-duration: 0.3s;
+      transition-timing-function: ease-in-out;
+      will-change: opacity, transform;
+      width: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .group-hover:hover .hidden {
+      opacity: 1;
+    }
+  </style>
 </div>
