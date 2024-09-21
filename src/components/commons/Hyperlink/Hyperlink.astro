@@ -15,7 +15,7 @@ const { class: className, target, href, ariaLabel } = Astro.props;
   class="transition hover:bg-gray-100 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800"
   class:list={["rounded-2xl border-2 border-gray-200 bg-white", className]}
   aria-label={ariaLabel}
-  data-astro-prefetch
+  data-astro-prefetch="viewport"
 >
   <slot />
 </a>
