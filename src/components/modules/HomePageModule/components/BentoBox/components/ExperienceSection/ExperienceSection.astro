@@ -28,8 +28,14 @@ const EXPERIENCES = createExperienceList(message);
             <span>{experience.ROLE}</span>
             <span>{experience.COMPANY}</span>
           </div>
-          <div class="text-right">
-            <span>{experience.DATE}</span>
+          <div class="flex flex-row text-right">
+            <time datetime={experience.DATE_START_RAW}>
+              {experience.DATE_START}
+            </time>
+            <span class="mx-2">&ndash;</span>
+            <time datetime={experience.DATE_END_RAW}>
+              {experience.DATE_END}
+            </time>
           </div>
         </li>
       ))
