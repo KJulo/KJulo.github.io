@@ -73,7 +73,7 @@ const isEnglishSelected = lang === LANGUAGE_CODE.ENGLISH;
     </Tooltip>
   </div>
 </div>
-<script define:vars={{ switchPathname, LANGUAGE_CODE, lang }}>
+<script is:inline define:vars={{ switchPathname, LANGUAGE_CODE, lang }}>
   function switchLanguage() {
     window.location = switchPathname;
   }
