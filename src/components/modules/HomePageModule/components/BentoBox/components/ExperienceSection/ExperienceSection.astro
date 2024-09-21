@@ -8,11 +8,12 @@ import Tag from "@components/commons/Tag/Tag.astro";
 import { localizePathname } from "@utils/language";
 
 import { createExperienceList } from "./utils";
+import RedirectIcon from "@icons/Redirect.svg?raw";
 
 const EXPERIENCES = createExperienceList(message);
 ---
 
-<div class="flex h-full flex-col content-start gap-4 p-4">
+<div class="group flex h-full flex-col content-start gap-4 p-4">
   <Tag color="yellow" text={message.experience_tag()} class="self-start" />
   <ul class="flex flex-col gap-4">
     {
@@ -37,9 +38,34 @@ const EXPERIENCES = createExperienceList(message);
   <Hyperlink
     href={localizePathname("/resume", languageTag())}
     target=""
-    class="mt-auto self-end px-4"
+    class="mt-auto self-end"
     ariaLabel={message.experience_action_aria_label()}
   >
-    {message.experience_action()}
+    <div
+      class="flex h-6 w-6 flex-row-reverse items-center overflow-hidden transition-all duration-300 group-hover:w-28"
+    >
+      <p
+        class="mr-7 hidden group-hover:block group-hover:animate-fade-right group-hover:animate-delay-[200ms] group-hover:animate-once group-hover:animate-ease-out"
+      >
+        {message.experience_action()}
+      </p>
+      <span
+        set:html={RedirectIcon}
+        class="absolute stroke-black dark:stroke-white"
+      />
+    </div>
   </Hyperlink>
 </div>
+<style>
+  @tailwind utilities;
+
+  @layer utilities {
+    .custom-css {
+      flex: 0 1 auto;
+      transition: all 2s ease-in-out;
+    }
+    .custom-css:hover {
+      flex: 1 0 auto;
+    }
+  }
+</style>
