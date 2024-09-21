@@ -5,7 +5,6 @@ interface Props {
 const { title } = Astro.props;
 
 import { languageTag } from "../paraglide/runtime";
-import { fade, ViewTransitions } from "astro:transitions";
 ---
 
 <!doctype html>
@@ -35,12 +34,8 @@ import { fade, ViewTransitions } from "astro:transitions";
     <link rel="icon" type="image/webp" href="/profile.webp" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <ViewTransitions />
   </head>
-  <body
-    transition:animate={fade({ duration: "0.5s" })}
-    class="bg-gray-200 text-zinc-900 dark:bg-neutral-950 dark:text-zinc-50"
-  >
+  <body class="bg-gray-200 text-zinc-900 dark:bg-neutral-950 dark:text-zinc-50">
     <main class="font-sans">
       <div
         class="animate-fade-down animate-duration-500 animate-once animate-ease-in-out"
