@@ -13,10 +13,13 @@ import { LANGUAGE_CODE } from "@constants/language";
 
 const EXPERIENCES = createExperienceList(message);
 const lang = languageTag();
-const width = lang === LANGUAGE_CODE.ENGLISH ? "w-28" : "w-24";
+const width =
+  lang === LANGUAGE_CODE.ENGLISH
+    ? "group-hover/experience:w-28"
+    : "group-hover/experience:w-24";
 ---
 
-<div class="group flex h-full flex-col content-start gap-4 p-4">
+<div class="group/experience flex h-full flex-col content-start gap-4 p-4">
   <Tag color="yellow" text={message.experience_tag()} class="self-start" />
   <ul class="flex flex-col gap-4">
     {
@@ -53,11 +56,11 @@ const width = lang === LANGUAGE_CODE.ENGLISH ? "w-28" : "w-24";
     <div
       class:list={[
         "flex h-6 w-6 flex-row justify-end gap-1 overflow-hidden transition-width duration-300",
-        `group-hover:${width}`,
+        width,
       ]}
     >
       <p
-        class="hidden animate-fade-left overflow-hidden animate-delay-150 animate-once animate-ease-out group-hover:block"
+        class="hidden animate-fade-left overflow-hidden animate-delay-150 animate-once animate-ease-out group-hover/experience:block"
       >
         {message.experience_action()}
       </p>
