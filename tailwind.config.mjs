@@ -4,6 +4,9 @@ export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
+      transitionProperty: {
+        width: "width",
+      },
       screens: {
         "2xl-h": { raw: "(max-height: 1536px)" },
         "xl-h": { raw: "(max-height: 1280px)" },

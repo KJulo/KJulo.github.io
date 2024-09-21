@@ -18,7 +18,7 @@ export const PRISMA = {
   title: "Prisma",
   url: "https://www.prisma.io/",
   icon: Prisma,
-  className: "dark:fill",
+  className: " dark:fill-white",
 };
 
 export const NODEJS = {
