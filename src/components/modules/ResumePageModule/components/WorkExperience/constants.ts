@@ -45,7 +45,6 @@ export const TECHNOLOGIES = [
     AXIOS,
     NODEJS,
     EXPRESSJS,
-    PRISMA,
     MONGODB,
     POSTGRESQL,
     AMAZON_WEB_SERVICES_EC2,
