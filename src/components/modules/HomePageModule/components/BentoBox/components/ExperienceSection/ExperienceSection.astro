@@ -9,8 +9,11 @@ import { localizePathname } from "@utils/language";
 
 import { createExperienceList } from "./utils";
 import RedirectIcon from "@icons/Redirect.svg?raw";
+import { LANGUAGE_CODE } from "@constants/language";
 
 const EXPERIENCES = createExperienceList(message);
+const lang = languageTag();
+const width = lang === LANGUAGE_CODE.ENGLISH ? "w-28" : "w-24";
 ---
 
 <div class="group flex h-full flex-col content-start gap-4 p-4">
@@ -44,21 +47,44 @@ const EXPERIENCES = createExperienceList(message);
   <Hyperlink
     href={localizePathname("/resume", languageTag())}
     target=""
-    class="mt-auto self-end"
+    class="mt-auto w-fit self-end"
     ariaLabel={message.experience_action_aria_label()}
   >
     <div
-      class="flex h-6 w-6 flex-row-reverse items-center overflow-hidden transition-all duration-300 group-hover:w-28"
+      class:list={[
+        "flex h-6 w-6 flex-row justify-end gap-1 overflow-hidden transition-width duration-300",
+        `group-hover:${width}`,
+      ]}
     >
       <p
-        class="mr-7 hidden group-hover:block group-hover:animate-fade-right group-hover:animate-delay-[200ms] group-hover:animate-once group-hover:animate-ease-out"
+        class="hidden animate-fade-left overflow-hidden animate-delay-150 animate-once animate-ease-out group-hover:block"
       >
         {message.experience_action()}
       </p>
       <span
         set:html={RedirectIcon}
-        class="absolute stroke-black dark:stroke-white"
+        class="relative self-end stroke-black dark:stroke-white"
       />
     </div>
   </Hyperlink>
+  <style>
+    /* hide and show the text */
+    .group-hover .hidden {
+      opacity: 0;
+      transform: translateX(100%);
+      transition: all 0.3s ease-in-out;
+      transition-property: opacity, transform;
+      transition-delay: 0.2s;
+      transition-duration: 0.3s;
+      transition-timing-function: ease-in-out;
+      will-change: opacity, transform;
+      width: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .group-hover:hover .hidden {
+      opacity: 1;
+    }
+  </style>
 </div>
