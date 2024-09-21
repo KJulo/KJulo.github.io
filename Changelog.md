@@ -1,3 +1,7 @@
+## Release 2.1.1 (2024/09/21)
+
+- [🐛] Fix group-hover in experience section
+
 ## Release 2.1.0 (2024/09/21)
 
 - [🐛] Fix golang hover in learning section
