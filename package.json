@@ -1,7 +1,7 @@
 {
   "name": "ignacio-portfolio",
   "type": "module",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "packageManager": "pnpm@9.10.0",
   "scripts": {
     "dev": "astro dev",

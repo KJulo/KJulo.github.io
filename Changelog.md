@@ -1,3 +1,7 @@
+## Release 2.1.2 (2024/09/22)
+
+- [🐛] Fix missing typo in spanish json messages
+
 ## Release 2.1.1 (2024/09/21)
 
 - [🐛] Fix group-hover in experience section
