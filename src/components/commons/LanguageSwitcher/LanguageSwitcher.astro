@@ -2,6 +2,7 @@
 import { LANGUAGE_CODE, LANGUAGE_LABEL } from "@constants/language";
 
 import { languageTag, type AvailableLanguageTag } from "@paraglide/runtime";
+import * as message from "@paraglide/messages";
 import { switchLanguage } from "@utils/language";
 import Tooltip from "../Tooltip/Tooltip.astro";
 
@@ -29,7 +30,7 @@ const isEnglishSelected = lang === LANGUAGE_CODE.ENGLISH;
   >
     <Tooltip
       class={`${isSpanishSelected ?  "-translate-y-0.5" : " -translate-y-2"}`}
-      text={LANGUAGE_LABEL[LANGUAGE_CODE.ENGLISH]}
+      text={message.lang_en()}
     >
       <p
         class:list={[
@@ -51,7 +52,7 @@ const isEnglishSelected = lang === LANGUAGE_CODE.ENGLISH;
       </p>
     </Tooltip>
     <p>/</p>
-    <Tooltip class=`${isEnglishSelected ? "translate-y-4" : "translate-y-2"}` text={LANGUAGE_LABEL[LANGUAGE_CODE.SPANISH]}>
+    <Tooltip class=`${isEnglishSelected ? "translate-y-4" : "translate-y-2"}` text={message.lang_es()}>
       <p
         class:list={[
           "translate-y-2 group/spanish",

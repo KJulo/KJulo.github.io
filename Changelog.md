@@ -1,3 +1,7 @@
+## Release 2.2.0 (2024/09/24)
+
+- [💬] Update literals from constants
+
 ## Release 2.1.2 (2024/09/22)
 
 - [🐛] Fix missing typo in spanish json messages
