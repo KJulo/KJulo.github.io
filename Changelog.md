@@ -1,3 +1,7 @@
+## Release 2.2.0 (2024/09/24)
+
+- [💬] Update literals from constants
+
 ## Release 2.1.1 (2024/09/21)
 
 - [🐛] Fix group-hover in experience section
