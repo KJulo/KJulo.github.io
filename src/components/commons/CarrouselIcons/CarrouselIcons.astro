@@ -10,7 +10,7 @@ const { items, class: className } = Astro.props;
 >
   {
     [0, 1, 2].map(() => (
-      <ul class="group-hover/list:animation-pause animate-slide-left flex w-max gap-4">
+      <ul class="group-hover/list:animate-stop animate-slide-left flex w-max gap-4">
         {items.map(
           (item: {
             url: string;
