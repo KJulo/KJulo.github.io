@@ -37,11 +37,6 @@ export default {
         "slide-left": "slide-left 10s linear infinite",
         "fade-up": "fade-up 0.5 ease-in-out",
       },
-      colors: {
-        neutral: {
-          250: "#DCDCDC",
-        },
-      },
     },
   },
   darkMode: "selector",
