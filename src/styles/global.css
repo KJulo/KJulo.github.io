@@ -1,9 +1,25 @@
 @import "tailwindcss";
 @import "tailwindcss-animated";
 
-@config '../../tailwind.config.mjs';
 @custom-variant dark (&:where(.dark, .dark *));
 @theme {
+  --font-sans: sans-serif;
+
+  @keyframes slide-left {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  --animate-slide-left: slide-left 10s linear infinite;
+}
+
+@layer utilities {
+  .animation-pause {
+    animation-play-state: paused;
+  }
 }
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
