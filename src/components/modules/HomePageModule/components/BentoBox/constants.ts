@@ -77,7 +77,7 @@ export const CONTENT: {
     target: "_blank",
     key: "LinkedInSection",
     classList: [
-      "group flex h-full flex-col items-center border-blue-400/70  bg-blue-600/10 transition-all hover:bg-blue-400 dark:border-blue-600 dark:hover:bg-blue-600",
+      "group flex h-full flex-col items-center border-blue-400/70  bg-blue-600/10 transition-all duration-150 hover:bg-blue-400 dark:border-blue-600 dark:hover:bg-blue-600",
       "col-span-3 row-span-2 ",
       "md:col-span-2  md:row-start-1 md:col-start-9",
     ],
@@ -90,7 +90,7 @@ export const CONTENT: {
     ariaLabel: "Mail",
     target: "_blank",
     classList: [
-      "flex flex-col flex-wrap content-center border-red-400/70 bg-red-600/10 transition-all hover:bg-red-400 dark:border-red-600 dark:hover:bg-red-600",
+      "flex flex-col flex-wrap content-center border-red-400/70 bg-red-600/10 transition-all duration-150 hover:bg-red-400 dark:border-red-600 dark:hover:bg-red-600",
       "col-span-3 row-span-2 ",
       "md:col-span-2 md:row-start-1 md:col-start-11",
     ],
@@ -103,7 +103,7 @@ export const CONTENT: {
     ariaLabel: "Github",
     target: "_blank",
     classList: [
-      "flex flex-col content-center items-center border-purple-400/70  bg-purple-600/10 transition-all hover:bg-purple-400 dark:border-purple-600 dark:hover:bg-purple-600",
+      "flex flex-col content-center items-center border-purple-400/70  bg-purple-600/10 transition-all duration-150 hover:bg-purple-400 dark:border-purple-600 dark:hover:bg-purple-600",
       "col-span-3 row-span-2 ",
       "md:col-span-2 md:row-span-2 md:row-start-3 md:col-start-9",
     ],
@@ -116,7 +116,7 @@ export const CONTENT: {
     ariaLabel: "Gitlab",
     target: "_blank",
     classList: [
-      "flex grow flex-col flex-wrap content-center border-orange-400/70  bg-orange-600/10 transition-all hover:bg-orange-400 dark:border-orange-600 dark:hover:bg-orange-600",
+      "flex grow flex-col flex-wrap content-center border-orange-400/70  bg-orange-600/10 transition-all duration-150 hover:bg-orange-400 dark:border-orange-600 dark:hover:bg-orange-600",
       "col-span-3 row-span-2 ",
       "md:col-span-2 md:row-span-2 md:row-start-3 md:col-start-11",
     ],
