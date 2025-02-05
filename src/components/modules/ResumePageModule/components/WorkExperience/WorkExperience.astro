@@ -1,8 +1,10 @@
 ---
 import * as message from "@paraglide/messages";
-import { createExperienceList } from "astro/components/modules/HomePageModule/components/BentoBox/components/ExperienceSection/utils";
 import { TECHNOLOGIES } from "./constants";
-import Tooltip from "astro/components/commons/Tooltip/Tooltip.astro";
+import Tooltip from "@commons/Tooltip/Tooltip.astro";
+
+import { createExperienceList } from "@modules/HomePageModule/components/BentoBox/components/ExperienceSection/utils";
+
 const EXPERIENCES = createExperienceList(message);
 ---
 

@@ -1,10 +1,9 @@
 ---
-import { LANGUAGE_CODE } from "@constants/language";
-
-import { type AvailableLanguageTag, languageTag } from "@paraglide/runtime";
 import * as message from "@paraglide/messages";
-import { switchLanguage } from "@utils/language";
+import { type AvailableLanguageTag, languageTag } from "@paraglide/runtime";
+import { LANGUAGE_CODE } from "@constants/language";
 import Tooltip from "../Tooltip/Tooltip.astro";
+import { switchLanguage } from "@utils/language";
 
 const { textSize } = Astro.props;
 

@@ -1,4 +1,4 @@
-import type { MessagesInterface } from "astro/types/MessagesInterface";
+import type MessagesInterface from "@interfaces/MessagesInterface";
 
 export const createExperienceList = (messages: MessagesInterface) => {
   let experienceList: {

@@ -1,7 +1,7 @@
-import eslintPluginAstro from "eslint-plugin-astro";
 import eslint from "@eslint/js";
-import tseslint from "typescript-eslint";
 import eslintConfigPrettier from "eslint-config-prettier";
+import eslintPluginAstro from "eslint-plugin-astro";
+import tseslint from "typescript-eslint";
 
 export default [
   {
@@ -23,7 +23,7 @@ export default [
   eslintConfigPrettier,
   {
     rules: {
-      // "sort-imports": "error",
+      "sort-imports": "error",
       "jsx-a11y/anchor-is-valid": "error",
       "jsx-a11y/alt-text": "error",
       "no-console": "error",

@@ -55,8 +55,8 @@
       "@utils/*": [
         "./src/utils/*"
       ],
-      "@types/*": [
-        "./src/types/*"
+      "@interfaces/*": [
+        "src/interfaces/*"
       ]
     },
   }

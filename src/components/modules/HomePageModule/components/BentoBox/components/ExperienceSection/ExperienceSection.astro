@@ -1,15 +1,12 @@
 ---
-import { languageTag } from "@paraglide/runtime";
 import * as message from "@paraglide/messages";
-
 import Hyperlink from "@commons/Hyperlink/Hyperlink.astro";
-import Tag from "@components/commons/Tag/Tag.astro";
-
-import { localizePathname } from "@utils/language";
-
-import { createExperienceList } from "./utils";
-import RedirectIcon from "@icons/Redirect.svg?raw";
 import { LANGUAGE_CODE } from "@constants/language";
+import RedirectIcon from "@icons/Redirect.svg?raw";
+import Tag from "@components/commons/Tag/Tag.astro";
+import { createExperienceList } from "./utils";
+import { languageTag } from "@paraglide/runtime";
+import { localizePathname } from "@utils/language";
 
 const EXPERIENCES = createExperienceList(message);
 const lang = languageTag();

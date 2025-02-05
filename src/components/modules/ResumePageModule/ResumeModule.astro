@@ -1,10 +1,10 @@
 ---
-import Hyperlink from "astro/components/commons/Hyperlink/Hyperlink.astro";
-import Navbar from "@commons/Navbar/Navbar.astro";
 import * as message from "@paraglide/messages";
+import Hyperlink from "@commons/Hyperlink/Hyperlink.astro";
+import Navbar from "@commons/Navbar/Navbar.astro";
 import { getSections } from "./constants";
-import { localizePathname } from "@utils/language";
 import { languageTag } from "@paraglide/runtime";
+import { localizePathname } from "@utils/language";
 
 const SECTIONS = getSections(message);
 ---
