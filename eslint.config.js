@@ -23,6 +23,7 @@ export default [
   eslintConfigPrettier,
   {
     rules: {
+      // "sort-imports": "error",
       "jsx-a11y/anchor-is-valid": "error",
       "jsx-a11y/alt-text": "error",
       "no-console": "error",

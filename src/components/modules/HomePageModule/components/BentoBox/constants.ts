@@ -10,12 +10,13 @@ import AboutMeSection from "./components/AboutMeSection/AboutMeSection.astro";
 import GithubSection from "./components/GithubSection/GithubSection.astro";
 import BackendSection from "./components/BackendSection/BackendSection.astro";
 import LearningSection from "./components/LearningSection/LearningSection.astro";
-import LanguageSwitcher from "@/components/commons/LanguageSwitcher/LanguageSwitcher.astro";
+import LanguageSwitcher from "@commons/LanguageSwitcher/LanguageSwitcher.astro";
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 
 export const CONTENT: {
   key: string;
   classList: string[];
-  render: any;
+  render: AstroComponentFactory;
   href?: string;
   ariaLabel?: string;
   target?: string;
