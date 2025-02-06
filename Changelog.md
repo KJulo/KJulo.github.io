@@ -1,3 +1,26 @@
+## Release 3.0.0 (2025/02/05)
+
+- [📦] Update packages
+- [📦] Update Astro to 5.2.5
+- [♻️] Refactor types for interface files and fix linter issues with sort imports
+- [🚨] Fix linter and fix constants with declare type of render
+- [🚨] Fix linter config and fix issues with typescript linter
+- [🔥] remove commit stage and fix pre-push husky with deleting the script at the start
+- [📦] Add husky and lint staged
+- [🚨] Fix unusused variable and exclude paraglide in check ts (js is automatically generated)
+- [🚀] Update deploy and remove unused messages in paraglide
+- [📦] Migrate everything from tailwind config to global css
+- [📦] Update all dependencies to the latest (2/2/2025) and fix pointer in themeSwitcher/Button
+- [💄] Fix minor issues with styles
+- [💄] Fix styles in transitions
+- [💄] Fix carrouselIcons stop on hover
+- [💄] Update styles in linkedinSection
+- [📦] Update package tailwind animated
+- [💄] Fix style theme switcher
+- [💄] Fix bg-opacity (deprecated) with "/" in bg-color
+- [💄] Update tailwind and fix issues with bg-opacity (deprecated)
+- [📦] Update astro
+
 ## Release 2.2.0 (2024/09/24)
 
 - [💬] Update literals from constants
