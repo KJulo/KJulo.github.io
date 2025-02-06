@@ -5,7 +5,7 @@ const { text, class: className } = Astro.props;
 <div class="group/tooltip relative">
   <div
     class:list={[
-      "absolute bottom-1 hidden w-full whitespace-nowrap pr-0.5 group-hover/tooltip:block",
+      "absolute bottom-1 hidden w-full pr-0.5 whitespace-nowrap group-hover/tooltip:block",
       className,
     ]}
   >
@@ -18,7 +18,7 @@ const { text, class: className } = Astro.props;
         {text}
       </div>
       <div
-        class="-mb-[1px] h-0 w-0 border-b-[8px] border-l-[12px] border-r-[12px] border-b-stone-50 border-l-transparent border-r-transparent dark:border-b-neutral-700"
+        class="-mb-[1px] h-0 w-0 border-r-[12px] border-b-[8px] border-l-[12px] border-r-transparent border-b-stone-50 border-l-transparent dark:border-b-neutral-700"
       >
       </div>
     </div>

@@ -1,10 +1,8 @@
 ---
-import Tag from "@components/commons/Tag/Tag.astro";
-
-import Tooltip from "@components/commons/Tooltip/Tooltip.astro";
-import { GOLANG } from "@constants/backendStack";
-
 import * as message from "@paraglide/messages";
+import { GOLANG } from "@constants/backendStack";
+import Tag from "@components/commons/Tag/Tag.astro";
+import Tooltip from "@components/commons/Tooltip/Tooltip.astro";
 ---
 
 <div class="m-auto flex w-full flex-col gap-4 p-4">
@@ -22,7 +20,7 @@ import * as message from "@paraglide/messages";
   >
     <Tooltip text={GOLANG.title}>
       <div
-        class="inline-block h-16 w-16 cursor-pointer content-center place-self-center rounded-2xl bg-neutral-300 bg-opacity-25 p-4 text-start align-middle transition-all hover:-translate-y-1 dark:bg-neutral-800"
+        class="inline-block h-16 w-16 cursor-pointer content-center place-self-center rounded-2xl bg-neutral-300/25 p-4 text-start align-middle transition-all duration-150 hover:-translate-y-1 dark:bg-neutral-800"
       >
         <span set:html={GOLANG.icon} />
       </div>
