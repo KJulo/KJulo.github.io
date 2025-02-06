@@ -1,4 +1,4 @@
-import type { MessagesInterface } from "astro/types/MessagesInterface";
+import type MessagesInterface from "@interfaces/MessagesInterface";
 
 export const createExperienceList = (messages: MessagesInterface) => {
   let experienceList: {
@@ -27,12 +27,9 @@ export const createExperienceList = (messages: MessagesInterface) => {
       },
     ];
     for (let j = 1; messages[`experience_${i}_achievements_${j}`]; j++) {
-      [
-        ...experienceList,
-        (experienceList[i - 1].ACHIEVEMENTS = [
-          ...experienceList[i - 1].ACHIEVEMENTS,
-          messages[`experience_${i}_achievements_${j}`](),
-        ]),
+      experienceList[i - 1].ACHIEVEMENTS = [
+        ...experienceList[i - 1].ACHIEVEMENTS,
+        messages[`experience_${i}_achievements_${j}`](),
       ];
     }
   }

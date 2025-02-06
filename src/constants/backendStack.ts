@@ -1,10 +1,10 @@
 //Backend stack
-import NodeJs from "@icons/stack/backend/Nodejs.svg?raw";
-import ExpressJs from "@icons/stack/backend/Expressjs.svg?raw";
-import Mongodb from "@icons/stack/backend/Mongodb.svg?raw";
-import PostgreSQL from "@icons/stack/backend/PostgreSQL.svg?raw";
 import Docker from "@icons/stack/backend/Docker.svg?raw";
+import ExpressJs from "@icons/stack/backend/Expressjs.svg?raw";
 import Golang from "@images/icons/stack/backend/Golang.svg?raw";
+import Mongodb from "@icons/stack/backend/Mongodb.svg?raw";
+import NodeJs from "@icons/stack/backend/Nodejs.svg?raw";
+import PostgreSQL from "@icons/stack/backend/PostgreSQL.svg?raw";
 import Prisma from "@images/icons/stack/backend/Prisma.svg?raw";
 
 export const GOLANG = {

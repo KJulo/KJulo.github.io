@@ -1,8 +1,10 @@
 ---
 import * as message from "@paraglide/messages";
-import { createExperienceList } from "astro/components/modules/HomePageModule/components/BentoBox/components/ExperienceSection/utils";
 import { TECHNOLOGIES } from "./constants";
-import Tooltip from "astro/components/commons/Tooltip/Tooltip.astro";
+import Tooltip from "@commons/Tooltip/Tooltip.astro";
+
+import { createExperienceList } from "@modules/HomePageModule/components/BentoBox/components/ExperienceSection/utils";
+
 const EXPERIENCES = createExperienceList(message);
 ---
 
@@ -43,7 +45,7 @@ const EXPERIENCES = createExperienceList(message);
           <h3 class="text-xl">{message.technologies()}:</h3>
           <ul class="group/list flex flex-row flex-wrap gap-4">
             {TECHNOLOGIES[index].map((technology) => (
-              <li class="group/items my-2.5 flex h-16 items-center justify-center self-center rounded-2xl bg-neutral-300 bg-opacity-25 text-center align-middle transition-all hover:-translate-y-1 dark:bg-neutral-800">
+              <li class="group/items my-2.5 flex h-16 items-center justify-center self-center rounded-2xl bg-neutral-300/25 text-center align-middle transition-all hover:-translate-y-1 dark:bg-neutral-800/25">
                 <a
                   href={technology.url}
                   class:list={[
@@ -56,7 +58,7 @@ const EXPERIENCES = createExperienceList(message);
                   <Tooltip text={technology.title}>
                     <div
                       class:list={[
-                        "inline-block h-16 w-16 cursor-pointer content-center place-self-center rounded-2xl bg-neutral-300 bg-opacity-25 text-start align-middle dark:bg-neutral-800",
+                        "inline-block h-16 w-16 cursor-pointer content-center place-self-center rounded-2xl bg-neutral-300/25 text-start align-middle dark:bg-neutral-800/25",
                         technology.className,
                       ]}
                     >
