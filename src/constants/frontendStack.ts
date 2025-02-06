@@ -1,19 +1,19 @@
 //Frontend stack
-import NextJs from "@icons/stack/frontend/Nextjs.svg?raw";
 import AntDesign from "@icons/stack/frontend/AntDesign.svg?raw";
+import ApolloClient from "@icons/stack/frontend/ApolloClient.svg?raw";
+import Astro from "@icons/stack/frontend/Astro.svg?raw";
+import Axios from "@icons/stack/frontend/Axios.svg?raw";
+import CSS3Icon from "@icons/stack/frontend/CSS3.svg?raw";
+import GraphQL from "@icons/stack/frontend/GraphQL.svg?raw";
+import HTML5Icon from "@icons/stack/frontend/HTML5.svg?raw";
+import JWTIcon from "@icons/stack/frontend/JWT.svg?raw";
+import JavascriptIcon from "@icons/stack/frontend/Javascript.svg?raw";
+import NextJs from "@icons/stack/frontend/Nextjs.svg?raw";
+import React from "@icons/stack/frontend/React.svg?raw";
 import Redux from "@icons/stack/frontend/Redux.svg?raw";
 import ReduxSaga from "@icons/stack/frontend/ReduxSaga.svg?raw";
 import Tailwind from "@icons/stack/frontend/Tailwind.svg?raw";
-import Axios from "@icons/stack/frontend/Axios.svg?raw";
-import GraphQL from "@icons/stack/frontend/GraphQL.svg?raw";
-import ApolloClient from "@icons/stack/frontend/ApolloClient.svg?raw";
-import React from "@icons/stack/frontend/React.svg?raw";
 import Webpack from "@icons/stack/frontend/Webpack.svg?raw";
-import Astro from "@icons/stack/frontend/Astro.svg?raw";
-import JWTIcon from "@icons/stack/frontend/JWT.svg?raw";
-import JavascriptIcon from "@icons/stack/frontend/Javascript.svg?raw";
-import CSS3Icon from "@icons/stack/frontend/CSS3.svg?raw";
-import HTML5Icon from "@icons/stack/frontend/HTML5.svg?raw";
 
 export const NEXTJS = {
   title: "Next.js",

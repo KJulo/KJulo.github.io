@@ -1,8 +1,9 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import NotFoundModule from "@modules/NotFoundModule/NotFoundModule.astro";
-import { setLanguageTag } from "@paraglide/runtime";
 import { searchLocale } from "@utils/language";
+import { setLanguageTag } from "@paraglide/runtime";
+
 setLanguageTag(searchLocale(Astro.url.pathname));
 ---
 

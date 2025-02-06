@@ -1,12 +1,12 @@
 ---
-import SunIcon from "@icons/Sun.svg?raw";
 import MoonIcon from "@icons/Moon.svg?raw";
+import SunIcon from "@icons/Sun.svg?raw";
 ---
 
 <button
   transition:persist
   type="button"
-  class="flex h-10 w-10 flex-row gap-8 rounded-full bg-amber-200 bg-opacity-70 dark:bg-sky-600 dark:bg-opacity-30"
+  class="flex h-10 w-10 cursor-pointer flex-row gap-8 rounded-full bg-amber-200/70 dark:bg-sky-600/30"
   id="theme-selector-button"
   aria-label="Cambiar tema"
 >
@@ -20,7 +20,7 @@ import MoonIcon from "@icons/Moon.svg?raw";
   <svg
     id="moon-icon-button"
     class:list={[
-      "absolute h-10 w-10 rounded-full p-2 text-amber-200 text-transparent dark:bg-sky-400 dark:text-white",
+      "absolute h-10 w-10 rounded-full p-2 text-transparent dark:bg-sky-400 dark:text-white",
     ]}
     set:html={MoonIcon}
   />

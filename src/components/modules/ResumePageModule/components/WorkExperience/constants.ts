@@ -1,11 +1,4 @@
-import {
-  EXPRESSJS,
-  MONGODB,
-  NODEJS,
-  POSTGRESQL,
-  PRISMA,
-} from "@constants/backendStack";
-
+import { AMAZON_WEB_SERVICES_EC2, VERCEL } from "@constants/othersStack";
 import {
   ANT_DESIGN,
   APOLLO_CLIENT,
@@ -21,8 +14,13 @@ import {
   REDUX_SAGA,
   WEBPACK,
 } from "@constants/frontendStack";
-
-import { AMAZON_WEB_SERVICES_EC2, VERCEL } from "@constants/othersStack";
+import {
+  EXPRESSJS,
+  MONGODB,
+  NODEJS,
+  POSTGRESQL,
+  PRISMA,
+} from "@constants/backendStack";
 
 export const TECHNOLOGIES = [
   [NEXTJS, ANT_DESIGN, AXIOS, APOLLO_CLIENT, GRAPHQL, VERCEL, JWT],

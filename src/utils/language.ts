@@ -1,4 +1,4 @@
-import type { AvailableLanguageTag } from "astro/paraglide/runtime";
+import type { AvailableLanguageTag } from "@paraglide/runtime";
 
 type AbsolutePathname = `${string}`;
 
