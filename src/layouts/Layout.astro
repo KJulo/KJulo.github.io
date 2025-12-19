@@ -5,11 +5,21 @@ interface Props {
 const { title } = Astro.props;
 
 import "@styles/global.css";
-import { languageTag } from "../paraglide/runtime";
+import {
+  type Locale,
+  getLocale,
+  overwriteGetLocale,
+} from "../paraglide/runtime";
+import { searchLocale } from "@utils/language";
+
+// En Paraglide v2, necesitamos sobrescribir getLocale para detectar el idioma desde la URL
+// durante el build/SSR ya que no hay integración de Astro
+const detectedLocale = searchLocale(Astro.url.pathname);
+overwriteGetLocale(() => detectedLocale as Locale);
 ---
 
 <!doctype html>
-<html lang={languageTag()} class="scroll-smooth">
+<html lang={getLocale()} class="scroll-smooth">
   <head>
     <script>
       function themeSwitcher() {
