@@ -1,3 +1,10 @@
+## Release 3.1.0 (2025/12/18)
+
+- [📦] Update dependencies to latest versions
+- [💄] Adjust i18n with the new update
+- [💬] Update literals in messages json files
+- [💬] Update literals of work experience
+
 ## Release 3.0.0 (2025/02/05)
 
 - [📦] Update packages
