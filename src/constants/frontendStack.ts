@@ -4,16 +4,49 @@ import ApolloClient from "@icons/stack/frontend/ApolloClient.svg?raw";
 import Astro from "@icons/stack/frontend/Astro.svg?raw";
 import Axios from "@icons/stack/frontend/Axios.svg?raw";
 import CSS3Icon from "@icons/stack/frontend/CSS3.svg?raw";
+import Flowbite from "@icons/stack/frontend/Flowbite.svg?raw";
 import GraphQL from "@icons/stack/frontend/GraphQL.svg?raw";
 import HTML5Icon from "@icons/stack/frontend/HTML5.svg?raw";
 import JWTIcon from "@icons/stack/frontend/JWT.svg?raw";
 import JavascriptIcon from "@icons/stack/frontend/Javascript.svg?raw";
 import NextJs from "@icons/stack/frontend/Nextjs.svg?raw";
 import React from "@icons/stack/frontend/React.svg?raw";
+import ReactRouter from "@icons/stack/frontend/ReactRouter.svg?raw";
 import Redux from "@icons/stack/frontend/Redux.svg?raw";
 import ReduxSaga from "@icons/stack/frontend/ReduxSaga.svg?raw";
+import Sentry from "@icons/stack/frontend/Sentry.svg?raw";
 import Tailwind from "@icons/stack/frontend/Tailwind.svg?raw";
+import Typescript from "@icons/stack/frontend/Typescript.svg?raw";
 import Webpack from "@icons/stack/frontend/Webpack.svg?raw";
+import Zod from "@icons/stack/frontend/ZodIcon.svg?raw";
+
+export const ZOD = {
+  title: "Zod",
+  url: "https://zod.dev/",
+  icon: Zod,
+  className: "",
+};
+
+export const SENTRY = {
+  title: "Sentry",
+  url: "https://sentry.io/",
+  icon: Sentry,
+  className: "",
+};
+
+export const REACT_ROUTER = {
+  title: "React Router",
+  url: "https://reactrouter.com/",
+  icon: ReactRouter,
+  className: "",
+};
+
+export const FLOWBITE = {
+  title: "Flowbite",
+  url: "https://flowbite.com/",
+  icon: Flowbite,
+  className: "",
+};
 
 export const NEXTJS = {
   title: "Next.js",
@@ -40,6 +73,13 @@ export const JAVASCRIPT = {
   title: "Javascript",
   url: "https://ecma-international.org/publications-and-standards/standards/ecma-262/",
   icon: JavascriptIcon,
+  className: "",
+};
+
+export const TYPESCRIPT = {
+  title: "TypeScript",
+  url: "https://www.typescriptlang.org/",
+  icon: Typescript,
   className: "",
 };
 
@@ -127,6 +167,12 @@ export const FRONTEND_STACK = [
   ANT_DESIGN,
   REDUX,
   REDUX_SAGA,
+  JAVASCRIPT,
+  TYPESCRIPT,
+  SENTRY,
+  ZOD,
+  FLOWBITE,
+  REACT_ROUTER,
   JWT,
   WEBPACK,
   TAILWIND,

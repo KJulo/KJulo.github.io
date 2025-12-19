@@ -1,12 +1,13 @@
 ---
 import * as message from "@paraglide/messages";
 import Hyperlink from "@commons/Hyperlink/Hyperlink.astro";
+import type MessagesInterface from "@interfaces/MessagesInterface";
 import Navbar from "@commons/Navbar/Navbar.astro";
+import { getLocale } from "@paraglide/runtime";
 import { getSections } from "./constants";
-import { languageTag } from "@paraglide/runtime";
 import { localizePathname } from "@utils/language";
 
-const SECTIONS = getSections(message);
+const SECTIONS = getSections(message as unknown as MessagesInterface);
 ---
 
 <div class="m-4 flex flex-col 2xl:mx-[20%]">
@@ -15,7 +16,7 @@ const SECTIONS = getSections(message);
   </header>
   <div class="m-4 flex flex-col gap-4">
     <Hyperlink
-      href={localizePathname("/", languageTag())}
+      href={localizePathname("/", getLocale())}
       target="_self"
       class="self-center rounded-full border-2 border-neutral-300 px-3 py-1"
       >X</Hyperlink

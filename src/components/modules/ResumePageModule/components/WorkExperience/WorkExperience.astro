@@ -1,11 +1,14 @@
 ---
 import * as message from "@paraglide/messages";
+import type MessagesInterface from "@interfaces/MessagesInterface";
 import { TECHNOLOGIES } from "./constants";
 import Tooltip from "@commons/Tooltip/Tooltip.astro";
 
 import { createExperienceList } from "@modules/HomePageModule/components/BentoBox/components/ExperienceSection/utils";
 
-const EXPERIENCES = createExperienceList(message);
+const EXPERIENCES = createExperienceList(
+  message as unknown as MessagesInterface,
+);
 ---
 
 <div class="flex flex-col gap-2">

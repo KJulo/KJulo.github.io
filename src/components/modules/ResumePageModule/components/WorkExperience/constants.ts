@@ -4,15 +4,21 @@ import {
   APOLLO_CLIENT,
   AXIOS,
   CSS3,
+  FLOWBITE,
   GRAPHQL,
   HTML5,
   JAVASCRIPT,
   JWT,
   NEXTJS,
   REACT,
+  REACT_ROUTER,
   REDUX,
   REDUX_SAGA,
+  SENTRY,
+  TAILWIND,
+  TYPESCRIPT,
   WEBPACK,
+  ZOD,
 } from "@constants/frontendStack";
 import {
   EXPRESSJS,
@@ -23,6 +29,7 @@ import {
 } from "@constants/backendStack";
 
 export const TECHNOLOGIES = [
+  [REACT, REACT_ROUTER, ZOD, TYPESCRIPT, AXIOS, FLOWBITE, TAILWIND, SENTRY],
   [NEXTJS, ANT_DESIGN, AXIOS, APOLLO_CLIENT, GRAPHQL, VERCEL, JWT],
   [
     REACT,

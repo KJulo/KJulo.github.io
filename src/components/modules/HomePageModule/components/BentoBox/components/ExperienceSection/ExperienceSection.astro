@@ -2,14 +2,17 @@
 import * as message from "@paraglide/messages";
 import Hyperlink from "@commons/Hyperlink/Hyperlink.astro";
 import { LANGUAGE_CODE } from "@constants/language";
+import type MessagesInterface from "@interfaces/MessagesInterface";
 import RedirectIcon from "@icons/Redirect.svg?raw";
 import Tag from "@components/commons/Tag/Tag.astro";
 import { createExperienceList } from "./utils";
-import { languageTag } from "@paraglide/runtime";
+import { getLocale } from "@paraglide/runtime";
 import { localizePathname } from "@utils/language";
 
-const EXPERIENCES = createExperienceList(message);
-const lang = languageTag();
+const EXPERIENCES = createExperienceList(
+  message as unknown as MessagesInterface,
+);
+const lang = getLocale();
 const width =
   lang === LANGUAGE_CODE.ENGLISH
     ? "group-hover/experience:w-28"
@@ -45,7 +48,7 @@ const width =
     }
   </ul>
   <Hyperlink
-    href={localizePathname("/resume", languageTag())}
+    href={localizePathname("/resume", getLocale())}
     target=""
     class="mt-auto w-fit self-end"
     ariaLabel={message.experience_action_aria_label()}
