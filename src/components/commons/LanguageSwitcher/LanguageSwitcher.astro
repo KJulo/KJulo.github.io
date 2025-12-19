@@ -1,6 +1,6 @@
 ---
 import * as message from "@paraglide/messages";
-import { type AvailableLanguageTag, languageTag } from "@paraglide/runtime";
+import { type Locale, getLocale } from "@paraglide/runtime";
 import { LANGUAGE_CODE } from "@constants/language";
 import Tooltip from "../Tooltip/Tooltip.astro";
 import { switchLanguage } from "@utils/language";
@@ -8,11 +8,8 @@ import { switchLanguage } from "@utils/language";
 const { textSize } = Astro.props;
 
 const currentPath = `${Astro.url.pathname}`;
-const lang = languageTag();
-const switchPathname = switchLanguage(
-  currentPath,
-  lang as AvailableLanguageTag,
-);
+const lang = getLocale();
+const switchPathname = switchLanguage(currentPath, lang as Locale);
 
 const isSpanishSelected = lang === LANGUAGE_CODE.SPANISH;
 const isEnglishSelected = lang === LANGUAGE_CODE.ENGLISH;

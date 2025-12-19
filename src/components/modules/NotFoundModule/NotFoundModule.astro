@@ -1,7 +1,7 @@
 ---
 import * as message from "@paraglide/messages";
 import HyperLink from "@components/commons/Hyperlink/Hyperlink.astro";
-import { languageTag } from "@paraglide/runtime";
+import { getLocale } from "@paraglide/runtime";
 import { localizePathname } from "@utils/language";
 import notFoundImage from "@images/images/404.svg?raw";
 ---
@@ -14,7 +14,7 @@ import notFoundImage from "@images/images/404.svg?raw";
   <p>
     {message.notFound_description()}
   </p>
-  <HyperLink class="p-4" target="" href={localizePathname("/", languageTag())}>
+  <HyperLink class="p-4" target="" href={localizePathname("/", getLocale())}>
     <span>{message.notFound_back}</span>
   </HyperLink>
 </div>
