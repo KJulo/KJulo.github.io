@@ -4,7 +4,7 @@ import Card from "@commons/Card/Card.astro";
 import { CONTENT } from "./constants";
 ---
 
-<div class="grid auto-rows-min grid-cols-12 gap-4">
+<div class="grid grid-flow-row-dense grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 lg:grid-cols-12">
   {CONTENT.map((content) => (
     <Card
       href={content.href}

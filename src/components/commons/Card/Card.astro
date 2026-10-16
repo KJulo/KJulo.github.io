@@ -6,7 +6,7 @@ const hasLink = Boolean(href);
 
 {hasLink ? (
   <div
-    class="h-full justify-center rounded-3xl border-2 border-solid text-center align-middle"
+    class="h-full min-w-0 justify-center rounded-3xl border-2 border-solid text-center align-middle"
     class:list={[className]}
   >
     <a
@@ -21,7 +21,7 @@ const hasLink = Boolean(href);
   </div>
 ) : (
   <div
-    class="h-full justify-center rounded-3xl border-2 border-solid text-center align-middle"
+    class="h-full min-w-0 justify-center rounded-3xl border-2 border-solid text-center align-middle"
     class:list={[className]}
   >
     <slot />

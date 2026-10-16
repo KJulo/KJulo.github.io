@@ -14,6 +14,7 @@
       "@components/*": ["./src/components/*"],
       "@commons/*": ["./src/components/commons/*"],
       "@modules/*": ["./src/components/modules/*"],
+      "@data/*": ["./src/data/*"],
       "@styles/*": ["./src/styles/*"],
       "@pages/*": ["./src/pages/*"],
       "@layouts/*": ["./src/layouts/*"],

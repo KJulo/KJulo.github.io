@@ -9,7 +9,6 @@ import FrontendSection from "./components/FrontendSection/FrontendSection.astro"
 import GithubSection from "./components/GithubSection/GithubSection.astro";
 import GitlabSection from "./components/GitlabSection/GitlabSection.astro";
 import IntroductionSection from "./components/IntroductionSection/IntroductionSection.astro";
-import LearningSection from "./components/LearningSection/LearningSection.astro";
 import LinkedinSection from "./components/LinkedinSection/LinkedinSection.astro";
 import MailSection from "./components/MailSection/MailSection.astro";
 import ProfileSection from "./components/ProfileSection/ProfileSection.astro";
@@ -23,11 +22,19 @@ export const CONTENT: {
   target?: string;
 }[] = [
   {
+    key: "Introduction",
+    classList: [
+      "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
+      "col-span-2 min-h-[22rem] sm:col-span-4 sm:min-h-[24rem] lg:col-span-8 lg:min-h-[28rem]",
+    ],
+
+    render: IntroductionSection,
+  },
+  {
     key: "Profile",
     classList: [
       "flex border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "max-md:col-span-12 max-md:row-span-12 ",
-      "md:col-span-4 md:row-start-1 md:col-start-1 md:row-span-4",
+      "col-span-2 min-h-[20rem] sm:col-span-4 sm:min-h-[22rem] lg:col-span-4 lg:min-h-0",
     ],
 
     render: ProfileSection,
@@ -36,8 +43,7 @@ export const CONTENT: {
     key: "ThemeSwitcher",
     classList: [
       "flex border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "max-md:col-span-6 max-md:row-span-12",
-      "md:col-span-4 md:row-start-1 md:col-start-5 md:row-span-2",
+      "col-span-1 min-h-28 sm:min-h-32 lg:col-span-2 lg:min-h-28",
     ],
 
     render: ThemeSwitcher,
@@ -46,32 +52,9 @@ export const CONTENT: {
     key: "Language Switcher",
     classList: [
       "flex border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "max-md:col-span-6 max-md:row-span-12",
-      "md:col-span-4 md:row-start-3 md:col-start-5 md:row-span-2",
+      "col-span-1 min-h-28 sm:min-h-32 lg:col-span-2 lg:min-h-28",
     ],
     render: LanguageSwitcher,
-  },
-  {
-    key: "Introduction",
-    classList: [
-      "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "max-md:col-span-12 max-md:row-span-2",
-      "md:col-span-6",
-      "lg:col-span-4 lg:row-span-3",
-    ],
-
-    render: IntroductionSection,
-  },
-  {
-    key: "About me",
-    classList: [
-      "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "max-md:col-span-12 max-md:row-span-2",
-      "md:col-span-6",
-      "lg:col-span-4 lg:row-span-3",
-    ],
-
-    render: AboutMeSection,
   },
   {
     href: "https://www.linkedin.com/in/ignaciosilvae/",
@@ -80,8 +63,7 @@ export const CONTENT: {
     key: "LinkedInSection",
     classList: [
       "group flex h-full flex-col items-center border-blue-400/70  bg-blue-600/10 transition-all duration-150 hover:bg-blue-400 dark:border-blue-600 dark:hover:bg-blue-600",
-      "max-md:col-span-3 max-md:row-span-2 ",
-      "md:col-span-2 md:row-span-2 md:row-start-1 md:col-start-9",
+      "col-span-1 min-h-28 sm:min-h-32 lg:col-span-2 lg:min-h-28",
     ],
 
     render: LinkedinSection,
@@ -93,8 +75,7 @@ export const CONTENT: {
     target: "_blank",
     classList: [
       "flex flex-col flex-wrap content-center border-red-400/70 bg-red-600/10 transition-all duration-150 hover:bg-red-400 dark:border-red-600 dark:hover:bg-red-600",
-      "max-md:col-span-3 max-md:row-span-2 ",
-      "md:col-span-2 md:row-span-2 md:row-start-1 md:col-start-11",
+      "col-span-1 min-h-28 sm:min-h-32 lg:col-span-2 lg:min-h-28",
     ],
 
     render: MailSection,
@@ -106,8 +87,7 @@ export const CONTENT: {
     target: "_blank",
     classList: [
       "flex flex-col content-center items-center border-purple-400/70  bg-purple-600/10 transition-all duration-150 hover:bg-purple-400 dark:border-purple-600 dark:hover:bg-purple-600",
-      "max-md:col-span-3 max-md:row-span-2 ",
-      "md:col-span-2 md:row-span-2 md:row-start-3 md:col-start-9",
+      "col-span-1 min-h-28 sm:min-h-32 lg:col-span-2 lg:min-h-28",
     ],
 
     render: GithubSection,
@@ -119,19 +99,25 @@ export const CONTENT: {
     target: "_blank",
     classList: [
       "flex grow flex-col flex-wrap content-center border-orange-400/70  bg-orange-600/10 transition-all duration-150 hover:bg-orange-400 dark:border-orange-600 dark:hover:bg-orange-600",
-      "max-md:col-span-3 max-md:row-span-2",
-      "md:col-span-2 md:row-span-2 md:row-start-3 md:col-start-11",
+      "col-span-1 min-h-28 sm:min-h-32 lg:col-span-2 lg:min-h-28",
     ],
 
     render: GitlabSection,
   },
   {
+    key: "About me",
+    classList: [
+      "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
+      "col-span-2 min-h-48 sm:col-span-4 sm:min-h-52 lg:col-span-4 lg:min-h-64",
+    ],
+
+    render: AboutMeSection,
+  },
+  {
     key: "FrontendSection",
     classList: [
       "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "max-md:col-span-12 max-md:row-span-2",
-      "md:col-span-6 md:row-span-1",
-      "lg:col-span-4 lg:row-span-3",
+      "col-span-2 min-h-48 sm:min-h-52 lg:col-span-4 lg:min-h-64",
     ],
 
     render: FrontendSection,
@@ -140,9 +126,7 @@ export const CONTENT: {
     key: "BackendSection",
     classList: [
       "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "max-md:col-span-12 max-md:row-span-2 ",
-      "md:col-span-6 md:row-span-1",
-      "lg:col-span-4 lg:row-span-1 lg:row-start-8 lg:col-start-9",
+      "col-span-2 min-h-48 sm:min-h-52 lg:col-span-4 lg:min-h-64",
     ],
 
     render: BackendSection,
@@ -151,21 +135,9 @@ export const CONTENT: {
     key: "Experience",
     classList: [
       "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "max-md:col-span-12 max-md:row-span-3",
-      "md:col-span-12",
-      "lg:col-span-8 lg:row-span-6 ",
+      "col-span-2 min-h-[23rem] sm:col-span-4 sm:min-h-[22rem] lg:col-span-12",
     ],
 
     render: ExperienceSection,
-  },
-  {
-    key: "Learning",
-    classList: [
-      "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "max-md:col-span-6",
-      "md:col-span-4 md:row-span-5",
-    ],
-
-    render: LearningSection,
   },
 ];
