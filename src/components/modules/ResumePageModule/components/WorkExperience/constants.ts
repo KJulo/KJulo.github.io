@@ -1,4 +1,10 @@
-import { AMAZON_WEB_SERVICES_EC2, VERCEL } from "@constants/othersStack";
+import {
+  EXPRESSJS,
+  MONGODB,
+  NODEJS,
+  POSTGRESQL,
+  PRISMA,
+} from "@constants/backendStack";
 import {
   ANT_DESIGN,
   APOLLO_CLIENT,
@@ -20,13 +26,7 @@ import {
   WEBPACK,
   ZOD,
 } from "@constants/frontendStack";
-import {
-  EXPRESSJS,
-  MONGODB,
-  NODEJS,
-  POSTGRESQL,
-  PRISMA,
-} from "@constants/backendStack";
+import { AMAZON_WEB_SERVICES_EC2, VERCEL } from "@constants/othersStack";
 
 export const TECHNOLOGIES = [
   [REACT, REACT_ROUTER, ZOD, TYPESCRIPT, AXIOS, FLOWBITE, TAILWIND, SENTRY],

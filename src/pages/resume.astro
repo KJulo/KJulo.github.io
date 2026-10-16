@@ -1,8 +1,8 @@
 ---
-import * as message from "@paraglide/messages";
-import { type Locale, overwriteGetLocale } from "@paraglide/runtime";
 import Layout from "@layouts/Layout.astro";
 import ResumeModule from "@modules/ResumePageModule/ResumeModule.astro";
+import * as message from "@paraglide/messages";
+import { type Locale, overwriteGetLocale } from "@paraglide/runtime";
 import { searchLocale } from "@utils/language";
 
 const locale = searchLocale(Astro.url.pathname);

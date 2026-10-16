@@ -1,17 +1,18 @@
-import AboutMeSection from "./components/AboutMeSection/AboutMeSection.astro";
+import LanguageSwitcher from "@commons/LanguageSwitcher/LanguageSwitcher.astro";
+import ThemeSwitcher from "@commons/ThemeSwitcher/ThemeSwitcher.astro";
 import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+
+import AboutMeSection from "./components/AboutMeSection/AboutMeSection.astro";
 import BackendSection from "./components/BackendSection/BackendSection.astro";
 import ExperienceSection from "./components/ExperienceSection/ExperienceSection.astro";
 import FrontendSection from "./components/FrontendSection/FrontendSection.astro";
 import GithubSection from "./components/GithubSection/GithubSection.astro";
 import GitlabSection from "./components/GitlabSection/GitlabSection.astro";
 import IntroductionSection from "./components/IntroductionSection/IntroductionSection.astro";
-import LanguageSwitcher from "@commons/LanguageSwitcher/LanguageSwitcher.astro";
 import LearningSection from "./components/LearningSection/LearningSection.astro";
 import LinkedinSection from "./components/LinkedinSection/LinkedinSection.astro";
 import MailSection from "./components/MailSection/MailSection.astro";
 import ProfileSection from "./components/ProfileSection/ProfileSection.astro";
-import ThemeSwitcher from "@commons/ThemeSwitcher/ThemeSwitcher.astro";
 
 export const CONTENT: {
   key: string;

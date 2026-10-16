@@ -5,12 +5,13 @@ interface Props {
 const { title } = Astro.props;
 
 import "@styles/global.css";
+import { searchLocale } from "@utils/language";
+
 import {
   type Locale,
   getLocale,
   overwriteGetLocale,
 } from "../paraglide/runtime";
-import { searchLocale } from "@utils/language";
 
 // En Paraglide v2, necesitamos sobrescribir getLocale para detectar el idioma desde la URL
 // durante el build/SSR ya que no hay integración de Astro
@@ -48,9 +49,7 @@ overwriteGetLocale(() => detectedLocale as Locale);
   </head>
   <body class="bg-gray-200 text-zinc-900 dark:bg-neutral-950 dark:text-zinc-50">
     <main class="font-sans">
-      <div
-        class="animate-fade-down animate-duration-500 animate-once animate-ease-in-out"
-      >
+      <div class="animate-fade-down animate-duration-500 animate-once animate-ease-in-out">
         <slot />
       </div>
     </main>

@@ -6,40 +6,38 @@ const { items, class: className } = Astro.props;
 
 <div
   class:list={[className]}
-  class="group/list relative flex w-full gap-4 overflow-hidden py-10 whitespace-nowrap [mask-image:_linear-gradient(to_right,_transparent_0,_white_128px,white_calc(100%-128px),_transparent_100%)]"
+  class="group/list relative flex w-full gap-4 overflow-hidden [mask-image:_linear-gradient(to_right,_transparent_0,_white_128px,white_calc(100%-128px),_transparent_100%)] py-10 whitespace-nowrap"
 >
-  {
-    [0, 1, 2].map(() => (
-      <ul class="group-hover/list:animate-stop animate-slide-left flex w-max gap-4">
-        {items.map(
-          (item: {
-            url: string;
-            title: string;
-            icon: string;
-            className: string;
-          }) => (
-            <li class="flex h-16 items-center justify-center self-center rounded-2xl bg-neutral-300/25 text-center align-middle transition-all duration-150 hover:-translate-y-1 dark:bg-neutral-800/25">
-              <a
-                href={item.url}
-                class="group/item z-20 m-auto flex h-full w-full flex-row items-center justify-center"
-                target="_blank"
-                aria-label={`${item.title}`}
-              >
-                <Tooltip text={item.title}>
-                  <div
-                    class:list={[
-                      "inline-block h-16 w-16 cursor-pointer content-center place-self-center rounded-2xl bg-neutral-300/25 text-start align-middle dark:bg-neutral-800/25",
-                      item.className,
-                    ]}
-                  >
-                    <span class="flex justify-center" set:html={item.icon} />
-                  </div>
-                </Tooltip>
-              </a>
-            </li>
-          ),
-        )}
-      </ul>
-    ))
-  }
+  {[0, 1, 2].map(() => (
+    <ul class="group-hover/list:animate-stop animate-slide-left flex w-max gap-4">
+      {items.map(
+        (item: {
+          url: string;
+          title: string;
+          icon: string;
+          className: string;
+        }) => (
+          <li class="flex h-16 items-center justify-center self-center rounded-2xl bg-neutral-300/25 text-center align-middle transition-all duration-150 hover:-translate-y-1 dark:bg-neutral-800/25">
+            <a
+              href={item.url}
+              class="group/item z-20 m-auto flex h-full w-full flex-row items-center justify-center"
+              target="_blank"
+              aria-label={`${item.title}`}
+            >
+              <Tooltip text={item.title}>
+                <div
+                  class:list={[
+                    "inline-block h-16 w-16 cursor-pointer content-center place-self-center rounded-2xl bg-neutral-300/25 text-start align-middle dark:bg-neutral-800/25",
+                    item.className,
+                  ]}
+                >
+                  <span class="flex justify-center" set:html={item.icon} />
+                </div>
+              </Tooltip>
+            </a>
+          </li>
+        ),
+      )}
+    </ul>
+  ))}
 </div>

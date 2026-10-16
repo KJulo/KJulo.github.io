@@ -1,14 +1,15 @@
-import Certification from "./components/Certification/Certification.astro";
 import CertificationIcon from "@icons/resume/Certification.svg?raw";
 import ContactIcon from "@icons/resume/Contact.svg?raw";
-import Education from "./components/Education/Education.astro";
 import EducationIcon from "@icons/resume/Education.svg?raw";
 import LanguageIcon from "@icons/resume/Language.svg?raw";
-import Languages from "./components/Languages/Languages.astro";
+import WorkIcon from "@icons/resume/Work.svg?raw";
 import type MessagesInterface from "@interfaces/MessagesInterface";
+
+import Certification from "./components/Certification/Certification.astro";
+import Education from "./components/Education/Education.astro";
+import Languages from "./components/Languages/Languages.astro";
 import PersonalInformation from "./components/PersonalInformation/PersonalInformation.astro";
 import WorkExperience from "./components/WorkExperience/WorkExperience.astro";
-import WorkIcon from "@icons/resume/Work.svg?raw";
 
 export const getSections = (messages: MessagesInterface) => [
   {

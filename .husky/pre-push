@@ -1,1 +1,1 @@
-pnpm astro check
+pnpm astro sync && pnpm exec tsc --noEmit

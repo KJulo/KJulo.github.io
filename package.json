@@ -1,50 +1,44 @@
 {
   "name": "ignacio-portfolio",
-  "type": "module",
   "version": "2.2.0",
-  "packageManager": "pnpm@9.10.0",
+  "type": "module",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "paraglide-js compile --project ./project.inlang --outdir ./src\\paraglide && astro check && astro build",
+    "build": "paraglide-js compile --project ./project.inlang --outdir ./src\\paraglide && astro sync && tsc --noEmit && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint --fix \"src/**/*.{js,ts,jsx,tsx,astro}\"",
+    "lint": "oxlint .",
+    "lint:fix": "oxlint . --fix",
     "postinstall": "paraglide-js compile --project ./project.inlang --outdir ./src\\paraglide",
     "prepare": "husky",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,mdx,astro}\"",
+    "format": "oxfmt .",
+    "format:check": "oxfmt . --check",
     "lint-staged": "lint-staged"
+  },
+  "dependencies": {
+    "@astrojs/ts-plugin": "1.10.12",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "7.4.0",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^4.3.3",
+    "tailwindcss-animated": "^2.1.0",
+    "typescript": "^7.0.2"
+  },
+  "devDependencies": {
+    "@astrojs/compiler-rs": "0.5.2",
+    "@inlang/paraglide-js": "2.28.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.0",
+    "oxfmt": "0.73.0",
+    "oxlint": "1.88.0",
+    "oxlint-tsgolint": "7.0.2004"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,mdx,astro}": [
-      "prettier --write",
-      "eslint --fix"
+      "oxfmt --write --no-error-on-unmatched-pattern",
+      "oxlint --fix --no-error-on-unmatched-pattern"
     ]
   },
-  "dependencies": {
-    "@astrojs/check": "^0.9.6",
-    "@astrojs/ts-plugin": "^1.10.6",
-    "@tailwindcss/vite": "^4.1.18",
-    "astro": "^5.16.6",
-    "eslint-config-prettier": "^10.1.8",
-    "sharp": "^0.33.5",
-    "tailwindcss": "^4.1.18",
-    "tailwindcss-animated": "^2.0.0",
-    "typescript": "^5.9.3"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.39.2",
-    "@inlang/paraglide-js": "2.7.0",
-    "@typescript-eslint/parser": "^8.50.0",
-    "astro-eslint-parser": "^1.2.2",
-    "eslint": "^9.39.2",
-    "eslint-plugin-astro": "^1.5.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "husky": "^9.1.7",
-    "lint-staged": "^15.5.2",
-    "prettier": "^3.7.4",
-    "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.6.14",
-    "typescript-eslint": "^8.50.0"
-  }
+  "packageManager": "pnpm@12.14.0"
 }

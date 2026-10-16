@@ -1,0 +1,22 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "printWidth": 80,
+  "singleQuote": false,
+  "semi": true,
+  "trailingComma": "all",
+  "astro": true,
+  "sortImports": true,
+  "sortTailwindcss": true,
+  "ignorePatterns": [
+    ".agents/**",
+    ".astro/**",
+    "dist/**",
+    "node_modules/**",
+    "project.inlang/**",
+    "src/env.d.ts",
+    "src/paraglide/**",
+    "srcparaglide/**",
+    "pnpm-lock.yaml",
+    "skills-lock.json"
+  ]
+}

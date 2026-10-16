@@ -2,8 +2,8 @@
 
 ## 📦 Dependencies
 
-- Pnpm 9.x.x
-- Node.js 22.x.x
+- Pnpm 12.x.x
+- Node.js 22.22+ (or 24.x)
 
 ## 🔧 Installing
 
@@ -29,8 +29,8 @@
 - [TailwindCSS](https://tailwindcss.com/)
 - [TailwindCSS Animated](https://www.tailwindcss-animated.com/)
 - [Paraglidejs](https://inlang.com/m/gerre34r/library-inlang-paraglideJs)
-- [Prettier](https://prettier.io/)
-- [ESLint](https://eslint.org/)
+- [Oxlint](https://oxc.rs/docs/guide/usage/linter)
+- [Oxfmt](https://oxc.rs/docs/guide/usage/formatter)
 
 ## 📝 Contributors
 
