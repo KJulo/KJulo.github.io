@@ -11,7 +11,10 @@ import { Image } from "astro:assets";
       alt="Greeting face profile"
       decoding="async"
       class="w-48"
-      loading={"eager"}
+      loading="eager"
+      fetchpriority="high"
+      width={288}
+      height={288}
     />
   </div>
   <div class="back__card">
@@ -19,8 +22,10 @@ import { Image } from "astro:assets";
       src={ProfilePicturePunch}
       alt="Punch face profile"
       class="w-48"
-      decoding={"async"}
-      loading={"eager"}
+      decoding="async"
+      loading="lazy"
+      width={288}
+      height={288}
     />
   </div>
 </div>

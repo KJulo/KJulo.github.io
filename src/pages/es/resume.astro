@@ -9,6 +9,9 @@ const locale = searchLocale(Astro.url.pathname);
 overwriteGetLocale(() => locale as Locale);
 ---
 
-<Layout title={message.resume_title()}>
+<Layout
+  title={`Ignacio Silva | ${message.resume_title()}`}
+  description="Currículum de Ignacio Silva, desarrollador Front-end de Chile, con experiencia creando aplicaciones web modernas."
+>
   <ResumeModule />
 </Layout>

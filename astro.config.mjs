@@ -14,9 +14,12 @@ export default defineConfig({
     ],
   },
   prefetch: true,
+  build: {
+    inlineStylesheets: "always",
+  },
   i18n: {
     defaultLocale: "en",
     locales: ["en", "es"],
   },
-  site: "https://KJulo.github.io",
+  site: "https://kjulo.github.io",
 });

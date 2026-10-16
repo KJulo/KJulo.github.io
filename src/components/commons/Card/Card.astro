@@ -1,7 +1,7 @@
 ---
 const { class: className, href, ariaLabel, target } = Astro.props;
 
-const hasLink = href && ariaLabel && target;
+const hasLink = Boolean(href);
 ---
 
 {hasLink ? (
@@ -13,6 +13,7 @@ const hasLink = href && ariaLabel && target;
       href={href}
       aria-label={ariaLabel}
       target={target}
+      rel={target === "_blank" ? "noopener noreferrer" : undefined}
       class="flex h-full w-full flex-col place-items-center justify-center text-center"
     >
       <slot />

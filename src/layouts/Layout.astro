@@ -1,8 +1,10 @@
 ---
 interface Props {
   title: string;
+  description: string;
+  noIndex?: boolean;
 }
-const { title } = Astro.props;
+const { title, description, noIndex = false } = Astro.props;
 
 import "@styles/global.css";
 import { searchLocale } from "@utils/language";
@@ -17,46 +19,83 @@ import {
 // durante el build/SSR ya que no hay integración de Astro
 const detectedLocale = searchLocale(Astro.url.pathname);
 overwriteGetLocale(() => detectedLocale as Locale);
+
+const siteOrigin = Astro.site?.origin ?? Astro.url.origin;
+const routePath = Astro.url.pathname.replace(/\/+$/, "") || "/";
+const localizedPath = routePath.replace(/^\/es(?=\/|$)/, "") || "/";
+const englishPath = localizedPath === "/" ? "/" : `${localizedPath}/`;
+const spanishPath = localizedPath === "/" ? "/es/" : `/es${localizedPath}/`;
+const canonicalPath = detectedLocale === "es" ? spanishPath : englishPath;
+const canonicalUrl = new URL(canonicalPath, siteOrigin);
+const profileImageUrl = new URL("/profile.webp", siteOrigin);
+const robots = noIndex ? "noindex, nofollow" : "index, follow";
 ---
 
 <!doctype html>
 <html lang={getLocale()} class="scroll-smooth">
   <head>
-    <script>
+    <script is:inline>
       function themeSwitcher() {
-        if (
-          localStorage.theme === "dark" ||
-          (!("theme" in localStorage) &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches)
-        ) {
-          localStorage.theme = "dark";
-          document.documentElement.classList.add();
-          document.documentElement.classList.add("dark");
-        } else {
-          localStorage.theme = "light";
-          document.documentElement.classList.remove("dark");
-        }
+        const savedTheme = localStorage.getItem("theme");
+        const isDark =
+          savedTheme === "dark" ||
+          (savedTheme === null &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+        document.documentElement.classList.toggle("dark", isDark);
+        document.documentElement.style.colorScheme = isDark ? "dark" : "light";
       }
       themeSwitcher();
       document.addEventListener("astro:after-swap", themeSwitcher);
     </script>
+    <style is:inline>
+      html {
+        background-color: #e5e7eb;
+      }
+
+      html.dark {
+        background-color: #0a0a0a;
+        color-scheme: dark;
+      }
+    </style>
     <meta charset="UTF-8" />
-    <meta name="description" content="Ignacio Silva portfolio" />
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/webp" href="/profile.webp" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href={new URL(englishPath, siteOrigin)}
+    />
+    <link
+      rel="alternate"
+      hreflang="es"
+      href={new URL(spanishPath, siteOrigin)}
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={new URL(englishPath, siteOrigin)}
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#e5e7eb" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={profileImageUrl} />
+    <meta
+      property="og:locale"
+      content={detectedLocale === "es" ? "es_CL" : "en_US"}
+    />
+    <meta name="twitter:card" content="summary" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
   <body class="bg-gray-200 text-zinc-900 dark:bg-neutral-950 dark:text-zinc-50">
     <main class="font-sans">
-      <div class="animate-fade-down animate-duration-500 animate-once animate-ease-in-out">
-        <slot />
-      </div>
+      <slot />
     </main>
   </body>
 </html>
-<style>
-  .dark {
-    color-scheme: dark;
-  }
-</style>
