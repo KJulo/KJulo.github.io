@@ -8,8 +8,11 @@ const { items, class: className } = Astro.props;
   class:list={[className]}
   class="group/list relative flex w-full gap-4 overflow-hidden [mask-image:_linear-gradient(to_right,_transparent_0,_white_128px,white_calc(100%-128px),_transparent_100%)] py-10 whitespace-nowrap"
 >
-  {[0, 1, 2].map(() => (
-    <ul class="animate-slide-left flex w-max gap-4 group-hover/list:[animation-play-state:paused]">
+  {[0, 1].map((loopIndex) => (
+    <ul
+      class="animate-slide-left flex w-max gap-4 group-focus-within/list:[animation-play-state:paused] group-hover/list:[animation-play-state:paused] motion-reduce:animate-none"
+      aria-hidden={loopIndex > 0 ? "true" : undefined}
+    >
       {items.map(
         (item: {
           url: string;
@@ -20,10 +23,11 @@ const { items, class: className } = Astro.props;
           <li class="flex h-16 items-center justify-center self-center rounded-2xl bg-neutral-300/25 text-center align-middle transition-all duration-150 hover:-translate-y-1 dark:bg-neutral-800/25">
             <a
               href={item.url}
-              class="group/item z-20 m-auto flex h-full w-full flex-row items-center justify-center"
+              class="group/item z-20 m-auto flex h-full w-full flex-row items-center justify-center rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-800 dark:focus-visible:outline-white"
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${item.title}`}
+              tabindex={loopIndex > 0 ? -1 : undefined}
             >
               <Tooltip text={item.title}>
                 <div

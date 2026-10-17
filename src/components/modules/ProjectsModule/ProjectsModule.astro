@@ -4,6 +4,7 @@ import { getLocale } from "@paraglide/runtime";
 
 import ProjectVisual from "./components/ProjectVisual.astro";
 
+const { sectionId = "projects", titleId = "projects-title" } = Astro.props;
 const locale = getLocale() === "es" ? "es" : "en";
 const projects = getProjects(locale);
 const sectionTitle =
@@ -15,14 +16,14 @@ const sectionDescription =
 ---
 
 <section
-  id="projects"
+  id={sectionId}
   class="mx-auto w-full max-w-[1440px] scroll-mt-6 px-4 pb-10 sm:px-6 lg:px-8 lg:pb-14"
-  aria-labelledby="projects-title"
+  aria-labelledby={titleId}
 >
   <div class="overflow-hidden rounded-3xl border-2 border-zinc-300 bg-white dark:border-neutral-700 dark:bg-neutral-900">
     <header class="border-b border-zinc-200 px-5 py-6 sm:px-8 sm:py-8 dark:border-neutral-700">
       <h2
-        id="projects-title"
+        id={titleId}
         class="text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl dark:text-white"
       >
         {sectionTitle}

@@ -5,12 +5,15 @@ const { text, class: className } = Astro.props;
 <div class="group/tooltip relative">
   <div
     class:list={[
-      "absolute bottom-1 hidden w-full pr-0.5 whitespace-nowrap group-hover/tooltip:block",
+      "pointer-events-none absolute bottom-1 z-30 hidden w-full pr-0.5 whitespace-nowrap group-focus-within/tooltip:block group-hover/tooltip:block",
       className,
     ]}
   >
     <div class="flex translate-y-full flex-col-reverse items-center justify-start">
-      <div class="cursor-default rounded-lg border-l-sky-300 bg-stone-50 px-3 py-1 text-base text-neutral-800 shadow-md dark:bg-neutral-700 dark:text-white">
+      <div
+        role="tooltip"
+        class="cursor-default rounded-lg border border-neutral-200 bg-stone-50 px-3 py-1 text-sm font-medium text-neutral-800 shadow-md dark:border-neutral-700 dark:bg-neutral-800 dark:text-white"
+      >
         {text}
       </div>
       <div class="-mb-[1px] h-0 w-0 border-r-[12px] border-b-[8px] border-l-[12px] border-r-transparent border-b-stone-50 border-l-transparent dark:border-b-neutral-700"></div>
