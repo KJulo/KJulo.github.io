@@ -22,6 +22,30 @@
   open http://localhost:4321
 ```
 
+## 🧪 Verification & Quality Checks
+
+Run the following commands to verify code quality, types, formatting, and build reproducibility:
+
+```bash
+# Typecheck (Astro components & TypeScript)
+pnpm run typecheck
+
+# Lint (oxlint)
+pnpm run lint
+
+# Format check (oxfmt)
+pnpm run format:check
+
+# Format auto-fix
+pnpm run format
+
+# Production build
+pnpm run build
+
+# Preview build locally
+pnpm run preview
+```
+
 ## 🛠️ Stack
 
 - [Astro](https://astro.build/)

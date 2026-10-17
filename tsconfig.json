@@ -1,6 +1,6 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "exclude": ["src/paraglide/messages.js", "srcparaglide/messages.js", "dist"],
+  "exclude": ["src/paraglide/messages.js", "dist"],
   "compilerOptions": {
     "plugins": [
       {

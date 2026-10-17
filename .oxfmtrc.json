@@ -15,8 +15,9 @@
     "project.inlang/**",
     "src/env.d.ts",
     "src/paraglide/**",
-    "srcparaglide/**",
     "pnpm-lock.yaml",
-    "skills-lock.json"
+    "skills-lock.json",
+    "report.html",
+    "lh-baseline*.json"
   ]
 }
