@@ -1,44 +1,240 @@
 ---
-import ThemeButton from "@commons/ThemeButton/ThemeButton.astro";
 import type { NavbarInterface } from "@interfaces/NavbarInterface";
+import { getLocale } from "@paraglide/runtime";
 
-import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher.astro";
-import Tooltip from "../Tooltip/Tooltip.astro";
+interface Props {
+  elements: NavbarInterface[];
+  ariaLabel?: string;
+}
 
-const { elements } = Astro.props;
+const { elements, ariaLabel } = Astro.props;
+const locale = getLocale();
+const defaultAriaLabel =
+  locale === "es"
+    ? "Navegación de secciones del currículum"
+    : "Resume sections navigation";
 ---
 
-<nav class="m-auto w-max">
-  <div class="flex w-max flex-col items-center gap-4">
-    <div class="mx-auto max-w-7xl rounded-full bg-neutral-300/25 py-0.5 dark:border-2 dark:border-neutral-600 dark:bg-neutral-950/25">
-      <div class="flex items-center gap-4 px-4 py-4 lg:py-2">
-        {elements.map((element: NavbarInterface) => (
-          <a
-            href={`#${element.id}`}
-            aria-label={element.title}
-            class="block cursor-pointer rounded-full px-2 py-2 text-base font-medium text-black transition-all hover:bg-white dark:text-white dark:hover:bg-neutral-800"
-          >
-            <p class="hidden lg:block">{element.title}</p>
-            <Tooltip text={element.title} class="translate-y-4">
-              <span
-                class:list={[
-                  "flex h-6 w-6 flex-col place-items-center justify-center lg:hidden",
-                  element.iconClassname,
-                ]}
-                set:html={element.icon}
-              />
-            </Tooltip>
-          </a>
-        ))}
-      </div>
-    </div>
-    <div class="dark:hover:bg-neutral-80 flex flex-row rounded-full bg-neutral-300/45 px-4 py-0.5 dark:border-2 dark:border-neutral-600 dark:bg-neutral-950/45">
-      <div class="flex flex-col self-center rounded-full">
-        <ThemeButton />
-      </div>
-      <div class="flex flex-col rounded-full">
-        <LanguageSwitcher textSize="text-xl" />
-      </div>
-    </div>
+<nav
+  class="flex w-full justify-center"
+  aria-label={ariaLabel ?? defaultAriaLabel}
+>
+  <div
+    id="resume-navbar-container"
+    class="inline-flex max-w-full scrollbar-none items-center gap-1 overflow-x-auto rounded-full border border-zinc-300/80 bg-white/85 p-1.5 shadow-sm backdrop-blur-md dark:border-neutral-700/80 dark:bg-neutral-900/85"
+  >
+    {elements.map((element: NavbarInterface, index: number) => (
+      <a
+        href={`#${element.id}`}
+        data-nav-item
+        data-section={element.id}
+        class:list={[
+          "group flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium whitespace-nowrap transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-800 sm:text-sm dark:focus-visible:outline-white",
+          index === 0
+            ? "is-active bg-zinc-900 font-semibold text-white shadow-xs dark:bg-white dark:text-zinc-900"
+            : "text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-neutral-800 dark:hover:text-zinc-100",
+        ]}
+        aria-current={index === 0 ? "true" : undefined}
+      >
+        <span
+          class:list={[
+            "flex size-4 shrink-0 items-center justify-center [&>svg]:!h-3.5 [&>svg]:!w-3.5 [&>svg]:transition-colors sm:[&>svg]:!h-4 sm:[&>svg]:!w-4",
+            element.iconClassname,
+          ]}
+          set:html={element.icon}
+        />
+        <span>{element.title}</span>
+      </a>
+    ))}
   </div>
 </nav>
+
+<style>
+  /* Ocultar barra de scroll en navegadores WebKit y Firefox */
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<script>
+  function setupScrollSpy() {
+    const navItems =
+      document.querySelectorAll<HTMLAnchorElement>("[data-nav-item]");
+    const navContainer = document.getElementById("resume-navbar-container");
+    if (!navItems.length) return;
+
+    const sections: HTMLElement[] = [];
+    navItems.forEach((item) => {
+      const sectionId = item.getAttribute("data-section");
+      if (sectionId) {
+        const el = document.getElementById(sectionId);
+        if (el) sections.push(el);
+      }
+    });
+
+    if (!sections.length) return;
+
+    const activeClasses = [
+      "is-active",
+      "bg-zinc-900",
+      "text-white",
+      "shadow-xs",
+      "dark:bg-white",
+      "dark:text-zinc-900",
+      "font-semibold",
+    ];
+    const inactiveClasses = [
+      "text-zinc-600",
+      "hover:bg-zinc-100",
+      "hover:text-zinc-900",
+      "dark:text-zinc-400",
+      "dark:hover:bg-neutral-800",
+      "dark:hover:text-zinc-100",
+    ];
+
+    let currentActiveId = sections[0].id;
+    let isClicking = false;
+    let clickTimeout: ReturnType<typeof setTimeout> | null = null;
+
+    function scrollNavToItem(item: HTMLAnchorElement) {
+      if (navContainer && navContainer.scrollWidth > navContainer.clientWidth) {
+        const itemLeft = item.offsetLeft;
+        const itemWidth = item.offsetWidth;
+        const containerWidth = navContainer.clientWidth;
+        const targetScrollLeft = itemLeft - containerWidth / 2 + itemWidth / 2;
+        navContainer.scrollTo({
+          left: targetScrollLeft,
+          behavior: "smooth",
+        });
+      }
+    }
+
+    function setActive(activeId: string, scrollNav = true) {
+      if (currentActiveId === activeId) return;
+      currentActiveId = activeId;
+
+      navItems.forEach((item) => {
+        const isCurrent = item.getAttribute("data-section") === activeId;
+        if (isCurrent) {
+          item.classList.remove(...inactiveClasses);
+          item.classList.add(...activeClasses);
+          item.setAttribute("aria-current", "true");
+          if (scrollNav) {
+            scrollNavToItem(item);
+          }
+        } else {
+          item.classList.remove(...activeClasses);
+          item.classList.add(...inactiveClasses);
+          item.removeAttribute("aria-current");
+        }
+      });
+    }
+
+    function updateActiveSection() {
+      if (isClicking) return;
+
+      const scrollBottom = window.innerHeight + window.scrollY;
+      const totalHeight = document.documentElement.scrollHeight;
+
+      // 1. Si estamos en el fondo absoluto de la página (últimos 20px)
+      if (scrollBottom >= totalHeight - 20) {
+        const lastSection = sections[sections.length - 1];
+        if (lastSection) {
+          setActive(lastSection.id, true);
+          return;
+        }
+      }
+
+      // 2. Línea de lectura óptima: justo debajo del sticky header (~180px - 220px)
+      const readingLine = 200;
+
+      // Buscar si alguna sección contiene la línea de lectura [top <= readingLine < bottom]
+      for (let i = 0; i < sections.length; i++) {
+        const rect = sections[i].getBoundingClientRect();
+        if (rect.top <= readingLine && rect.bottom > readingLine) {
+          setActive(sections[i].id, true);
+          return;
+        }
+      }
+
+      // 3. Si estamos antes de la primera sección (arriba del todo)
+      const firstRect = sections[0].getBoundingClientRect();
+      if (firstRect.top > readingLine) {
+        setActive(sections[0].id, true);
+        return;
+      }
+
+      // 4. Si la última sección ya está visible en la parte baja y no hay más scroll posible
+      const lastSection = sections[sections.length - 1];
+      const lastRect = lastSection.getBoundingClientRect();
+      if (lastRect.top <= window.innerHeight * 0.7) {
+        setActive(lastSection.id, true);
+        return;
+      }
+
+      // 5. Fallback: la sección más cercana a la línea de lectura
+      let closestSection = sections[0];
+      let minDistance = Infinity;
+      for (let i = 0; i < sections.length; i++) {
+        const rect = sections[i].getBoundingClientRect();
+        const dist = Math.abs(rect.top - readingLine);
+        if (dist < minDistance) {
+          minDistance = dist;
+          closestSection = sections[i];
+        }
+      }
+      if (closestSection) {
+        setActive(closestSection.id, true);
+      }
+    }
+
+    let isTicking = false;
+    const onScroll = () => {
+      if (!isTicking) {
+        window.requestAnimationFrame(() => {
+          updateActiveSection();
+          isTicking = false;
+        });
+        isTicking = true;
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    // Actualización inmediata al hacer clic en un enlace de la navbar
+    navItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        const sectionId = item.getAttribute("data-section");
+        if (sectionId) {
+          isClicking = true;
+          if (clickTimeout) clearTimeout(clickTimeout);
+          setActive(sectionId, true);
+          clickTimeout = setTimeout(() => {
+            isClicking = false;
+            updateActiveSection();
+          }, 800);
+        }
+      });
+    });
+
+    // Comprobación inicial de posición
+    updateActiveSection();
+
+    // Limpieza al desmontar / cambiar de página en Astro
+    document.addEventListener(
+      "astro:before-swap",
+      () => {
+        window.removeEventListener("scroll", onScroll);
+        if (clickTimeout) clearTimeout(clickTimeout);
+      },
+      { once: true },
+    );
+  }
+
+  setupScrollSpy();
+  document.addEventListener("astro:after-swap", setupScrollSpy);
+</script>

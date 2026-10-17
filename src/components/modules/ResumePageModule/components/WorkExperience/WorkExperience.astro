@@ -28,7 +28,7 @@ const EXPERIENCES = createExperienceList(
         >
           <div class="flex flex-row gap-2 text-slate-900 dark:text-white">
             <p class="text-xl font-bold">{experience.COMPANY}</p>
-            <p class="text-xl font-thin text-slate-600 dark:text-slate-400">
+            <p class="text-xl font-medium text-slate-700 dark:text-slate-300">
               <time datetime={experience.DATE_START_RAW}>
                 {experience.DATE_START}
               </time>
@@ -47,12 +47,11 @@ const EXPERIENCES = createExperienceList(
         <h3 class="text-xl">{message.technologies()}:</h3>
         <ul class="group/list flex flex-row flex-wrap gap-4">
           {TECHNOLOGIES[index].map((technology) => (
-            <li class="group/items my-2.5 flex h-16 items-center justify-center self-center rounded-2xl bg-neutral-300/25 text-center align-middle transition-all hover:-translate-y-1 dark:bg-neutral-800/25">
+            <li class="group/items my-2.5 flex h-16 items-center justify-center self-center rounded-2xl bg-neutral-300/25 text-center align-middle transition-all hover:-translate-y-1 motion-reduce:hover:translate-none dark:bg-neutral-800/25">
               <a
                 href={technology.url}
                 class:list={[
-                  "z-20 m-auto flex h-full w-full flex-row items-center justify-center",
-                  `group/items`,
+                  "group/items z-20 m-auto flex h-full w-full flex-row items-center justify-center rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-800 dark:focus-visible:outline-white",
                 ]}
                 target="_blank"
                 rel="noopener noreferrer"
