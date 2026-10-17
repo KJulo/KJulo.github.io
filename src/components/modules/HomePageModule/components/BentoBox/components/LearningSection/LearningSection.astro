@@ -16,13 +16,16 @@ import * as message from "@paraglide/messages";
     href={GOLANG.url}
     target="_blank"
     rel="noopener noreferrer"
-    class="m-auto w-fit"
-    aria-label={`${GOLANG.title} icon`}
+    class="m-auto flex flex-col items-center gap-2 rounded-2xl p-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-800 dark:focus-visible:outline-white"
+    aria-label={`${GOLANG.title}`}
   >
     <Tooltip text={GOLANG.title}>
-      <div class="inline-block h-16 w-16 cursor-pointer content-center place-self-center rounded-2xl bg-neutral-300/25 p-4 text-start align-middle transition-all duration-150 hover:-translate-y-1 dark:bg-neutral-800">
+      <div class="inline-block h-16 w-16 cursor-pointer content-center place-self-center rounded-2xl bg-neutral-300/25 p-4 text-start align-middle transition-all duration-150 hover:-translate-y-1 motion-reduce:hover:translate-none dark:bg-neutral-800">
         <span set:html={GOLANG.icon} />
       </div>
     </Tooltip>
+    <span class="text-xs font-semibold text-zinc-700 dark:text-neutral-300">
+      {GOLANG.title}
+    </span>
   </a>
 </div>

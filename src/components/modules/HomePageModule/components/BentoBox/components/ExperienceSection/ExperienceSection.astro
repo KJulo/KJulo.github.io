@@ -1,7 +1,5 @@
 ---
-import Hyperlink from "@commons/Hyperlink/Hyperlink.astro";
 import Tag from "@components/commons/Tag/Tag.astro";
-import { LANGUAGE_CODE } from "@constants/language";
 import RedirectIcon from "@icons/Redirect.svg?raw";
 import type MessagesInterface from "@interfaces/MessagesInterface";
 import * as message from "@paraglide/messages";
@@ -13,14 +11,9 @@ import { createExperienceList } from "./utils";
 const EXPERIENCES = createExperienceList(
   message as unknown as MessagesInterface,
 );
-const lang = getLocale();
-const width =
-  lang === LANGUAGE_CODE.ENGLISH
-    ? "group-hover/experience:w-28"
-    : "group-hover/experience:w-24";
 ---
 
-<div class="group/experience flex h-full flex-col content-start gap-4 p-4">
+<div class="flex h-full flex-col content-start gap-4 p-4">
   <Tag color="yellow" text={message.experience_tag()} class="self-start" />
   <ul class="flex flex-col gap-4">
     {EXPERIENCES.map((experience, index) => (
@@ -44,45 +37,17 @@ const width =
       </li>
     ))}
   </ul>
-  <Hyperlink
+  <a
     href={localizePathname("/resume", getLocale())}
-    target=""
-    class="mt-auto w-fit self-end"
-    ariaLabel={message.experience_action_aria_label()}
+    aria-label={message.experience_action_aria_label()}
+    data-astro-prefetch="viewport"
+    class="group mt-auto inline-flex items-center gap-2 self-end rounded-xl bg-zinc-900 px-4 py-2 text-sm font-semibold text-white shadow-xs transition-all hover:bg-zinc-800 hover:shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 active:scale-[0.98] dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200 dark:focus-visible:outline-white"
   >
-    <div
-      class:list={[
-        "transition-width flex h-6 w-6 flex-row justify-end gap-1 overflow-hidden duration-200",
-        width,
-      ]}
-    >
-      <p class="hidden overflow-hidden group-hover/experience:block">
-        {message.experience_action()}
-      </p>
-      <span
-        set:html={RedirectIcon}
-        class="relative self-end stroke-black dark:stroke-white"
-      />
-    </div>
-  </Hyperlink>
-  <style>
-    /* hide and show the text */
-    .group-hover .hidden {
-      opacity: 0;
-      transform: translateX(100%);
-      transition: all 0.3s ease-in-out;
-      transition-property: opacity, transform;
-      transition-delay: 0.2s;
-      transition-duration: 0.3s;
-      transition-timing-function: ease-in-out;
-      will-change: opacity, transform;
-      width: 0;
-      z-index: -1;
-      overflow: hidden;
-    }
-
-    .group-hover:hover .hidden {
-      opacity: 1;
-    }
-  </style>
+    <span>{message.experience_action()}</span>
+    <span
+      set:html={RedirectIcon}
+      class="inline-flex size-4 shrink-0 items-center justify-center stroke-current transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:group-hover:translate-none [&>svg]:size-full [&>svg]:stroke-current"
+      aria-hidden="true"
+    />
+  </a>
 </div>
