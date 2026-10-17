@@ -15,7 +15,7 @@ export default defineConfig({
   },
   prefetch: true,
   build: {
-    inlineStylesheets: "always",
+    inlineStylesheets: "auto",
   },
   i18n: {
     defaultLocale: "en",
