@@ -1,14 +1,17 @@
 ---
-import * as message from "@paraglide/messages";
-import { type Locale, overwriteGetLocale } from "@paraglide/runtime";
 import Layout from "@layouts/Layout.astro";
 import ResumeModule from "@modules/ResumePageModule/ResumeModule.astro";
+import * as message from "@paraglide/messages";
+import { type Locale, overwriteGetLocale } from "@paraglide/runtime";
 import { searchLocale } from "@utils/language";
 
 const locale = searchLocale(Astro.url.pathname);
 overwriteGetLocale(() => locale as Locale);
 ---
 
-<Layout title={message.resume_title()}>
+<Layout
+  title={`Ignacio Silva | ${message.resume_title()}`}
+  description="Resume of Ignacio Silva, software developer from Chile, with experience building modern web applications."
+>
   <ResumeModule />
 </Layout>

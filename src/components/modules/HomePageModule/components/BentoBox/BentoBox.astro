@@ -1,19 +1,18 @@
 ---
-import { CONTENT } from "./constants";
 import Card from "@commons/Card/Card.astro";
+
+import { CONTENT } from "./constants";
 ---
 
-<div class="grid auto-rows-min grid-cols-12 gap-4">
-  {
-    CONTENT.map((content) => (
-      <Card
-        href={content.href}
-        ariaLabel={content.ariaLabel}
-        target={content.target}
-        class:list={[...content.classList]}
-      >
-        {<content.render />}
-      </Card>
-    ))
-  }
+<div class="grid grid-flow-row-dense grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6 lg:grid-cols-12 lg:gap-6">
+  {CONTENT.map((content) => (
+    <Card
+      href={content.href}
+      ariaLabel={content.ariaLabel}
+      target={content.target}
+      class:list={[...content.classList]}
+    >
+      {<content.render />}
+    </Card>
+  ))}
 </div>

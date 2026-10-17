@@ -1,7 +1,7 @@
 export interface NavbarInterface {
   title: string;
   id: string;
-  render: HTMLElement;
-  icon: HTMLElement;
+  render?: any;
+  icon: string;
   iconClassname?: string;
 }

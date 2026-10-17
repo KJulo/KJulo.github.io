@@ -1,0 +1,22 @@
+---
+import { getProject, PROJECT_SLUGS } from "@data/projects";
+import Layout from "@layouts/Layout.astro";
+import ProjectDetailModule from "@modules/ProjectsModule/ProjectDetailModule.astro";
+
+export function getStaticPaths() {
+  return PROJECT_SLUGS.map((slug) => ({ params: { slug } }));
+}
+
+const project = getProject("en", Astro.params.slug ?? "");
+
+if (!project) {
+  throw new Error("Project not found");
+}
+---
+
+<Layout
+  title={`${project.title} | Ignacio Silva`}
+  description={project.context}
+>
+  <ProjectDetailModule project={project} />
+</Layout>

@@ -1,17 +1,11 @@
-import AboutMeSection from "./components/AboutMeSection/AboutMeSection.astro";
 import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+
+import AboutMeSection from "./components/AboutMeSection/AboutMeSection.astro";
 import BackendSection from "./components/BackendSection/BackendSection.astro";
 import ExperienceSection from "./components/ExperienceSection/ExperienceSection.astro";
 import FrontendSection from "./components/FrontendSection/FrontendSection.astro";
-import GithubSection from "./components/GithubSection/GithubSection.astro";
-import GitlabSection from "./components/GitlabSection/GitlabSection.astro";
 import IntroductionSection from "./components/IntroductionSection/IntroductionSection.astro";
-import LanguageSwitcher from "@commons/LanguageSwitcher/LanguageSwitcher.astro";
-import LearningSection from "./components/LearningSection/LearningSection.astro";
-import LinkedinSection from "./components/LinkedinSection/LinkedinSection.astro";
-import MailSection from "./components/MailSection/MailSection.astro";
 import ProfileSection from "./components/ProfileSection/ProfileSection.astro";
-import ThemeSwitcher from "@commons/ThemeSwitcher/ThemeSwitcher.astro";
 
 export const CONTENT: {
   key: string;
@@ -22,149 +16,51 @@ export const CONTENT: {
   target?: string;
 }[] = [
   {
-    key: "Profile",
-    classList: [
-      "flex border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "max-md:col-span-12 max-md:row-span-12 ",
-      "md:col-span-4 md:row-start-1 md:col-start-1 md:row-span-4",
-    ],
-
-    render: ProfileSection,
-  },
-  {
-    key: "ThemeSwitcher",
-    classList: [
-      "flex border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "max-md:col-span-6 max-md:row-span-12",
-      "md:col-span-4 md:row-start-1 md:col-start-5 md:row-span-2",
-    ],
-
-    render: ThemeSwitcher,
-  },
-  {
-    key: "Language Switcher",
-    classList: [
-      "flex border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "max-md:col-span-6 max-md:row-span-12",
-      "md:col-span-4 md:row-start-3 md:col-start-5 md:row-span-2",
-    ],
-    render: LanguageSwitcher,
-  },
-  {
     key: "Introduction",
     classList: [
-      "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "max-md:col-span-12 max-md:row-span-2",
-      "md:col-span-6",
-      "lg:col-span-4 lg:row-span-3",
+      "border-zinc-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
+      "col-span-2 min-h-[22rem] sm:col-span-4 sm:min-h-[24rem] lg:col-span-8 lg:row-span-2 lg:min-h-[28rem]",
     ],
-
     render: IntroductionSection,
+  },
+  {
+    key: "Profile",
+    classList: [
+      "hidden lg:flex border-zinc-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
+      "lg:col-span-4 lg:min-h-56",
+    ],
+    render: ProfileSection,
   },
   {
     key: "About me",
     classList: [
-      "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "max-md:col-span-12 max-md:row-span-2",
-      "md:col-span-6",
-      "lg:col-span-4 lg:row-span-3",
+      "border-zinc-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
+      "col-span-2 min-h-36 sm:col-span-4 lg:col-span-4 lg:min-h-48",
     ],
-
     render: AboutMeSection,
   },
   {
-    href: "https://www.linkedin.com/in/ignaciosilvae/",
-    ariaLabel: "LinkedIn",
-    target: "_blank",
-    key: "LinkedInSection",
+    key: "Experience",
     classList: [
-      "group flex h-full flex-col items-center border-blue-400/70  bg-blue-600/10 transition-all duration-150 hover:bg-blue-400 dark:border-blue-600 dark:hover:bg-blue-600",
-      "max-md:col-span-3 max-md:row-span-2 ",
-      "md:col-span-2 md:row-span-2 md:row-start-1 md:col-start-9",
+      "border-zinc-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
+      "col-span-2 min-h-[23rem] sm:col-span-4 sm:min-h-[22rem] lg:col-span-12",
     ],
-
-    render: LinkedinSection,
-  },
-  {
-    key: "Mail",
-    href: "mailto:ignacio.silva.e@gmail.com",
-    ariaLabel: "Mail",
-    target: "_blank",
-    classList: [
-      "flex flex-col flex-wrap content-center border-red-400/70 bg-red-600/10 transition-all duration-150 hover:bg-red-400 dark:border-red-600 dark:hover:bg-red-600",
-      "max-md:col-span-3 max-md:row-span-2 ",
-      "md:col-span-2 md:row-span-2 md:row-start-1 md:col-start-11",
-    ],
-
-    render: MailSection,
-  },
-  {
-    key: "Github",
-    href: "https://github.com/KJulo",
-    ariaLabel: "Github",
-    target: "_blank",
-    classList: [
-      "flex flex-col content-center items-center border-purple-400/70  bg-purple-600/10 transition-all duration-150 hover:bg-purple-400 dark:border-purple-600 dark:hover:bg-purple-600",
-      "max-md:col-span-3 max-md:row-span-2 ",
-      "md:col-span-2 md:row-span-2 md:row-start-3 md:col-start-9",
-    ],
-
-    render: GithubSection,
-  },
-  {
-    key: "Gitlab",
-    href: "https://gitlab.com/isilva3",
-    ariaLabel: "Gitlab",
-    target: "_blank",
-    classList: [
-      "flex grow flex-col flex-wrap content-center border-orange-400/70  bg-orange-600/10 transition-all duration-150 hover:bg-orange-400 dark:border-orange-600 dark:hover:bg-orange-600",
-      "max-md:col-span-3 max-md:row-span-2",
-      "md:col-span-2 md:row-span-2 md:row-start-3 md:col-start-11",
-    ],
-
-    render: GitlabSection,
+    render: ExperienceSection,
   },
   {
     key: "FrontendSection",
     classList: [
-      "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "max-md:col-span-12 max-md:row-span-2",
-      "md:col-span-6 md:row-span-1",
-      "lg:col-span-4 lg:row-span-3",
+      "border-zinc-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
+      "col-span-2 min-h-44 sm:col-span-2 lg:col-span-6",
     ],
-
     render: FrontendSection,
   },
   {
     key: "BackendSection",
     classList: [
-      "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "max-md:col-span-12 max-md:row-span-2 ",
-      "md:col-span-6 md:row-span-1",
-      "lg:col-span-4 lg:row-span-1 lg:row-start-8 lg:col-start-9",
+      "border-zinc-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
+      "col-span-2 min-h-44 sm:col-span-2 lg:col-span-6",
     ],
-
     render: BackendSection,
-  },
-  {
-    key: "Experience",
-    classList: [
-      "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "max-md:col-span-12 max-md:row-span-3",
-      "md:col-span-12",
-      "lg:col-span-8 lg:row-span-6 ",
-    ],
-
-    render: ExperienceSection,
-  },
-  {
-    key: "Learning",
-    classList: [
-      "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
-      "max-md:col-span-6",
-      "md:col-span-4 md:row-span-5",
-    ],
-
-    render: LearningSection,
   },
 ];

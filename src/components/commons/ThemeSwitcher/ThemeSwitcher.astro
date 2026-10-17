@@ -1,14 +1,15 @@
 ---
 import MoonIcon from "@icons/Moon.svg?raw";
 import SunIcon from "@icons/Sun.svg?raw";
+import * as message from "@paraglide/messages";
 ---
 
 <button
   transition:persist
   type="button"
-  class="m-auto flex cursor-pointer flex-row gap-8 rounded-full bg-amber-200/70 p-1 dark:bg-sky-600/30"
+  class="m-auto flex cursor-pointer flex-row gap-3 rounded-full bg-amber-200/70 p-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-800 sm:gap-5 dark:bg-sky-600/30 dark:focus-visible:outline-white"
   id="theme-selector-switch"
-  aria-label="Cambiar tema"
+  aria-label={message.theme_switcher_aria_label()}
 >
   <svg
     id="sun-icon-switch"
@@ -30,7 +31,8 @@ import SunIcon from "@icons/Sun.svg?raw";
     transition: background-color 0.5s;
   }
   #theme-selector-switch:focus-visible {
-    outline: none;
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
   }
 
   .moon-icon-switch {

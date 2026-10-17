@@ -1,0 +1,119 @@
+---
+import { getProjectHref, getProjects } from "@data/projects";
+import { getLocale } from "@paraglide/runtime";
+
+import ProjectVisual from "./components/ProjectVisual.astro";
+
+interface Props {
+  sectionId?: string;
+  titleId?: string;
+  class?: string;
+}
+
+const {
+  sectionId = "projects",
+  titleId = "projects-title",
+  class: className = "",
+} = Astro.props;
+const locale = getLocale() === "es" ? "es" : "en";
+const projects = getProjects(locale);
+const sectionTitle =
+  locale === "es" ? "Proyectos destacados" : "Selected projects";
+const sectionDescription =
+  locale === "es"
+    ? "Casos de producto que muestran cómo abordo problemas, decisiones y resultados."
+    : "Product cases that show how I approach problems, decisions, and outcomes.";
+---
+
+<section
+  id={sectionId}
+  class:list={["scroll-mt-20", className]}
+  aria-labelledby={titleId}
+>
+  <div class="overflow-hidden rounded-3xl border-2 border-zinc-300 bg-white dark:border-neutral-700 dark:bg-neutral-900">
+    <header class="border-b border-zinc-200 px-5 py-6 sm:px-8 sm:py-8 dark:border-neutral-700">
+      <h2
+        id={titleId}
+        class="text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl dark:text-white"
+      >
+        {sectionTitle}
+      </h2>
+      <p class="mt-2 max-w-2xl leading-6 text-zinc-600 dark:text-neutral-300">
+        {sectionDescription}
+      </p>
+    </header>
+
+    <div>
+      {projects.map((project, index) => (
+        <article
+          class:list={[
+            "grid gap-5 p-5 sm:p-8 lg:grid-cols-[minmax(17rem,0.72fr)_minmax(0,1fr)] lg:gap-10",
+            index > 0 && "border-t border-zinc-200 dark:border-neutral-700",
+          ]}
+        >
+          <ProjectVisual project={project} compact />
+          <div class="flex min-w-0 flex-col items-start text-left">
+            <div class="flex flex-wrap items-center gap-2 text-sm text-zinc-500 dark:text-neutral-400">
+              <span>{project.label}</span>
+              {project.isNda && (
+                <span class="rounded-full border border-zinc-300 px-2 py-0.5 text-xs font-medium text-zinc-600 dark:border-neutral-600 dark:text-neutral-300">
+                  {project.ndaLabel}
+                </span>
+              )}
+            </div>
+            <h3 class="mt-2 text-xl font-semibold tracking-tight text-zinc-950 sm:text-2xl dark:text-white">
+              {project.title}
+            </h3>
+            <p class="mt-1 text-sm text-zinc-500 dark:text-neutral-400">
+              {project.organization}
+            </p>
+
+            <dl class="mt-5 grid w-full gap-4 sm:grid-cols-2">
+              <div>
+                <dt class="text-sm font-semibold text-zinc-950 dark:text-white">
+                  {project.contextLabel}
+                </dt>
+                <dd class="mt-1 text-sm leading-6 text-zinc-600 dark:text-neutral-300">
+                  {project.context}
+                </dd>
+              </div>
+              <div>
+                <dt class="text-sm font-semibold text-zinc-950 dark:text-white">
+                  {project.roleLabel}
+                </dt>
+                <dd class="mt-1 text-sm leading-6 text-zinc-600 dark:text-neutral-300">
+                  {project.role}
+                </dd>
+              </div>
+              <div class="sm:col-span-2">
+                <dt class="text-sm font-semibold text-zinc-950 dark:text-white">
+                  {project.technologiesLabel}
+                </dt>
+                <dd class="mt-2 flex flex-wrap gap-2">
+                  {project.technologies.map((technology) => (
+                    <span class="rounded-full bg-zinc-100 px-2.5 py-1 text-xs font-medium text-zinc-700 dark:bg-neutral-800 dark:text-neutral-200">
+                      {technology}
+                    </span>
+                  ))}
+                </dd>
+              </div>
+            </dl>
+
+            <p class="mt-5 border-l-2 border-violet-500 pl-3 text-sm leading-6 text-zinc-700 dark:text-neutral-200">
+              <span class="font-semibold text-zinc-950 dark:text-white">
+                {project.resultLabel}.{" "}
+              </span>
+              {project.result}
+            </p>
+            <a
+              href={getProjectHref(project.slug, locale)}
+              class="mt-6 inline-flex min-h-11 items-center rounded-xl bg-zinc-900 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-zinc-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200 dark:focus-visible:outline-white"
+            >
+              {project.detailLabel}
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

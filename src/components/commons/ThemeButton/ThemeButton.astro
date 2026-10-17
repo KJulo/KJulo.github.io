@@ -1,103 +1,95 @@
 ---
 import MoonIcon from "@icons/Moon.svg?raw";
 import SunIcon from "@icons/Sun.svg?raw";
+import * as message from "@paraglide/messages";
 ---
 
 <button
   transition:persist
   type="button"
-  class="flex h-10 w-10 cursor-pointer flex-row gap-8 rounded-full bg-amber-200/70 dark:bg-sky-600/30"
+  class="relative flex size-8 cursor-pointer items-center justify-center rounded-full border border-zinc-300 bg-white/80 text-zinc-700 shadow-xs transition-colors hover:bg-zinc-100 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-800 sm:size-9 dark:border-neutral-700 dark:bg-neutral-900/80 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-white dark:focus-visible:outline-white"
   id="theme-selector-button"
-  aria-label="Cambiar tema"
+  aria-label={message.theme_switcher_aria_label()}
 >
-  <svg
+  <span
     id="sun-icon-button"
-    class:list={[
-      "absolute h-10 w-10 rounded-full bg-yellow-400 p-2 text-white dark:bg-transparent dark:text-transparent",
-    ]}
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 flex scale-100 rotate-0 items-center justify-center text-amber-500 opacity-100 transition-all duration-300 ease-in-out dark:scale-0 dark:-rotate-90 dark:opacity-0 [&>svg]:size-4 sm:[&>svg]:size-4.5"
     set:html={SunIcon}
   />
-  <svg
+  <span
     id="moon-icon-button"
-    class:list={[
-      "absolute h-10 w-10 rounded-full p-2 text-transparent dark:bg-sky-400 dark:text-white",
-    ]}
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 flex scale-0 rotate-90 items-center justify-center text-sky-400 opacity-0 transition-all duration-300 ease-in-out dark:scale-100 dark:rotate-0 dark:opacity-100 [&>svg]:size-4 sm:[&>svg]:size-4.5"
     set:html={MoonIcon}
   />
 </button>
-<style>
-  #theme-selector-button {
-    transition: background-color 0.5s;
-  }
-  #theme-selector-button:focus-visible {
-    outline: none;
-  }
 
-  .moon-icon-button {
-    animation: spin 0.5s cubic-bezier(0, 0, 0.2, 1) forwards;
-    animation-name: moveLeft;
-  }
-  .sun-icon-button {
-    animation: spin 0.5s cubic-bezier(0, 0, 0.2, 1) forwards;
-    animation-name: moveRight;
-  }
-  @keyframes moveRight {
-    0% {
-      transform: translateX(0%) rotate(360deg);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0%);
-      opacity: 1;
-    }
-  }
-  @keyframes moveLeft {
-    0% {
-      opacity: 0;
-      transform: translateX(0%) rotate(-360deg);
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0%);
-    }
-  }
-</style>
 <script>
-  function getIconsTheme() {
-    const moonIcon = document.getElementById("moon-icon-button");
-    const sunIcon = document.getElementById("sun-icon-button");
-    return { sunIcon, moonIcon };
-  }
-  function themeLight() {
-    localStorage.theme = "light";
-    const { sunIcon, moonIcon } = getIconsTheme();
-    if (sunIcon && moonIcon) {
-      sunIcon.classList.add("sun-icon-button");
-      moonIcon.classList.remove("moon-icon-button");
-    }
-    document.documentElement.classList.remove("dark");
-  }
+  function toggleTheme(event?: MouseEvent) {
+    const isDark = document.documentElement.classList.contains("dark");
+    const nextTheme = isDark ? "light" : "dark";
 
-  function themeDark() {
-    localStorage.theme = "dark";
-    const { sunIcon, moonIcon } = getIconsTheme();
-    if (sunIcon && moonIcon) {
-      moonIcon.classList.add("moon-icon-button");
-      sunIcon.classList.remove("sun-icon-button");
+    const applyTheme = () => {
+      localStorage.theme = nextTheme;
+      document.documentElement.classList.toggle("dark", nextTheme === "dark");
+      document.documentElement.style.colorScheme = nextTheme;
+    };
+
+    const isAppearanceTransition =
+      typeof document.startViewTransition === "function" &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!isAppearanceTransition || !event) {
+      applyTheme();
+      return;
     }
-    document.documentElement.classList.add("dark");
+
+    const x = event.clientX;
+    const y = event.clientY;
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y),
+    );
+
+    document.documentElement.classList.add("theme-transition");
+    const transition = document.startViewTransition(() => {
+      applyTheme();
+    });
+
+    transition.ready
+      .then(() => {
+        document.documentElement.animate(
+          {
+            clipPath: [
+              `circle(0px at ${x}px ${y}px)`,
+              `circle(${endRadius}px at ${x}px ${y}px)`,
+            ],
+          },
+          {
+            duration: 450,
+            easing: "ease-in-out",
+            pseudoElement: "::view-transition-new(root)",
+          },
+        );
+      })
+      .catch(() => {
+        // Fallback si la animación del pseudoelemento no es soportada
+      });
+
+    transition.finished.finally(() => {
+      document.documentElement.classList.remove("theme-transition");
+    });
   }
 
   function init() {
-    document
-      .getElementById("theme-selector-button")
-      ?.addEventListener("click", () => {
-        if (localStorage.theme === "dark") {
-          themeLight();
-        } else {
-          themeDark();
-        }
-      });
+    const button = document.getElementById("theme-selector-button");
+    if (!button || button.dataset.listenerAttached === "true") return;
+
+    button.dataset.listenerAttached = "true";
+    button.addEventListener("click", (e) => {
+      toggleTheme(e as MouseEvent);
+    });
   }
 
   init();

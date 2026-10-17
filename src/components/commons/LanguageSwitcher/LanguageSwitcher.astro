@@ -1,97 +1,61 @@
 ---
-import * as message from "@paraglide/messages";
-import { type Locale, getLocale } from "@paraglide/runtime";
 import { LANGUAGE_CODE } from "@constants/language";
-import Tooltip from "../Tooltip/Tooltip.astro";
+import * as message from "@paraglide/messages";
+import { getLocale } from "@paraglide/runtime";
 import { switchLanguage } from "@utils/language";
-
-const { textSize } = Astro.props;
 
 const currentPath = `${Astro.url.pathname}`;
 const lang = getLocale();
-const switchPathname = switchLanguage(currentPath, lang as Locale);
 
 const isSpanishSelected = lang === LANGUAGE_CODE.SPANISH;
 const isEnglishSelected = lang === LANGUAGE_CODE.ENGLISH;
+
+const englishPath = switchLanguage(currentPath, "en");
+const spanishPath = switchLanguage(currentPath, "es");
 ---
 
-<div class="flex">
-  <div
+<div
+  role="group"
+  aria-label={message.language_label()}
+  class="relative inline-flex h-8 items-center rounded-full border border-zinc-300 bg-white/80 p-0.5 text-xs font-semibold shadow-xs transition-colors sm:h-9 dark:border-neutral-700 dark:bg-neutral-900/80"
+>
+  <span
+    aria-hidden="true"
     class:list={[
-      "lg m-auto flex flex-row gap-2 rounded-xl p-4 text-center font-mono font-bold",
-      `${textSize ? textSize : "text-4xl"}`,
-      "",
+      "pointer-events-none absolute top-0.5 bottom-0.5 w-8 rounded-full bg-zinc-900 shadow-xs transition-transform duration-300 ease-out sm:w-9 dark:bg-white",
+      isEnglishSelected
+        ? "left-0.5 translate-x-0"
+        : "left-0.5 translate-x-full",
     ]}
-    data-animation="bonus"
-  >
-    <Tooltip
-      class={`${isSpanishSelected ? "-translate-y-0.5" : " -translate-y-2"}`}
-      text={message.lang_en()}
-    >
-      <p
-        class:list={[
-          "group/english -translate-y-2",
-          `${isSpanishSelected ? "cursor-pointer text-neutral-500" : "cursor-default"} `,
-        ]}
-        id={LANGUAGE_CODE.ENGLISH}
-      >
-        En
-        {
-          isSpanishSelected && (
-            <>
-              <span class="absolute -bottom-1 left-1/2 mb-1 h-1 w-0 rounded-r-full bg-black duration-150 group-hover/english:w-1/2 group-hover/english:transition-all dark:bg-white" />
-              <span class="absolute right-1/2 -bottom-1 mb-1 h-1 w-0 rounded-l-full bg-black duration-150 group-hover/english:w-1/2 group-hover/english:transition-all dark:bg-white" />
-            </>
-          )
-        }
-      </p>
-    </Tooltip>
-    <p>/</p>
-    <Tooltip
-      class=`${isEnglishSelected ? "translate-y-4" : "translate-y-2"}`
-      text={message.lang_es()}
-    >
-      <p
-        class:list={[
-          "group/spanish translate-y-2",
-          `${isEnglishSelected ? "cursor-pointer text-neutral-500" : "cursor-default"} `,
-        ]}
-        id={LANGUAGE_CODE.SPANISH}
-      >
-        Es
-        {
-          isEnglishSelected && (
-            <>
-              <span class="absolute -bottom-1 left-1/2 mb-1 h-1 w-0 rounded-r-full bg-black duration-150 group-hover/spanish:w-1/2 group-hover/spanish:transition-all dark:bg-white" />
-              <span class="absolute right-1/2 -bottom-1 mb-1 h-1 w-0 rounded-l-full bg-black duration-150 group-hover/spanish:w-1/2 group-hover/spanish:transition-all dark:bg-white" />
-            </>
-          )
-        }
-      </p>
-    </Tooltip>
-  </div>
-</div>
-<script is:inline define:vars={{ switchPathname, LANGUAGE_CODE, lang }}>
-  function switchLanguage() {
-    window.location = switchPathname;
-  }
-  const init = () => {
-    document
-      .getElementById(LANGUAGE_CODE.ENGLISH)
-      ?.addEventListener("click", () => {
-        if (lang !== LANGUAGE_CODE.ENGLISH) {
-          switchLanguage();
-        }
-      });
+    transition:name="language-active-pill"
+  ></span>
 
-    document
-      .getElementById(LANGUAGE_CODE.SPANISH)
-      ?.addEventListener("click", () => {
-        if (lang !== LANGUAGE_CODE.SPANISH) {
-          switchLanguage();
-        }
-      });
-  };
-  init();
-  document.addEventListener("astro:after-swap", init);
-</script>
+  <a
+    href={englishPath}
+    aria-label={message.lang_en()}
+    aria-current={isEnglishSelected ? "page" : undefined}
+    tabindex={isEnglishSelected ? -1 : undefined}
+    class:list={[
+      "relative z-10 inline-flex h-full w-8 items-center justify-center rounded-full transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-zinc-800 sm:w-9 dark:focus-visible:outline-white",
+      isEnglishSelected
+        ? "pointer-events-none text-white dark:text-zinc-950"
+        : "text-zinc-600 hover:text-zinc-950 dark:text-neutral-400 dark:hover:text-white",
+    ]}
+  >
+    EN
+  </a>
+  <a
+    href={spanishPath}
+    aria-label={message.lang_es()}
+    aria-current={isSpanishSelected ? "page" : undefined}
+    tabindex={isSpanishSelected ? -1 : undefined}
+    class:list={[
+      "relative z-10 inline-flex h-full w-8 items-center justify-center rounded-full transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-zinc-800 sm:w-9 dark:focus-visible:outline-white",
+      isSpanishSelected
+        ? "pointer-events-none text-white dark:text-zinc-950"
+        : "text-zinc-600 hover:text-zinc-950 dark:text-neutral-400 dark:hover:text-white",
+    ]}
+  >
+    ES
+  </a>
+</div>

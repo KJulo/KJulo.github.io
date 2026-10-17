@@ -1,28 +1,32 @@
 ---
-import { Image } from "astro:assets";
 import ProfilePictureHi from "@images/images/profile.webp";
 import ProfilePicturePunch from "@images/images/profile2.webp";
+import * as message from "@paraglide/messages";
+import { Image } from "astro:assets";
 ---
 
-<div
-  class="card group flex w-full flex-col items-center justify-center gap-4 rounded-3xl bg-white dark:border-neutral-700 dark:bg-neutral-900"
->
+<div class="card group relative flex h-full w-full flex-col items-center justify-center gap-4 rounded-3xl bg-white dark:border-neutral-700 dark:bg-neutral-900">
   <div class="front__card">
     <Image
       src={ProfilePictureHi}
-      alt="Greeting face profile"
+      alt={message.profile_picture_greeting_alt()}
       decoding="async"
       class="w-48"
-      loading={"eager"}
+      loading="eager"
+      fetchpriority="high"
+      width={288}
+      height={288}
     />
   </div>
   <div class="back__card">
     <Image
       src={ProfilePicturePunch}
-      alt="Punch face profile"
+      alt={message.profile_picture_punch_alt()}
       class="w-48"
-      decoding={"async"}
-      loading={"eager"}
+      decoding="async"
+      loading="lazy"
+      width={288}
+      height={288}
     />
   </div>
 </div>
@@ -34,6 +38,15 @@ import ProfilePicturePunch from "@images/images/profile2.webp";
   .card {
     transition: transform 800ms;
     transform-style: preserve-3d;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card {
+      transition: none;
+    }
+    .card:hover {
+      transform: none;
+    }
   }
 
   .front__card,

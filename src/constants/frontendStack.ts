@@ -2,21 +2,29 @@
 import AntDesign from "@icons/stack/frontend/AntDesign.svg?raw";
 import ApolloClient from "@icons/stack/frontend/ApolloClient.svg?raw";
 import Astro from "@icons/stack/frontend/Astro.svg?raw";
+import AWSAmplify from "@icons/stack/frontend/AWSAmplify.svg?raw";
+import AWSCognito from "@icons/stack/frontend/AWSCognito.svg?raw";
 import Axios from "@icons/stack/frontend/Axios.svg?raw";
 import CSS3Icon from "@icons/stack/frontend/CSS3.svg?raw";
 import Flowbite from "@icons/stack/frontend/Flowbite.svg?raw";
 import GraphQL from "@icons/stack/frontend/GraphQL.svg?raw";
 import HTML5Icon from "@icons/stack/frontend/HTML5.svg?raw";
-import JWTIcon from "@icons/stack/frontend/JWT.svg?raw";
+import I18n from "@icons/stack/frontend/I18n.svg?raw";
 import JavascriptIcon from "@icons/stack/frontend/Javascript.svg?raw";
+import JWTIcon from "@icons/stack/frontend/JWT.svg?raw";
+import Mixpanel from "@icons/stack/frontend/Mixpanel.svg?raw";
 import NextJs from "@icons/stack/frontend/Nextjs.svg?raw";
+import Oxc from "@icons/stack/frontend/OXC.svg?raw";
 import React from "@icons/stack/frontend/React.svg?raw";
 import ReactRouter from "@icons/stack/frontend/ReactRouter.svg?raw";
 import Redux from "@icons/stack/frontend/Redux.svg?raw";
 import ReduxSaga from "@icons/stack/frontend/ReduxSaga.svg?raw";
 import Sentry from "@icons/stack/frontend/Sentry.svg?raw";
 import Tailwind from "@icons/stack/frontend/Tailwind.svg?raw";
+import TanStackQuery from "@icons/stack/frontend/TanStackQuery.svg?raw";
+import TanStackRouter from "@icons/stack/frontend/TanStackRouter.svg?raw";
 import Typescript from "@icons/stack/frontend/Typescript.svg?raw";
+import Vite from "@icons/stack/frontend/Vite.svg?raw";
 import Webpack from "@icons/stack/frontend/Webpack.svg?raw";
 import Zod from "@icons/stack/frontend/ZodIcon.svg?raw";
 
@@ -160,6 +168,62 @@ export const JWT = {
   className: "",
 };
 
+export const TANSTACK_QUERY = {
+  title: "TanStack Query",
+  url: "https://tanstack.com/query/latest",
+  icon: TanStackQuery,
+  className: "",
+};
+
+export const TANSTACK_ROUTER = {
+  title: "TanStack Router",
+  url: "https://tanstack.com/router/latest",
+  icon: TanStackRouter,
+  className: "",
+};
+
+export const I18N = {
+  title: "i18n",
+  url: "https://www.i18next.com/",
+  icon: I18n,
+  className: "",
+};
+
+export const MIXPANEL = {
+  title: "Mixpanel",
+  url: "https://mixpanel.com/",
+  icon: Mixpanel,
+  className: "",
+};
+
+export const AWS_AMPLIFY = {
+  title: "AWS Amplify",
+  url: "https://aws.amazon.com/amplify/",
+  icon: AWSAmplify,
+  className: "",
+};
+
+export const AWS_COGNITO = {
+  title: "AWS Cognito",
+  url: "https://aws.amazon.com/cognito/",
+  icon: AWSCognito,
+  className: "",
+};
+
+export const VITE = {
+  title: "Vite",
+  url: "https://vite.dev/",
+  icon: Vite,
+  className: "",
+};
+
+export const OXC = {
+  title: "OXC",
+  url: "https://oxc.rs/",
+  icon: Oxc,
+  className: "",
+};
+
 export const FRONTEND_STACK = [
   NEXTJS,
   REACT,
@@ -179,4 +243,12 @@ export const FRONTEND_STACK = [
   AXIOS,
   GRAPHQL,
   APOLLO_CLIENT,
+  TANSTACK_QUERY,
+  TANSTACK_ROUTER,
+  I18N,
+  MIXPANEL,
+  AWS_AMPLIFY,
+  AWS_COGNITO,
+  VITE,
+  OXC,
 ];

@@ -1,6 +1,6 @@
-import { defineConfig } from "astro/config";
 import { paraglideVitePlugin as paraglide } from "@inlang/paraglide-js";
 import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,9 +14,12 @@ export default defineConfig({
     ],
   },
   prefetch: true,
+  build: {
+    inlineStylesheets: "auto",
+  },
   i18n: {
     defaultLocale: "en",
     locales: ["en", "es"],
   },
-  site: "https://KJulo.github.io",
+  site: "https://kjulo.github.io",
 });

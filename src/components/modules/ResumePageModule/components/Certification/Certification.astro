@@ -1,22 +1,19 @@
 ---
-import * as message from "@paraglide/messages";
 import HyperLinkIcon from "@icons/Hyperlink.svg?raw";
+import * as message from "@paraglide/messages";
 ---
 
 <div>
-  <h2 class="text-2xl">
-    📜 {message.resume_certifications_title()}
-  </h2>
-  <div class="mx-auto my-4 h-px w-full bg-neutral-300 dark:bg-neutral-600">
-  </div>
+  <h2 class="text-2xl">📜 {message.resume_certifications_title()}</h2>
+  <div class="mx-auto my-4 h-px w-full bg-neutral-300 dark:bg-neutral-600"></div>
   <a
     href="https://cert.efset.org/PzB2aJ"
     target="_blank"
-    aria-label="English certification EF SET"
+    rel="noopener noreferrer"
+    class="block w-fit rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-800 dark:focus-visible:outline-white"
+    aria-label="EF SET English Certificate (C2 Proficient)"
   >
-    <div
-      class="group flex w-fit flex-row gap-4 rounded-md border-2 p-4 transition-all hover:-translate-y-1 hover:border-neutral-400"
-    >
+    <div class="group flex w-fit flex-row gap-4 rounded-md border-2 p-4 transition-all hover:-translate-y-1 hover:border-neutral-400 motion-reduce:hover:translate-none">
       <div>
         <h3>EF SET English Certificate (C2 Proficient)</h3>
         <p>EF Standard English Test (EF SET), 2024</p>
@@ -25,6 +22,7 @@ import HyperLinkIcon from "@icons/Hyperlink.svg?raw";
         <span
           class="fill-neutral-600 dark:fill-neutral-300"
           set:html={HyperLinkIcon}
+          aria-hidden="true"
         />
       </div>
     </div>

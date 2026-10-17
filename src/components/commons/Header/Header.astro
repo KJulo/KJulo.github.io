@@ -1,0 +1,29 @@
+---
+import LanguageSwitcher from "@commons/LanguageSwitcher/LanguageSwitcher.astro";
+import ThemeButton from "@commons/ThemeButton/ThemeButton.astro";
+import { getLocale } from "@paraglide/runtime";
+import { localizePathname } from "@utils/language";
+
+const locale = getLocale();
+const homeUrl = localizePathname("/", locale);
+---
+
+<header class="sticky top-0 z-40 w-full border-b border-zinc-300/60 bg-gray-200/80 backdrop-blur-md transition-colors dark:border-neutral-800/80 dark:bg-neutral-950/80">
+  <div class="mx-auto flex w-full max-w-[1440px] items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+    <a
+      href={homeUrl}
+      class="group flex items-center gap-2 rounded-lg py-1 text-sm font-semibold tracking-tight text-zinc-900 transition-colors hover:text-zinc-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-800 sm:text-base dark:text-zinc-100 dark:hover:text-zinc-300 dark:focus-visible:outline-white"
+    >
+      <span
+        class="inline-block size-2 rounded-full bg-emerald-500"
+        aria-hidden="true"
+      ></span>
+      <span>Ignacio Silva</span>
+    </a>
+
+    <div class="flex items-center gap-2.5 sm:gap-3">
+      <LanguageSwitcher />
+      <ThemeButton />
+    </div>
+  </div>
+</header>
