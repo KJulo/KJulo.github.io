@@ -18,7 +18,7 @@ export const CONTENT: {
   {
     key: "Introduction",
     classList: [
-      "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
+      "border-zinc-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
       "col-span-2 min-h-[22rem] sm:col-span-4 sm:min-h-[24rem] lg:col-span-8 lg:row-span-2 lg:min-h-[28rem]",
     ],
     render: IntroductionSection,
@@ -26,7 +26,7 @@ export const CONTENT: {
   {
     key: "Profile",
     classList: [
-      "hidden lg:flex border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
+      "hidden lg:flex border-zinc-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
       "lg:col-span-4 lg:min-h-56",
     ],
     render: ProfileSection,
@@ -34,7 +34,7 @@ export const CONTENT: {
   {
     key: "About me",
     classList: [
-      "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
+      "border-zinc-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
       "col-span-2 min-h-36 sm:col-span-4 lg:col-span-4 lg:min-h-48",
     ],
     render: AboutMeSection,
@@ -42,7 +42,7 @@ export const CONTENT: {
   {
     key: "Experience",
     classList: [
-      "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
+      "border-zinc-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
       "col-span-2 min-h-[23rem] sm:col-span-4 sm:min-h-[22rem] lg:col-span-12",
     ],
     render: ExperienceSection,
@@ -50,7 +50,7 @@ export const CONTENT: {
   {
     key: "FrontendSection",
     classList: [
-      "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
+      "border-zinc-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
       "col-span-2 min-h-44 sm:col-span-2 lg:col-span-6",
     ],
     render: FrontendSection,
@@ -58,7 +58,7 @@ export const CONTENT: {
   {
     key: "BackendSection",
     classList: [
-      "border border-gray-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
+      "border-zinc-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
       "col-span-2 min-h-44 sm:col-span-2 lg:col-span-6",
     ],
     render: BackendSection,
