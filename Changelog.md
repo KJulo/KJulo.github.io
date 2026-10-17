@@ -1,3 +1,15 @@
+## Release 4.0.0 (2026/10/17)
+
+- [🚀] Upgrade Astro to v7 and Vite to v6
+- [🎨] Migrate to Tailwind CSS v4 and cleanup styling
+- [⚡] Replace ESLint and Prettier with Oxlint and Oxfmt for fast tooling
+- [🔧] Add Husky, lint-staged, pnpm typecheck, and automated Lighthouse audit runner
+- [🧭] Add persistent navigation header with section scrollspy, animated language switcher, and theme switcher
+- [♿] Accessibility improvements: skip-to-content link, focus rings, ARIA landmarks, and reduced motion support
+- [📄] CV / Resume enhancements: localized PDF downloads and curated stack experience
+- [🍱] Revamp homepage: bento grid layout, consolidated contact section, and unified mobile spacing
+- [🌐] Update and complete i18n translations across English and Spanish
+
 ## Release 3.1.0 (2025/12/18)
 
 - [📦] Update dependencies to latest versions
