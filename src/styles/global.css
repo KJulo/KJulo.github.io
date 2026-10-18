@@ -53,17 +53,9 @@
   }
 }
 
-/* Transición circular para el cambio de tema */
-html.theme-transition::view-transition-old(root),
-html.theme-transition::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
-}
-
-html.theme-transition::view-transition-old(root) {
-  z-index: 1;
-}
-
-html.theme-transition::view-transition-new(root) {
-  z-index: 9999;
+/* Aplica el cambio de tema de forma instantánea */
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+  transition: none !important;
 }
