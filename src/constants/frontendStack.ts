@@ -12,7 +12,6 @@ import HTML5Icon from "@icons/stack/frontend/HTML5.svg?raw";
 import I18n from "@icons/stack/frontend/I18n.svg?raw";
 import JavascriptIcon from "@icons/stack/frontend/Javascript.svg?raw";
 import JWTIcon from "@icons/stack/frontend/JWT.svg?raw";
-import Mixpanel from "@icons/stack/frontend/Mixpanel.svg?raw";
 import NextJs from "@icons/stack/frontend/Nextjs.svg?raw";
 import Oxc from "@icons/stack/frontend/OXC.svg?raw";
 import React from "@icons/stack/frontend/React.svg?raw";
@@ -189,13 +188,6 @@ export const I18N = {
   className: "",
 };
 
-export const MIXPANEL = {
-  title: "Mixpanel",
-  url: "https://mixpanel.com/",
-  icon: Mixpanel,
-  className: "",
-};
-
 export const AWS_AMPLIFY = {
   title: "AWS Amplify",
   url: "https://aws.amazon.com/amplify/",
@@ -236,19 +228,11 @@ export const FRONTEND_STACK = [
   SENTRY,
   ZOD,
   FLOWBITE,
-  REACT_ROUTER,
   JWT,
   WEBPACK,
   TAILWIND,
   AXIOS,
   GRAPHQL,
-  APOLLO_CLIENT,
-  TANSTACK_QUERY,
-  TANSTACK_ROUTER,
   I18N,
-  MIXPANEL,
   AWS_AMPLIFY,
-  AWS_COGNITO,
-  VITE,
-  OXC,
 ];
