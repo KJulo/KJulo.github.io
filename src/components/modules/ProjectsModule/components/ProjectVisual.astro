@@ -46,6 +46,25 @@ const { project, compact = false } = Astro.props;
         {project.visualNdaLabel}
       </span>
     </div>
+  ) : project.visual === "happ-site" ? (
+    <img
+      src="/images/projects/happ-app-banner.png"
+      alt=""
+      class:list={[
+        "absolute inset-0 size-full",
+        project.visual === "happ-site"
+          ? "bg-white object-contain"
+          : "object-cover object-top",
+      ]}
+      loading="lazy"
+    />
+  ) : project.visual === "icar-transfer" ? (
+    <img
+      src="/images/projects/icar-transfer-hero.jpg"
+      alt=""
+      class="absolute inset-0 size-full object-cover object-top"
+      loading="lazy"
+    />
   ) : project.visual === "platform" ? (
     <div class="grid grid-cols-[30%_1fr] gap-3 pt-3" aria-hidden="true">
       <div class="space-y-2 rounded-lg bg-white p-2 dark:bg-neutral-900">
