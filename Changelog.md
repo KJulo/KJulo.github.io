@@ -1,3 +1,8 @@
+## Release 4.3.0 (2026/10/28)
+
+- [📄] Generate work-experience content from the localized CV PDFs during the build
+- [🔧] Validate the extracted experience data and install the PDF text extractor in the deployment workflow
+
 ## Release 4.0.0 (2026/10/17)
 
 - [🚀] Upgrade Astro to v7 and Vite to v6
