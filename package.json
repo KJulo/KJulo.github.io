@@ -3,8 +3,11 @@
   "version": "4.2.0",
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
+    "dev": "pnpm run generate:resume-experience && astro dev",
+    "start": "pnpm run generate:resume-experience && astro dev",
+    "generate:resume-experience": "node scripts/generate-resume-experience.mjs",
+    "prebuild": "pnpm run generate:resume-experience",
+    "pretypecheck": "pnpm run generate:resume-experience",
     "build": "paraglide-js compile --project ./project.inlang --outdir ./src/paraglide && astro check && astro build",
     "typecheck": "astro check",
     "preview": "astro preview",
