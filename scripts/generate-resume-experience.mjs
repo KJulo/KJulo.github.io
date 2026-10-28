@@ -214,7 +214,33 @@ const resumeExperiences = Object.fromEntries(
   ]),
 );
 
-const output = `// This file is generated from the PDFs in public/documents. Do not edit it manually.\n\nexport type ResumeExperience = {\n  role: string;\n  company: string;\n  dateStart: string;\n  dateEnd: string;\n  dateStartRaw: string;\n  dateEndRaw: string;\n  achievements: string[];\n};\n\nexport const RESUME_EXPERIENCES: Record<\n  "en" | "es",\n  ResumeExperience[]\n> = ${JSON.stringify(resumeExperiences, null, 2)};\n`;
+const isIdentifier = (key) => /^[A-Za-z_$][\w$]*$/u.test(key);
+
+const toTypeScript = (value, indentation = 0) => {
+  const indentationValue = "  ".repeat(indentation);
+  const nestedIndentation = "  ".repeat(indentation + 1);
+
+  if (Array.isArray(value)) {
+    return `[\n${value
+      .map(
+        (item) => `${nestedIndentation}${toTypeScript(item, indentation + 1)},`,
+      )
+      .join("\n")}\n${indentationValue}]`;
+  }
+
+  if (value && typeof value === "object") {
+    return `{\n${Object.entries(value)
+      .map(([key, item]) => {
+        const propertyName = isIdentifier(key) ? key : JSON.stringify(key);
+        return `${nestedIndentation}${propertyName}: ${toTypeScript(item, indentation + 1)},`;
+      })
+      .join("\n")}\n${indentationValue}}`;
+  }
+
+  return JSON.stringify(value);
+};
+
+const output = `// This file is generated from the PDFs in public/documents. Do not edit it manually.\n\nexport type ResumeExperience = {\n  role: string;\n  company: string;\n  dateStart: string;\n  dateEnd: string;\n  dateStartRaw: string;\n  dateEndRaw: string;\n  achievements: string[];\n};\n\nexport const RESUME_EXPERIENCES: Record<"en" | "es", ResumeExperience[]> = ${toTypeScript(resumeExperiences)};\n`;
 
 mkdirSync(dirname(OUTPUT_PATH), { recursive: true });
 writeFileSync(OUTPUT_PATH, output);
