@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    name: Lint, format, typecheck & build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install PDF text extractor
+        # scripts/generate-resume-experience.mjs uses pdftotext to read the CV PDFs.
+        run: sudo apt-get update && sudo apt-get install --yes poppler-utils
+
+      - name: Set up pnpm
+        # Version is read from the packageManager field in package.json.
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Check formatting
+        run: pnpm format:check
+
+      - name: Build (includes astro check)
+        run: pnpm build
+
+      - name: Check generated files are committed
+        # The build regenerates src/data/resumeExperience.generated.ts from the CV PDFs.
+        run: |
+          if ! git diff --exit-code; then
+            echo "::error::Generated files are out of date. Run 'pnpm run generate:resume-experience' and commit the result."
+            exit 1
+          fi
+
+      - name: Security audit
+        run: pnpm audit
