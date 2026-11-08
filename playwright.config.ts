@@ -10,7 +10,7 @@ export default defineConfig({
   },
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   webServer: {
-    command: "pnpm build && pnpm preview --host 127.0.0.1",
+    command: "pnpm build && pnpm preview --host 127.0.0.1 --ignore-lock",
     url: "http://127.0.0.1:4321",
     reuseExistingServer: !process.env.CI,
     timeout: 180_000,
