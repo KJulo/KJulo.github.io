@@ -32,6 +32,7 @@ const spanishPath = switchLanguage(currentPath, "es");
 
   <a
     href={englishPath}
+    data-testid="lang-switch-en"
     aria-label={message.lang_en()}
     aria-current={isEnglishSelected ? "page" : undefined}
     tabindex={isEnglishSelected ? -1 : undefined}
@@ -46,6 +47,7 @@ const spanishPath = switchLanguage(currentPath, "es");
   </a>
   <a
     href={spanishPath}
+    data-testid="lang-switch-es"
     aria-label={message.lang_es()}
     aria-current={isSpanishSelected ? "page" : undefined}
     tabindex={isSpanishSelected ? -1 : undefined}

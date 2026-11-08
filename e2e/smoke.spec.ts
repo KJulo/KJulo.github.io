@@ -29,12 +29,20 @@ test("key pages render a main heading without console errors", async ({
 test("language switcher navigates to the matching locale path", async ({
   page,
 }) => {
-  await page.goto("/projects/product-foundations");
-  await page
-    .getByRole("link", { name: /español|spanish|es/i })
-    .first()
-    .click();
-  await expect(page).toHaveURL(/\/es\/projects\/product-foundations\/?$/);
+  await page.goto(`/projects/${projectSlug}`);
+  await page.getByTestId("lang-switch-es").click();
+  await expect
+    .poll(() =>
+      page.evaluate(() => window.location.pathname.replace(/\/$/u, "")),
+    )
+    .toBe(`/es/projects/${projectSlug}`);
+
+  await page.getByTestId("lang-switch-en").click();
+  await expect
+    .poll(() =>
+      page.evaluate(() => window.location.pathname.replace(/\/$/u, "")),
+    )
+    .toBe(`/projects/${projectSlug}`);
 });
 
 test("internal links on the home page resolve successfully", async ({
