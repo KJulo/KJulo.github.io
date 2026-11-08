@@ -1,5 +1,8 @@
 ---
+import HappBanner from "@assets/images/projects/happ-app-banner.png";
+import IcarTransferHero from "@assets/images/projects/icar-transfer-hero.jpg";
 import type { Project } from "@data/projects";
+import { Image } from "astro:assets";
 
 interface Props {
   project: Project;
@@ -7,6 +10,15 @@ interface Props {
 }
 
 const { project, compact = false } = Astro.props;
+
+// Responsive widths; Astro skips any wider than the source file.
+const widths = [400, 640, 960, 1280];
+// The list shows the visual in a narrow column; the detail page gives it half.
+const sizes = compact
+  ? "(min-width: 1024px) 34vw, calc(100vw - 6rem)"
+  : "(min-width: 1024px) 45vw, calc(100vw - 6rem)";
+// On the detail page the visual sits in the hero, so load it right away.
+const loading = compact ? "lazy" : "eager";
 ---
 
 <div
@@ -47,23 +59,22 @@ const { project, compact = false } = Astro.props;
       </span>
     </div>
   ) : project.visual === "happ-site" ? (
-    <img
-      src="/images/projects/happ-app-banner.png"
+    <Image
+      src={HappBanner}
       alt=""
-      class:list={[
-        "absolute inset-0 size-full",
-        project.visual === "happ-site"
-          ? "bg-white object-contain"
-          : "object-cover object-top",
-      ]}
-      loading="lazy"
+      widths={widths}
+      sizes={sizes}
+      class="absolute inset-0 size-full bg-white object-contain"
+      loading={loading}
     />
   ) : project.visual === "icar-transfer" ? (
-    <img
-      src="/images/projects/icar-transfer-hero.jpg"
+    <Image
+      src={IcarTransferHero}
       alt=""
+      widths={widths}
+      sizes={sizes}
       class="absolute inset-0 size-full object-cover object-top"
-      loading="lazy"
+      loading={loading}
     />
   ) : project.visual === "platform" ? (
     <div class="grid grid-cols-[30%_1fr] gap-3 pt-3" aria-hidden="true">
