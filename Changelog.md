@@ -1,3 +1,10 @@
+## Release 4.4.0 (2026/11/08)
+
+- [✨] Add an interactive ASCII background: plasma field, pointer highlight, click ripples and idle drift (respects reduced motion)
+- [💄] Turn the header into a floating iOS-style glass bar
+- [💄] Make the main cards frosted glass so the background shows through
+- [⚡] Serve project and profile images through astro:assets with responsive WebP (home page weight 1.6 MB → 118 KB)
+
 ## Release 4.3.0 (2026/10/28)
 
 - [📄] Generate work-experience content from the localized CV PDFs during the build
