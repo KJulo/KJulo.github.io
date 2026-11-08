@@ -21,6 +21,7 @@ Computer science
       experienceHeading: "Professional experience",
       endHeading: "Education",
       technologiesHeading: "Technologies:",
+      expectedExperienceCount: 1,
       months: { january: "01", march: "03" },
       datePattern: "(?:January|March)\\s+\\d{4}",
     };

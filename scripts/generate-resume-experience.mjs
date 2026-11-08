@@ -198,9 +198,12 @@ export const parseExperiences = (text, configuration) => {
     });
   }
 
-  if (experiences.length !== EXPECTED_EXPERIENCE_COUNT) {
+  const expectedExperienceCount =
+    configuration.expectedExperienceCount ?? EXPECTED_EXPERIENCE_COUNT;
+
+  if (experiences.length !== expectedExperienceCount) {
     throw new Error(
-      `Expected ${EXPECTED_EXPERIENCE_COUNT} experiences in ${configuration.file}, found ${experiences.length}. Update the technology mapping before deploying.`,
+      `Expected ${expectedExperienceCount} experiences in ${configuration.file}, found ${experiences.length}. Update the technology mapping before deploying.`,
     );
   }
 
