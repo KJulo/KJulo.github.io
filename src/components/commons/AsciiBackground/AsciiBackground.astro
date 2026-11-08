@@ -1,0 +1,324 @@
+---
+/*
+ * Interactive ASCII backdrop.
+ *
+ * A grid of monospace glyphs drawn at the screen's native resolution (no CSS
+ * scaling, so it stays sharp). A slow plasma of overlapping waves sets each
+ * cell's density; around the pointer the cells light up in the accent colour,
+ * and a click/tap sends a ripple across the grid. With no pointer around (or
+ * on touch screens between taps) a soft highlight drifts on its own.
+ */
+---
+
+<div class="ascii-bg" aria-hidden="true" transition:persist="ascii-bg">
+  <canvas class="ascii-bg__canvas"></canvas>
+</div>
+
+<script>
+  const RAMP = " .·:-=+*#%@";
+  const FONT_SIZE = 13;
+  const FONT = `${FONT_SIZE}px ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace`;
+  const FPS = 30;
+  const MAX_DPR = 2;
+  const RADIUS = 170; // px, reach of the pointer highlight
+  const RIPPLE_SPEED = 520; // px per second
+  const RIPPLE_WIDTH = 60; // px
+  const RIPPLE_LIFE = 1.8; // seconds
+  const IDLE_AFTER = 3500; // ms without pointer input before the highlight drifts
+
+  const THEMES = {
+    light: { base: "#52525b", accent: "#7c3aed", baseAlpha: 0.32 },
+    dark: { base: "#a1a1aa", accent: "#a78bfa", baseAlpha: 0.22 },
+  } as const;
+
+  type Ripple = { x: number; y: number; t0: number };
+
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  let canvas: HTMLCanvasElement | null = null;
+  let ctx: CanvasRenderingContext2D | null = null;
+  let atlas: HTMLCanvasElement | null = null;
+  let theme: (typeof THEMES)[keyof typeof THEMES] = THEMES.light;
+
+  let dpr = 1;
+  let width = 0;
+  let height = 0;
+  let cellW = 10;
+  let cellH = 16;
+  let cols = 0;
+  let rows = 0;
+  let colTerm = new Float32Array(0);
+  let rowTerm = new Float32Array(0);
+
+  // Pointer state: target (raw input) and the smoothed position we draw.
+  let targetX = -9999;
+  let targetY = -9999;
+  let pointerX = -9999;
+  let pointerY = -9999;
+  let strength = 0;
+  let pointerInside = false;
+  let lastInput = -Infinity;
+  const ripples: Ripple[] = [];
+
+  let raf = 0;
+  let lastFrame = 0;
+
+  const isDark = () => document.documentElement.classList.contains("dark");
+
+  /** Pre-renders every glyph in both colours at device resolution. */
+  function buildAtlas() {
+    const glyphs = RAMP.length;
+    const c = document.createElement("canvas");
+    c.width = Math.ceil(cellW * dpr) * glyphs;
+    c.height = Math.ceil(cellH * dpr) * 2;
+    const a = c.getContext("2d");
+    if (!a) return;
+    a.scale(dpr, dpr);
+    a.font = FONT;
+    a.textAlign = "center";
+    a.textBaseline = "middle";
+    const slotW = Math.ceil(cellW * dpr) / dpr;
+    const slotH = Math.ceil(cellH * dpr) / dpr;
+    [theme.base, theme.accent].forEach((color, row) => {
+      a.fillStyle = color;
+      for (let i = 1; i < glyphs; i++) {
+        a.fillText(RAMP[i], i * slotW + slotW / 2, row * slotH + slotH / 2);
+      }
+    });
+    atlas = c;
+  }
+
+  function resize() {
+    if (!canvas || !ctx) return;
+    dpr = Math.min(window.devicePixelRatio || 1, MAX_DPR);
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = Math.round(width * dpr);
+    canvas.height = Math.round(height * dpr);
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+
+    ctx.font = FONT;
+    cellW = Math.round(ctx.measureText("M").width + 2);
+    cellH = Math.round(FONT_SIZE * 1.35);
+    cols = Math.ceil(width / cellW) + 1;
+    rows = Math.ceil(height / cellH) + 1;
+    colTerm = new Float32Array(cols);
+    rowTerm = new Float32Array(rows);
+
+    buildAtlas();
+    if (reducedMotion.matches) draw(0);
+  }
+
+  function applyTheme() {
+    const next = isDark() ? THEMES.dark : THEMES.light;
+    if (next === theme && atlas) return;
+    theme = next;
+    buildAtlas();
+    if (reducedMotion.matches) draw(0);
+  }
+
+  function draw(t: number) {
+    if (!ctx || !atlas) return;
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, canvas!.width, canvas!.height);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const slotW = Math.ceil(cellW * dpr);
+    const slotH = Math.ceil(cellH * dpr);
+    const drawW = slotW / dpr;
+    const drawH = slotH / dpr;
+    const maxIdx = RAMP.length - 1;
+    const R2 = RADIUS * RADIUS;
+
+    // Wave centre wandering slowly around the screen.
+    const cx = width * (0.5 + 0.35 * Math.sin(t * 0.07));
+    const cy = height * (0.5 + 0.3 * Math.cos(t * 0.05));
+
+    for (let c = 0; c < cols; c++) {
+      colTerm[c] = Math.sin(c * cellW * 0.009 + t * 0.35);
+    }
+    for (let r = 0; r < rows; r++) {
+      rowTerm[r] = Math.sin(r * cellH * 0.011 - t * 0.25);
+    }
+
+    const active = ripples.length > 0;
+
+    for (let r = 0; r < rows; r++) {
+      const y = r * cellH;
+      const yc = y + cellH / 2;
+      for (let c = 0; c < cols; c++) {
+        const x = c * cellW;
+        const xc = x + cellW / 2;
+
+        // Plasma: four overlapping waves, normalised to 0..1.
+        const ddx = xc - cx;
+        const ddy = yc - cy;
+        const v =
+          (colTerm[c] +
+            rowTerm[r] +
+            Math.sin((xc * 0.6 + yc) * 0.006 + t * 0.5) +
+            Math.sin(Math.sqrt(ddx * ddx + ddy * ddy) * 0.012 - t * 0.6)) *
+            0.125 +
+          0.5;
+        // Keep only the crests so the page stays airy.
+        let base = (v - 0.42) / 0.58;
+        if (base < 0) base = 0;
+
+        // Pointer highlight.
+        let k = 0;
+        const dx = xc - pointerX;
+        const dy = yc - pointerY;
+        const d2 = dx * dx + dy * dy;
+        if (strength > 0.001 && d2 < R2) {
+          const f = 1 - Math.sqrt(d2) / RADIUS;
+          k = f * f * (3 - 2 * f) * strength;
+        }
+        if (active) {
+          for (const rp of ripples) {
+            const age = t - rp.t0;
+            const rx = xc - rp.x;
+            const ry = yc - rp.y;
+            const off = Math.abs(
+              Math.sqrt(rx * rx + ry * ry) - age * RIPPLE_SPEED,
+            );
+            if (off < RIPPLE_WIDTH) {
+              k += (1 - off / RIPPLE_WIDTH) * (1 - age / RIPPLE_LIFE) * 0.9;
+            }
+          }
+          if (k > 1) k = 1;
+        }
+
+        let level = base * 0.75 + k * 0.85;
+        if (level > 1) level = 1;
+        const idx = Math.round(level * maxIdx);
+        if (idx === 0) continue;
+
+        const sx = idx * slotW;
+        const baseAlpha = theme.baseAlpha * (0.35 + base * 0.65) * (1 - k);
+        if (baseAlpha > 0.01) {
+          ctx.globalAlpha = baseAlpha;
+          ctx.drawImage(atlas, sx, 0, slotW, slotH, x, y, drawW, drawH);
+        }
+        if (k > 0.01) {
+          ctx.globalAlpha = Math.min(1, k * 0.95);
+          ctx.drawImage(atlas, sx, slotH, slotW, slotH, x, y, drawW, drawH);
+        }
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function frame(now: number) {
+    raf = requestAnimationFrame(frame);
+    if (now - lastFrame < 1000 / FPS) return;
+    lastFrame = now;
+    const t = now / 1000;
+
+    // Idle: let the highlight drift on a slow Lissajous path.
+    const idle = now - lastInput > IDLE_AFTER || !pointerInside;
+    if (idle) {
+      targetX = width * (0.5 + 0.38 * Math.sin(t * 0.23));
+      targetY = height * (0.55 + 0.3 * Math.sin(t * 0.31 + 1));
+    }
+    const ease = idle ? 0.03 : 0.18;
+    if (pointerX < -1000) {
+      pointerX = targetX;
+      pointerY = targetY;
+    }
+    pointerX += (targetX - pointerX) * ease;
+    pointerY += (targetY - pointerY) * ease;
+    strength += ((idle ? 0.55 : 1) - strength) * 0.06;
+
+    for (let i = ripples.length - 1; i >= 0; i--) {
+      if (t - ripples[i].t0 > RIPPLE_LIFE) ripples.splice(i, 1);
+    }
+
+    draw(t);
+  }
+
+  function start() {
+    cancelAnimationFrame(raf);
+    if (reducedMotion.matches) {
+      strength = 0;
+      draw(0);
+      return;
+    }
+    if (!document.hidden) raf = requestAnimationFrame(frame);
+  }
+
+  function init() {
+    canvas = document.querySelector<HTMLCanvasElement>(".ascii-bg__canvas");
+    ctx = canvas?.getContext("2d") ?? null;
+    if (!canvas || !ctx) return;
+    theme = isDark() ? THEMES.dark : THEMES.light;
+    resize();
+    start();
+  }
+
+  window.addEventListener(
+    "pointermove",
+    (e) => {
+      targetX = e.clientX;
+      targetY = e.clientY;
+      pointerInside = true;
+      lastInput = performance.now();
+    },
+    { passive: true },
+  );
+  window.addEventListener(
+    "pointerdown",
+    (e) => {
+      targetX = e.clientX;
+      targetY = e.clientY;
+      pointerInside = true;
+      lastInput = performance.now();
+      if (reducedMotion.matches) return;
+      ripples.push({
+        x: e.clientX,
+        y: e.clientY,
+        t0: performance.now() / 1000,
+      });
+      if (ripples.length > 4) ripples.shift();
+    },
+    { passive: true },
+  );
+  document.documentElement.addEventListener("pointerleave", () => {
+    pointerInside = false;
+  });
+
+  document.addEventListener("visibilitychange", start);
+  reducedMotion.addEventListener("change", start);
+
+  let resizeFrame = 0;
+  window.addEventListener("resize", () => {
+    cancelAnimationFrame(resizeFrame);
+    resizeFrame = requestAnimationFrame(resize);
+  });
+
+  // Theme toggles flip the `dark` class on <html>.
+  new MutationObserver(applyTheme).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+  // View transitions swap <html> attributes; re-check after each navigation.
+  document.addEventListener("astro:after-swap", applyTheme);
+
+  init();
+</script>
+
+<style>
+  .ascii-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .ascii-bg__canvas {
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
+</style>
