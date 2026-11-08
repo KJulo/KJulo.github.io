@@ -74,7 +74,7 @@ export const RESUME_EXPERIENCES: Record<"en" | "es", ResumeExperience[]> = {
       achievements: [
         "Construí el front-end de 6 flujos para un nuevo producto SaaS B2B de salud preventiva (aprox. 20–25 vistas), gestionando requisitos de punta a punta y contribuyendo a la arquitectura de archivos y componentes.",
         "Personalicé componentes conforme al sistema de diseño de la empresa con Flowbite, Tailwind y Figma; preparé la base de internacionalización para inglés, pendiente de completar los contenidos.",
-        "Automaticé pruebas end-to-end con Cypress para todos los flujos de la aplicación y apliqué lazy loading en la home y páginas para optimizar la carga inicial y estabilidad.",
+        "Automaticé pruebas end-to-end con Cypress para todos los flujos de la aplicación y apliqué carga diferida en la página de inicio y otras páginas para optimizar la carga inicial y la estabilidad.",
       ],
     },
     {
