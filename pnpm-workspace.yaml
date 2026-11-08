@@ -1,3 +1,8 @@
 allowBuilds:
   esbuild: false
   sharp: false
+
+overrides:
+  fast-uri: ^3.1.9
+  "@emnapi/core": ^1.11.1
+  "@emnapi/runtime": ^1.11.1
