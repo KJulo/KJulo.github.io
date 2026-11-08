@@ -1,7 +1,7 @@
 import { execFileSync } from "node:child_process";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const ROOT_DIRECTORY = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const OUTPUT_PATH = resolve(
@@ -83,7 +83,7 @@ const extractTextFromPdf = (file) => {
   }
 };
 
-const toLines = (text) =>
+export const toLines = (text) =>
   text
     .replace(/-\r?\n(?=[a-záéíóúüñ])/giu, "")
     .replace(/\r/g, "")
@@ -91,7 +91,7 @@ const toLines = (text) =>
     .map((line) => line.trim())
     .filter(Boolean);
 
-const toIsoMonth = (date, months) => {
+export const toIsoMonth = (date, months) => {
   const normalizedDate = date.toLocaleLowerCase("en-US").replace(/\./g, "");
   const year = normalizedDate.match(/\d{4}/u)?.[0];
   const monthName = normalizedDate
@@ -107,8 +107,8 @@ const toIsoMonth = (date, months) => {
   return `${year}-${month}`;
 };
 
-const parseExperiences = (configuration) => {
-  const lines = toLines(extractTextFromPdf(configuration.file));
+export const parseExperiences = (text, configuration) => {
+  const lines = toLines(text);
   const startIndex = lines.indexOf(configuration.experienceHeading);
   const endIndex = lines.indexOf(configuration.endHeading);
 
@@ -207,13 +207,6 @@ const parseExperiences = (configuration) => {
   return experiences;
 };
 
-const resumeExperiences = Object.fromEntries(
-  Object.entries(RESUME_CONFIGURATIONS).map(([locale, configuration]) => [
-    locale,
-    parseExperiences(configuration),
-  ]),
-);
-
 const isIdentifier = (key) => /^[A-Za-z_$][\w$]*$/u.test(key);
 
 const toTypeScript = (value, indentation = 0) => {
@@ -240,7 +233,22 @@ const toTypeScript = (value, indentation = 0) => {
   return JSON.stringify(value);
 };
 
-const output = `// This file is generated from the PDFs in public/documents. Do not edit it manually.\n\nexport type ResumeExperience = {\n  role: string;\n  company: string;\n  dateStart: string;\n  dateEnd: string;\n  dateStartRaw: string;\n  dateEndRaw: string;\n  achievements: string[];\n};\n\nexport const RESUME_EXPERIENCES: Record<"en" | "es", ResumeExperience[]> = ${toTypeScript(resumeExperiences)};\n`;
+const generateResumeExperience = () => {
+  const resumeExperiences = Object.fromEntries(
+    Object.entries(RESUME_CONFIGURATIONS).map(([locale, configuration]) => [
+      locale,
+      parseExperiences(extractTextFromPdf(configuration.file), configuration),
+    ]),
+  );
+  const output = `// This file is generated from the PDFs in public/documents. Do not edit it manually.\n\nexport type ResumeExperience = {\n  role: string;\n  company: string;\n  dateStart: string;\n  dateEnd: string;\n  dateStartRaw: string;\n  dateEndRaw: string;\n  achievements: string[];\n};\n\nexport const RESUME_EXPERIENCES: Record<"en" | "es", ResumeExperience[]> = ${toTypeScript(resumeExperiences)};\n`;
 
-mkdirSync(dirname(OUTPUT_PATH), { recursive: true });
-writeFileSync(OUTPUT_PATH, output);
+  mkdirSync(dirname(OUTPUT_PATH), { recursive: true });
+  writeFileSync(OUTPUT_PATH, output);
+};
+
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(resolve(process.argv[1])).href
+) {
+  generateResumeExperience();
+}
