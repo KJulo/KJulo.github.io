@@ -32,7 +32,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
     "@astrojs/compiler-rs": "0.5.2",
-    "@inlang/paraglide-js": "2.29.0",
+    "@inlang/paraglide-js": "3.2.1",
     "husky": "^9.1.7",
     "lint-staged": "^17.6.0",
     "oxfmt": "0.77.0",
