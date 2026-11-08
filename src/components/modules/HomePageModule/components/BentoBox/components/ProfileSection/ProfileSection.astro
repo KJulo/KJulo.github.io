@@ -1,11 +1,11 @@
 ---
-import ProfilePictureHi from "@images/images/profile.webp";
-import ProfilePicturePunch from "@images/images/profile2.webp";
+import ProfilePictureHi from "@assets/images/profile/profile.webp";
+import ProfilePicturePunch from "@assets/images/profile/profile2.webp";
 import * as message from "@paraglide/messages";
 import { Image } from "astro:assets";
 ---
 
-<div class="card group relative flex h-full w-full flex-col items-center justify-center gap-4 rounded-3xl bg-white dark:border-neutral-700 dark:bg-neutral-900">
+<div class="card group relative flex h-full w-full flex-col items-center justify-center gap-4 rounded-3xl">
   <div class="front__card">
     <Image
       src={ProfilePictureHi}
@@ -24,7 +24,7 @@ import { Image } from "astro:assets";
       alt={message.profile_picture_punch_alt()}
       class="w-48"
       decoding="async"
-      loading="lazy"
+      loading="eager"
       width={288}
       height={288}
     />
