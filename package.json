@@ -10,6 +10,9 @@
     "pretypecheck": "pnpm run generate:resume-experience",
     "build": "paraglide-js compile --project ./project.inlang --outdir ./src/paraglide && astro check && astro build",
     "typecheck": "astro check",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
     "preview": "astro preview",
     "audit:lighthouse": "node scripts/audit.mjs",
     "astro": "astro",
@@ -33,12 +36,15 @@
     "@astrojs/check": "^0.9.12",
     "@astrojs/compiler-rs": "0.5.2",
     "@inlang/paraglide-js": "3.2.1",
+    "@playwright/test": "^1.65.0",
+    "@types/node": "^26.6.6",
     "husky": "^9.1.7",
     "lint-staged": "^17.6.0",
     "oxfmt": "0.77.0",
     "oxlint": "1.92.0",
     "oxlint-tsgolint": "7.0.2006",
-    "typescript": "~6.0.3"
+    "typescript": "~6.0.3",
+    "vitest": "^5.1.0"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,mdx,astro}": [

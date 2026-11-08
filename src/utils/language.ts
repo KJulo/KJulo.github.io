@@ -25,7 +25,7 @@ export function localizePathname(pathname: string, locale: Locale): string {
 }
 
 export const searchLocale = (pathname: string): Locale => {
-  if (pathname.startsWith("/es")) {
+  if (/^\/es(?:\/|$)/.test(pathname)) {
     return "es";
   }
   return "en";

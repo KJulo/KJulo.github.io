@@ -13,6 +13,8 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 report*
+test-results/
+playwright-report/
 lh-baseline*.json
 
 # environment variables
