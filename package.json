@@ -25,23 +25,23 @@
     "lint-staged": "lint-staged"
   },
   "dependencies": {
-    "@astrojs/ts-plugin": "1.10.12",
+    "@astrojs/ts-plugin": "1.11.0",
     "@tailwindcss/vite": "^4.3.5",
-    "astro": "7.4.7",
+    "astro": "7.4.8",
     "sharp": "^0.35.5",
     "tailwindcss": "^4.3.5",
     "tailwindcss-animated": "^2.1.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
-    "@astrojs/compiler-rs": "0.5.2",
+    "@astrojs/compiler-rs": "0.5.3",
     "@inlang/paraglide-js": "3.2.1",
     "@playwright/test": "^1.65.0",
     "@types/node": "^26.6.6",
     "husky": "^9.1.7",
     "lint-staged": "^17.6.0",
-    "oxfmt": "0.77.0",
-    "oxlint": "1.92.0",
+    "oxfmt": "0.78.0",
+    "oxlint": "1.93.0",
     "oxlint-tsgolint": "7.0.2006",
     "typescript": "~6.0.3",
     "vitest": "^5.1.0"
