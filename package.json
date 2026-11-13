@@ -27,7 +27,7 @@
   "dependencies": {
     "@astrojs/ts-plugin": "1.11.0",
     "@tailwindcss/vite": "^4.3.5",
-    "astro": "7.4.8",
+    "astro": "7.4.11",
     "sharp": "^0.35.5",
     "tailwindcss": "^4.3.5",
     "tailwindcss-animated": "^2.1.0"
@@ -35,7 +35,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
     "@astrojs/compiler-rs": "0.5.3",
-    "@inlang/paraglide-js": "3.2.1",
+    "@inlang/paraglide-js": "3.2.2",
     "@playwright/test": "^1.65.0",
     "@types/node": "^26.6.6",
     "husky": "^9.1.7",
