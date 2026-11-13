@@ -1,3 +1,11 @@
+## Release 4.4.1 (2026/11/13)
+
+- [✅] Add Vitest unit tests for the CV experience parser and Playwright smoke tests in CI
+- [🐛] Match Spanish locale path boundaries correctly in the language switcher
+- [👷] Run lint, format, typecheck, build and audit on pull requests; move GitHub Actions to Node 24
+- [⬆️] Upgrade paraglide-js 2 → 3.2.2 and bump Astro to 7.4.11, ts-plugin, compiler-rs, oxlint and oxfmt
+- [🔒] Fix fast-uri security advisories
+
 ## Release 4.4.0 (2026/11/08)
 
 - [✨] Add an interactive ASCII background: plasma field, pointer highlight, click ripples and idle drift (respects reduced motion)
